@@ -190,8 +190,8 @@ export default function Home() {
       {/* Email signup */}
       <section id="signup" className="email container" aria-labelledby="get-started">
         {/* Mirrored CTA above the form */}
-        <div className="cta-top">
-          <a className="cta" href="#signup" aria-label="Get early access">
+        <div className="cta-top" style={{textAlign:"center",marginBottom:"24px"}}>
+          <a className="cta" href="#signup" aria-label="Get early access" data-testid="cta-signup">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12 2l3 7h7l-5.7 4.1 2.3 7-6.6-4.8-6.6 4.8 2.3-7L2 9h7z"/>
             </svg>
