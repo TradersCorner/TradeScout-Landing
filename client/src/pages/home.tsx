@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// Construction logos will be inline SVG
+import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill } from "lucide-react";
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
@@ -9,35 +9,11 @@ export default function Home() {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
   const constructionLogos = [
-    // Classic Hammer
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hammer">
-      <path d="M16 4h2c1.1 0 2 .9 2 2s-.9 2-2 2h-2l-8 8-2-2 8-8V4z"/>
-      <rect x="8" y="14" width="2" height="6"/>
-    </svg>,
-    
-    // Simple Wrench
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="wrench">
-      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1.1.4 1.5 0l2.3-2.3c.5-.4.5-1.1 0-1.4z"/>
-    </svg>,
-    
-    // Construction Hard Hat
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hardhat">
-      <path d="M12 2C8.7 2 6 4.7 6 8v7h12V8c0-3.3-2.7-6-6-6z"/>
-      <rect x="3" y="18" width="18" height="3" rx="1.5"/>
-    </svg>,
-    
-    // House/Building
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="house">
-      <path d="M12 3l8 6v11h-5v-6H9v6H4V9l8-6z"/>
-      <rect x="6" y="11" width="2" height="2"/>
-      <rect x="16" y="11" width="2" height="2"/>
-    </svg>,
-    
-    // Saw
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="saw">
-      <path d="M6 2l12 12H6l-4 4v-4L6 2z"/>
-      <path d="M7 5l2 2M9 7l2 2M11 9l2 2M13 11l2 2" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
-    </svg>
+    <Hammer key="hammer" size={28} />,
+    <Wrench key="wrench" size={28} />,
+    <HardHat key="hardhat" size={28} />,
+    <HomeIcon key="home" size={28} />,
+    <Drill key="drill" size={28} />
   ];
 
   useEffect(() => {
