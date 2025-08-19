@@ -447,9 +447,9 @@ export default function Home() {
 
           <div className="feature-cards" style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "40px",
-            marginBottom: "60px"
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "32px",
+            marginBottom: "40px"
           }}>
             <div style={{
               background: "var(--panel-2)",
@@ -575,16 +575,16 @@ export default function Home() {
 
       {/* SEO Content Section */}
       <section style={{
-        padding: "60px 0",
+        padding: "40px 0",
         background: "var(--background)",
         borderTop: "1px solid rgba(255,255,255,0.05)"
       }}>
         <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "40px",
-            marginBottom: "40px"
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "32px",
+            marginBottom: "32px"
           }}>
             <div>
               <h3 style={{
