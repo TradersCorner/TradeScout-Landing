@@ -9,35 +9,50 @@ export default function Home() {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
   const constructionLogos = [
-    // Hammer
+    // Hammer with handle
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hammer">
-      <path d="M20.2 4.8l-1.4-1.4L12 10.2l-2.8-2.8L8 8.6l2.8 2.8-6.6 6.6 1.4 1.4L12 12.8l2.8 2.8 1.2-1.2-2.8-2.8 6.6-6.6z"/>
+      <path d="M13.78 15.3L19.78 21.3C20.17 21.69 20.17 22.32 19.78 22.71C19.39 23.1 18.76 23.1 18.37 22.71L12.37 16.71L13.78 15.3Z"/>
+      <path d="M2.29 7.71L6.71 3.29C7.1 2.9 7.73 2.9 8.12 3.29L10.24 5.41L15.83 10.59L13.41 13.01L2.29 7.71Z"/>
+      <rect x="8.5" y="13" width="8" height="2" rx="1" transform="rotate(-45 8.5 13)"/>
     </svg>,
     
-    // Wrench
+    // Wrench (adjustable)
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="wrench">
-      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1.1.4 1.5 0l2.3-2.3c.5-.4.5-1.1 0-1.4z"/>
+      <path d="M22.61 18.97L13.54 9.9C14.15 8.18 13.8 6.2 12.61 4.88C11.61 3.75 10.2 3.15 8.75 3.15C8.36 3.15 7.97 3.21 7.6 3.32L10.32 6.04L8.18 8.18L5.46 5.46C5.35 5.83 5.29 6.22 5.29 6.61C5.29 8.06 5.89 9.47 7.02 10.47C8.34 11.66 10.32 12.01 12.04 11.4L21.11 20.47C21.5 20.86 22.13 20.86 22.52 20.47L22.61 18.97Z"/>
+      <path d="M14 17L16 19L18 17" strokeWidth="1.5" stroke="currentColor" fill="none"/>
     </svg>,
     
-    // Hard Hat
+    // Hard Hat with detail
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hardhat">
-      <path d="M12 2C8.7 2 6 4.7 6 8v8h12V8c0-3.3-2.7-6-6-6z"/>
-      <path d="M4 18h16c1.1 0 2 .9 2 2s-.9 2-2 2H4c-1.1 0-2-.9-2-2s.9-2 2-2z"/>
+      <path d="M12 2C8.13 2 5 5.13 5 9V15H19V9C19 5.13 15.87 2 12 2Z"/>
+      <ellipse cx="12" cy="5" rx="2" ry="1" opacity="0.3"/>
+      <rect x="2" y="18" width="20" height="3" rx="1.5"/>
+      <rect x="10" y="15" width="4" height="3"/>
     </svg>,
     
-    // Drill
+    // Power Drill
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="drill">
-      <path d="M20.5 6c-.3 0-.5.2-.5.5V8h-3.5c-.8 0-1.5.7-1.5 1.5v3c0 .8.7 1.5 1.5 1.5H20v1.5c0 .3.2.5.5.5s.5-.2.5-.5v-9c0-.3-.2-.5-.5-.5z"/>
-      <path d="M15 9H3c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h12v-6z"/>
-      <circle cx="6" cy="12" r="1.5"/>
+      <path d="M20 8V16H16V8H20Z"/>
+      <path d="M16 10H2C1.45 10 1 10.45 1 11V13C1 13.55 1.45 14 2 14H16V10Z"/>
+      <circle cx="5" cy="12" r="1.5"/>
+      <path d="M14 8V16" stroke="currentColor" strokeWidth="1" fill="none"/>
+      <rect x="20" y="10" width="2" height="4"/>
     </svg>,
     
-    // Level Tool
+    // Spirit Level with bubbles
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="level">
-      <path d="M2 10h20v4H2z"/>
-      <circle cx="12" cy="12" r="1"/>
-      <circle cx="6" cy="12" r=".5"/>
-      <circle cx="18" cy="12" r=".5"/>
+      <rect x="2" y="9" width="20" height="6" rx="3"/>
+      <rect x="3" y="10" width="18" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+      <circle cx="8" cy="12" r="1.5" fill="rgba(255,255,255,0.3)"/>
+      <circle cx="12" cy="12" r="2" fill="rgba(255,255,255,0.4)"/>
+      <circle cx="16" cy="12" r="1.5" fill="rgba(255,255,255,0.3)"/>
+    </svg>,
+    
+    // Screwdriver
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="screwdriver">
+      <path d="M16.5 2L22 7.5L20.5 9L15 3.5L16.5 2Z"/>
+      <path d="M15 3.5L3.5 15C3.22 15.28 3.22 15.72 3.5 16L8 20.5C8.28 20.78 8.72 20.78 9 20.5L20.5 9L15 3.5Z"/>
+      <rect x="9" y="15" width="6" height="1.5" transform="rotate(45 9 15)"/>
     </svg>
   ];
 
