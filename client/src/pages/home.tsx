@@ -640,57 +640,180 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SEO Content Section */}
+      {/* Enhanced Benefits Section */}
       <section style={{
-        padding: "40px 0",
-        background: "var(--background)",
-        borderTop: "1px solid rgba(255,255,255,0.05)"
+        padding: "80px 0",
+        background: "var(--panel)",
+        position: "relative"
       }}>
         <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
+          
+          <div style={{textAlign: "center", marginBottom: "60px"}}>
+            <h2 style={{
+              fontSize: "clamp(32px, 5vw, 48px)",
+              marginBottom: "20px",
+              color: "var(--text)",
+              fontWeight: 800,
+              letterSpacing: "-0.5px"
+            }}>
+              Why Choose TradeScout
+            </h2>
+            <p style={{
+              fontSize: "18px",
+              color: "var(--muted)",
+              maxWidth: "600px",
+              margin: "0 auto",
+              lineHeight: 1.6
+            }}>
+              A better way to connect for home improvement projects
+            </p>
+          </div>
+
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "32px",
-            marginBottom: "32px"
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "40px",
+            marginBottom: "60px"
           }}>
-            <div>
+            <div style={{
+              background: "var(--panel-2)",
+              borderRadius: "20px",
+              padding: "40px 32px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              textAlign: "center",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "64px",
+                height: "64px",
+                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                borderRadius: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 24px",
+                boxShadow: "0 8px 24px rgba(255,107,53,0.25)"
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{color: "white"}}>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path d="M9 14l2 2 4-4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                </svg>
+              </div>
               <h3 style={{
                 color: "var(--text)",
-                fontSize: "20px",
+                fontSize: "24px",
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
                 Quality Work
               </h3>
-              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+              <p style={{color: "var(--muted)", lineHeight: 1.7, fontSize: "16px"}}>
                 Connect with professionals who care about their reputation and take pride in their work.
               </p>
             </div>
             
-            <div>
+            <div style={{
+              background: "var(--panel-2)",
+              borderRadius: "20px",
+              padding: "40px 32px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              textAlign: "center",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "64px",
+                height: "64px",
+                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                borderRadius: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 24px",
+                boxShadow: "0 8px 24px rgba(255,107,53,0.25)"
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{color: "white"}}>
+                  <path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path d="M8 5v4" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M16 5v4" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M3 11h18" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M8 15h.01" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M12 15h.01" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M16 15h.01" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+              </div>
               <h3 style={{
                 color: "var(--text)",
-                fontSize: "20px",
+                fontSize: "24px",
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
                 Any Project Size
               </h3>
-              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+              <p style={{color: "var(--muted)", lineHeight: 1.7, fontSize: "16px"}}>
                 Small repairs to major renovations. The right person for whatever you need done.
               </p>
             </div>
             
-            <div>
+            <div style={{
+              background: "var(--panel-2)",
+              borderRadius: "20px",
+              padding: "40px 32px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              textAlign: "center",
+              transition: "transform 0.3s ease, box-shadow 0.3s ease"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translateY(-4px)";
+              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.2)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "none";
+            }}>
+              <div style={{
+                width: "64px",
+                height: "64px",
+                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                borderRadius: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 24px",
+                boxShadow: "0 8px 24px rgba(255,107,53,0.25)"
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{color: "white"}}>
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+              </div>
               <h3 style={{
                 color: "var(--text)",
-                fontSize: "20px",
+                fontSize: "24px",
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
                 Direct Contact
               </h3>
-              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+              <p style={{color: "var(--muted)", lineHeight: 1.7, fontSize: "16px"}}>
                 Talk directly with who you're hiring. Build relationships that work for both sides.
               </p>
             </div>
@@ -698,23 +821,26 @@ export default function Home() {
           
           <div style={{
             textAlign: "center",
-            padding: "40px 0",
-            borderTop: "1px solid rgba(255,255,255,0.05)"
+            padding: "60px 40px",
+            background: "var(--panel-2)",
+            borderRadius: "24px",
+            border: "1px solid rgba(255,255,255,0.1)"
           }}>
             <h2 style={{
               color: "var(--text)",
-              fontSize: "28px",
-              marginBottom: "16px",
-              fontWeight: 700
+              fontSize: "clamp(28px, 4vw, 40px)",
+              marginBottom: "20px",
+              fontWeight: 800,
+              letterSpacing: "-0.5px"
             }}>
               Simple Idea
             </h2>
             <p style={{
               color: "var(--muted)",
-              fontSize: "16px",
-              maxWidth: "600px",
+              fontSize: "18px",
+              maxWidth: "700px",
               margin: "0 auto",
-              lineHeight: 1.6
+              lineHeight: 1.7
             }}>
               People who need work done should be able to talk directly with people who do good work.
             </p>
