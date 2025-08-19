@@ -210,9 +210,25 @@ export default function Home() {
 
         <form className="form" onSubmit={(e) => {
           e.preventDefault();
-          // Handle form submission here
           const formData = new FormData(e.currentTarget);
-          console.log('Form submitted:', Object.fromEntries(formData));
+          const data = Object.fromEntries(formData);
+          console.log('Form submitted:', data);
+          
+          // Show success message
+          const button = e.currentTarget.querySelector('button[type="submit"]');
+          if (button) {
+            const originalText = button.textContent;
+            button.textContent = "🎉 You're In! Check Your Email";
+            button.disabled = true;
+            button.style.background = "linear-gradient(135deg, #10b981, #059669)";
+            
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.disabled = false;
+              button.style.background = "";
+              e.currentTarget.reset();
+            }, 3000);
+          }
         }} data-analytics="signup-form">
           {/* Email (required) */}
           <label className="sr-only" htmlFor="email">Email (required)</label>
@@ -292,7 +308,7 @@ export default function Home() {
             className="field full" 
             id="message" 
             name="message" 
-            placeholder="What excites you about TradeScout? (optional)" 
+            placeholder="What problem with lead companies or middlemen is TradeScout solving for you? (optional)" 
             rows={3}
             autoComplete="off"
             aria-describedby="message-help"
@@ -333,7 +349,7 @@ export default function Home() {
           Join our early access list to be among the first to experience direct contractor connections.
         </div>
         <div id="message-help" className="sr-only">
-          Share what excites you about connecting directly with contractors or homeowners.
+          Tell us about the problems you've experienced with lead companies or middlemen.
         </div>
       </section>
 

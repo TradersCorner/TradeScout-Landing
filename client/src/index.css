@@ -116,7 +116,10 @@ header{
 .email{margin-top:40px;padding:56px 0 80px}
 .email .lead{text-align:center;color:var(--muted);max-width:900px;margin:0 auto 32px;font-size:18px;line-height:1.6}
 .form{display:grid;gap:16px;grid-template-columns:1fr;max-width:900px;margin:0 auto}
-@media (min-width:860px){.form{grid-template-columns:1.2fr 1fr 1fr auto;gap:18px}}
+@media (min-width:860px){
+  .form{grid-template-columns:1.2fr 1fr 1fr 200px;gap:18px;justify-items:stretch}
+  .btn{justify-self:center;width:100%}
+}
 .field{
   background:var(--panel-2);
   border:1px solid rgba(255,255,255,.12);
@@ -145,6 +148,7 @@ select.field{
   font-weight:900;cursor:pointer;white-space:nowrap;font-size:16px;
   box-shadow:0 12px 32px rgba(255,106,0,.25);transition:all .2s ease;
   min-height:58px;display:flex;align-items:center;justify-content:center;
+  margin:0 auto;
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,106,0,.35)}
 .btn:active{transform:translateY(0);box-shadow:0 8px 24px rgba(255,106,0,.25)}
