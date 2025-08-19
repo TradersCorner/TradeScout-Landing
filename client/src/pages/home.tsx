@@ -535,10 +535,10 @@ export default function Home() {
           </div>
 
           <div style={{
-            background: "linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,107,53,0.05))",
+            background: "linear-gradient(135deg, rgba(251,191,36,0.15), rgba(251,191,36,0.05))",
             borderRadius: "20px",
             padding: "48px 40px",
-            border: "2px solid rgba(255,107,53,0.3)",
+            border: "2px solid rgba(251,191,36,0.3)",
             textAlign: "center",
             position: "relative",
             overflow: "hidden"
@@ -549,7 +549,7 @@ export default function Home() {
               right: "-20%",
               width: "200px",
               height: "200px",
-              background: "radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(251,191,36,0.1) 0%, transparent 70%)",
               borderRadius: "50%"
             }} />
             <div style={{
@@ -558,7 +558,7 @@ export default function Home() {
               left: "-10%",
               width: "150px",
               height: "150px",
-              background: "radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%)",
+              background: "radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%)",
               borderRadius: "50%"
             }} />
             
