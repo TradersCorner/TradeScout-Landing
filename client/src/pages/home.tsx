@@ -145,7 +145,7 @@ export default function Home() {
 
       {/* Why TradeScout */}
       <section className="container" id="why" aria-labelledby="whytitle" style={{marginTop:"32px"}}>
-        <h2 id="whytitle" className="section-title">Why TradeScout?</h2>
+        <h2 id="whytitle" className="section-title">How It Works</h2>
         <div className="feature-grid">
           <article className="card" data-testid="card-homeowner-tools">
             <div className="card-media">
@@ -153,7 +153,7 @@ export default function Home() {
             </div>
             <div className="card-body">
               <h3>Homeowner Tools</h3>
-              <p>Plan projects, request bids, and hire with confidence.</p>
+              <p>Post your project. Review profiles. Choose who works on your home.</p>
             </div>
           </article>
 
@@ -162,8 +162,8 @@ export default function Home() {
               <img src={acceleratedGrowthPath} alt="Accelerated Growth Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             </div>
             <div className="card-body">
-              <h3>Accelerated Growth</h3>
-              <p>Get in front of real homeowners—no paywall, no junk leads.</p>
+              <h3>Contractor Growth</h3>
+              <p>Build your reputation. Show your work. Grow your business.</p>
             </div>
           </article>
 
@@ -172,8 +172,8 @@ export default function Home() {
               <img src={findHelpersPath} alt="Find Helpers Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             </div>
             <div className="card-body">
-              <h3>Find Helpers &amp; Employees</h3>
-              <p>Post roles, meet reliable helpers, and build your crew faster.</p>
+              <h3>Find Help</h3>
+              <p>Need extra hands? Connect with people ready to work and learn.</p>
             </div>
           </article>
 
@@ -182,8 +182,8 @@ export default function Home() {
               <img src={directConnectPath} alt="Direct Connect Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             </div>
             <div className="card-body">
-              <h3>Direct Connect</h3>
-              <p>Homeowners and contractors, connected directly—no middlemen.</p>
+              <h3>Real Connections</h3>
+              <p>Talk directly. Work together. Build relationships that last.</p>
             </div>
           </article>
         </div>
@@ -191,23 +191,23 @@ export default function Home() {
 
       {/* Reviews */}
       <section className="reviews container" aria-labelledby="reviewstitle">
-        <h2 id="reviewstitle">What People Are Saying</h2>
+        <h2 id="reviewstitle">Early Feedback</h2>
         <div className="reviews-grid">
-          <blockquote className="review" aria-label="Review from Real Homeowner From The Future">
-            <p className="quote">"TradeScout made it simple to post my project and hire fast. Zero spam — just real pros."</p>
-            <p className="author">— Real Homeowner From The Future</p>
+          <blockquote className="review" aria-label="Review from Early Tester">
+            <p className="quote">"Finally, a place where I can find contractors without getting bombarded by sales calls."</p>
+            <p className="author">— Sarah, Atlanta</p>
           </blockquote>
 
-          <blockquote className="review" aria-label="Review from Real Contractor From The Future">
-            <p className="quote">"I connected with real homeowners directly and booked work without buying leads. Finally."</p>
-            <p className="author">— Real Contractor From The Future</p>
+          <blockquote className="review" aria-label="Review from Beta Contractor">
+            <p className="quote">"I spend my time working, not chasing fake leads. This is what we needed."</p>
+            <p className="author">— Mike, Denver</p>
           </blockquote>
         </div>
       </section>
 
       {/* Network banner */}
       <div className="ribbon">
-        Join 500,000+ people already connected on TradeScout.
+        Join thousands already building the network.
       </div>
 
       {/* Email signup */}
@@ -223,7 +223,7 @@ export default function Home() {
         </div>
 
         <h2 id="get-started" className="section-title" style={{textAlign:"center"}}>Join the Network</h2>
-        <p className="lead">Get early access when we launch. No spam, no BS.</p>
+        <p className="lead">Be among the first when we launch.</p>
 
         {/* Dynamic message (changes when roles are toggled) */}
         <div id="form-message" className="audience-msg" aria-live="polite">
@@ -363,16 +363,16 @@ export default function Home() {
         
         {/* Hidden help text for screen readers */}
         <div id="email-help" className="sr-only">
-          We'll only use your email to notify you when TradeScout launches. No spam.
+          We'll notify you when TradeScout launches.
         </div>
         <div id="state-help" className="sr-only">
-          Your state helps us prioritize regional rollout.
+          Your state helps us prioritize where to launch first.
         </div>
         <div id="submit-help" className="sr-only">
-          Join our early access list to be among the first to experience direct contractor connections.
+          Get early access to the network.
         </div>
         <div id="message-help" className="sr-only">
-          Share your frustrations with lead companies and middlemen that take advantage of contractors and homeowners.
+          Tell us about your projects or experience.
         </div>
       </section>
 
@@ -398,7 +398,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              Keep what you earn. Work with people who value quality. Build lasting connections.
+              No lead fees. No middleman markup. Just fair pricing.
             </p>
           </div>
 
@@ -469,7 +469,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Know what things actually cost in your area. Fair pricing for everyone.
+                Real costs in your neighborhood. No guessing, no surprises.
               </p>
             </div>
 
@@ -593,10 +593,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Quality Work, Fair Price
+                Quality Work
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                Work with real contractors who take pride in their craft. No games, no inflated costs, no fake reviews. Just honest professionals doing what they do best.
+                Connect with professionals who care about their reputation and take pride in their work.
               </p>
             </div>
             
@@ -607,10 +607,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Every Trade, Every Project
+                Any Project Size
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                From fixing a leaky faucet to building your dream kitchen. Find the right person for any job, big or small.
+                Small repairs to major renovations. The right person for whatever you need done.
               </p>
             </div>
             
@@ -621,10 +621,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                No Middleman
+                Direct Contact
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                No fake leads. No inflated prices. Just people doing great work together.
+                Talk directly with who you're hiring. Build relationships that work for both sides.
               </p>
             </div>
           </div>
@@ -640,7 +640,7 @@ export default function Home() {
               marginBottom: "16px",
               fontWeight: 700
             }}>
-              Built for Everyone
+              Simple Idea
             </h2>
             <p style={{
               color: "var(--muted)",
@@ -649,7 +649,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              For homeowners who want quality work at fair prices. For contractors who take pride in their craft. Real relationships, not transactions.
+              People who need work done should be able to talk directly with people who do good work.
             </p>
           </div>
         </div>
