@@ -355,34 +355,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Value Proposition - Primary Section */}
-      <section className="value-proposition" style={{
+      {/* Value Proposition */}
+      <section style={{
         padding: "80px 0", 
-        background: "linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)",
-        position: "relative",
-        overflow: "hidden"
+        background: "var(--panel)",
       }}>
-        {/* Subtle diagonal accent */}
-        <div style={{
-          position: "absolute",
-          top: "-50%",
-          right: "-20%",
-          width: "60%",
-          height: "200%",
-          background: "linear-gradient(135deg, transparent, var(--brand))",
-          opacity: 0.02,
-          transform: "rotate(15deg)"
-        }}></div>
-        
-        <div className="container" style={{position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto"}}>
+        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
           <div style={{textAlign: "center", marginBottom: "60px"}}>
             <h2 style={{
               fontSize: "clamp(28px, 4vw, 48px)",
               marginBottom: "20px",
-              background: "linear-gradient(135deg, var(--brand), #fff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              color: "var(--text)",
               fontWeight: 700
             }}>
               Zero Fees, Real Connections
@@ -398,86 +381,56 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Stats Grid */}
           <div style={{
             display: "grid", 
             gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
             gap: "32px",
             maxWidth: "800px",
-            margin: "0 auto"
+            margin: "0 auto 60px"
           }}>
             <div style={{
               textAlign: "center",
-              background: "rgba(255,255,255,0.02)",
+              background: "var(--panel-2)",
               borderRadius: "16px",
               padding: "32px 24px",
               border: "1px solid rgba(255,255,255,0.05)"
             }}>
               <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
-              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Lead Fees</div>
+              <div style={{color: "var(--text)", fontSize: "16px"}}>Lead Fees</div>
             </div>
             
             <div style={{
               textAlign: "center",
-              background: "rgba(255,255,255,0.02)",
+              background: "var(--panel-2)",
               borderRadius: "16px",
               padding: "32px 24px",
               border: "1px solid rgba(255,255,255,0.05)"
             }}>
               <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
-              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Direct</div>
+              <div style={{color: "var(--text)", fontSize: "16px"}}>Direct</div>
             </div>
             
             <div style={{
               textAlign: "center",
-              background: "rgba(255,255,255,0.02)",
+              background: "var(--panel-2)",
               borderRadius: "16px",
               padding: "32px 24px",
               border: "1px solid rgba(255,255,255,0.05)"
             }}>
               <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
-              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Yours</div>
+              <div style={{color: "var(--text)", fontSize: "16px"}}>Yours</div>
             </div>
             
             <div style={{
               textAlign: "center",
-              background: "rgba(255,255,255,0.02)",
+              background: "var(--panel-2)",
               borderRadius: "16px",
               padding: "32px 24px",
               border: "1px solid rgba(255,255,255,0.05)"
             }}>
               <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
-              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>People</div>
+              <div style={{color: "var(--text)", fontSize: "16px"}}>People</div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Platform Features - Comprehensive Tools */}
-      <section className="platform-features" style={{
-        padding: "80px 0",
-        background: "var(--panel)",
-        position: "relative"
-      }}>
-        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
-          <div style={{textAlign: "center", marginBottom: "60px"}}>
-            <h2 style={{
-              fontSize: "clamp(28px, 4vw, 48px)",
-              marginBottom: "20px",
-              color: "var(--text)",
-              fontWeight: 700
-            }}>
-              Built for Your Success
-            </h2>
-            <p style={{
-              fontSize: "18px",
-              color: "var(--muted)",
-              maxWidth: "700px",
-              margin: "0 auto",
-              lineHeight: 1.6
-            }}>
-              More than a network — comprehensive tools and community support that skilled trades deserve.
-            </p>
           </div>
 
           <div style={{
@@ -491,23 +444,10 @@ export default function Home() {
               borderRadius: "16px",
               padding: "32px",
               border: "1px solid rgba(255,255,255,0.05)",
-              textAlign: "center",
-              transition: "transform 0.2s ease"
+              textAlign: "center"
             }}>
-              <div style={{
-                width: "60px",
-                height: "60px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "12px",
-                margin: "0 auto 20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "24px"
-              }}>
-                📊
-              </div>
-              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Calculator</h3>
+              <div style={{fontSize: "32px", marginBottom: "16px"}}>📊</div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Fair pricing tools for competitive bidding and transparent costs.
               </p>
@@ -520,20 +460,8 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{
-                width: "60px",
-                height: "60px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "12px",
-                margin: "0 auto 20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "24px"
-              }}>
-                🤝
-              </div>
-              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Helpers</h3>
+              <div style={{fontSize: "32px", marginBottom: "16px"}}>🤝</div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Connect contractors with skilled helpers, growing the trades community.
               </p>
@@ -546,20 +474,8 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{
-                width: "60px",
-                height: "60px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "12px",
-                margin: "0 auto 20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "24px"
-              }}>
-                💬
-              </div>
-              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Community</h3>
+              <div style={{fontSize: "32px", marginBottom: "16px"}}>💬</div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Community</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Share knowledge and solve problems with people who understand the trade.
               </p>
@@ -572,86 +488,21 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{
-                width: "60px",
-                height: "60px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "12px",
-                margin: "0 auto 20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "24px"
-              }}>
-                🔄
-              </div>
-              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Exchange</h3>
+              <div style={{fontSize: "32px", marginBottom: "16px"}}>🔄</div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Trade services and collaborate on projects that benefit everyone.
               </p>
             </div>
           </div>
 
-          {/* Foundation Impact */}
           <div style={{
-            background: "linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,140,66,0.04))",
-            borderRadius: "20px",
-            padding: "48px",
-            border: "1px solid rgba(255,107,53,0.15)",
+            background: "rgba(255,107,53,0.1)",
+            borderRadius: "16px",
+            padding: "40px",
+            border: "1px solid rgba(255,107,53,0.2)",
             textAlign: "center"
           }}>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "40px",
-              alignItems: "center",
-              marginBottom: "32px"
-            }}>
-              <div>
-                <div style={{
-                  width: "50px",
-                  height: "50px",
-                  background: "var(--brand)",
-                  borderRadius: "12px",
-                  margin: "0 auto 16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "20px"
-                }}>
-                  🎓
-                </div>
-                <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
-                  Skilled Trades Scholarships
-                </h4>
-                <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
-                  Supporting education through multiple foundations including Mike Rowe WORKS
-                </p>
-              </div>
-
-              <div>
-                <div style={{
-                  width: "50px",
-                  height: "50px",
-                  background: "var(--brand)",
-                  borderRadius: "12px",
-                  margin: "0 auto 16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "20px"
-                }}>
-                  🏘️
-                </div>
-                <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
-                  Community Impact
-                </h4>
-                <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
-                  Supporting worthy causes and local projects nationwide
-                </p>
-              </div>
-            </div>
-            
             <h3 style={{
               color: "var(--brand)",
               fontSize: "24px",
@@ -665,10 +516,17 @@ export default function Home() {
               fontSize: "16px",
               lineHeight: 1.6,
               maxWidth: "700px",
-              margin: "0 auto"
+              margin: "0 auto 24px"
             }}>
-              When you succeed on TradeScout, communities grow stronger. Every connection 
-              contributes to a foundation that gives back to the trades that built America.
+              Every connection contributes to supporting skilled trades education, community projects, 
+              and worthy causes across America.
+            </p>
+            <p style={{
+              color: "var(--text)",
+              fontSize: "14px",
+              opacity: 0.8
+            }}>
+              Supporting foundations including Mike Rowe WORKS and local community initiatives
             </p>
           </div>
         </div>
