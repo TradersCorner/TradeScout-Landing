@@ -182,8 +182,8 @@ export default function Home() {
               <img src={directConnectPath} alt="Direct Connect Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
             </div>
             <div className="card-body">
-              <h3>Real Connections</h3>
-              <p>Talk directly. Work together. Build relationships that last.</p>
+              <h3>Direct Connect</h3>
+              <p>Homeowners and contractors, connected directly—no middlemen.</p>
             </div>
           </article>
         </div>
