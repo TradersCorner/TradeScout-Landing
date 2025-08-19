@@ -110,8 +110,8 @@ export default function Home() {
 
       {/* Hero */}
       <section className="hero container">
-        <h1>Find Local Contractors Near Me - Direct Connection, Zero Lead Fees</h1>
-        <p>TradeScout is a direct professional network connecting homeowners and contractors for home improvement, remodeling, and repair projects — no middlemen, no games.</p>
+        <h1>Connection Without Compromise</h1>
+        <p>Where skilled professionals and homeowners meet directly. Build real relationships that last beyond a single project.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -377,7 +377,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              Contractors keep 100% of earnings while homeowners get direct access to trusted professionals.
+              Keep what you earn. Work with people who value quality. Build lasting professional relationships.
             </p>
           </div>
 
@@ -448,7 +448,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Hyper-local pricing data helping contractors bid accurately and homeowners understand fair costs.
+                Know what things actually cost in your area. Fair pricing for everyone.
               </p>
             </div>
 
@@ -469,7 +469,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Contractors find employees while homeowners find laborers or people starting their trades business.
+                Need an extra pair of hands? Find people eager to learn and work.
               </p>
             </div>
 
@@ -490,7 +490,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Community</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Knowledge sharing between contractors and homeowners, solving problems together.
+                Share what you know. Learn from others. Solve problems together.
               </p>
             </div>
 
@@ -512,7 +512,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Marketplace where contractors and homeowners trade tools, equipment, and services.
+                Buy, sell, trade what you need. Tools, equipment, services.
               </p>
             </div>
           </div>
@@ -573,10 +573,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Find Local Contractors Near You
+                Quality Work, Fair Price
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                Connect directly with verified contractors in your area for home improvement, remodeling, repairs, and construction projects. Skip the middleman fees and build real relationships with skilled professionals who care about quality work.
+                Work with contractors who take pride in their craft. No games, no inflated costs, no fake reviews. Just honest professionals doing what they do best.
               </p>
             </div>
             
@@ -587,10 +587,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Home Improvement Services
+                Every Trade, Every Project
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                Kitchen remodeling, bathroom renovation, roofing, plumbing, electrical, HVAC, flooring, painting, landscaping, decking, fencing, siding, windows, doors, and all your home repair needs.
+                From fixing a leaky faucet to building your dream kitchen. Find the right person for any job, big or small.
               </p>
             </div>
             
@@ -601,10 +601,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                A Different Approach
+                Real Connections
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                TradeScout is a professional network, not a lead service. Direct connections between verified professionals and homeowners create authentic relationships and fair pricing.
+                No fake leads. No inflated prices. Just real people doing great work together.
               </p>
             </div>
           </div>
@@ -620,7 +620,7 @@ export default function Home() {
               marginBottom: "16px",
               fontWeight: 700
             }}>
-              Serving Homeowners & Contractors Nationwide
+              Built for Real People
             </h2>
             <p style={{
               color: "var(--muted)",
@@ -629,7 +629,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              Whether you're a homeowner looking for reliable contractors or a contractor seeking direct client connections, TradeScout eliminates the middleman to create authentic professional relationships across all 50 states.
+              For homeowners who want quality work at fair prices. For contractors who take pride in their craft. Real relationships, not transactions.
             </p>
           </div>
         </div>
