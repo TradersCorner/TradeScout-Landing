@@ -70,7 +70,9 @@ export default function Home() {
 
       const roles = Array.from(document.querySelectorAll('input[name="roles[]"]')) as HTMLInputElement[];
       const render = ({ kicker, sub }: { kicker: string; sub: string }) => {
-        msgBox.innerHTML = `<span class="kicker">${kicker}</span><p class="sub">${sub}</p>`;
+        if (msgBox) {
+          msgBox.innerHTML = `<span class="kicker">${kicker}</span><p class="sub">${sub}</p>`;
+        }
       };
 
       const update = () => {
@@ -182,6 +184,73 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Problem/Solution Section */}
+      <section className="problem-solution container" style={{padding: "80px 0", background: "var(--panel)"}}>
+        <h2 style={{textAlign: "center", marginBottom: "60px", fontSize: "32px"}}>The Lead Generation Scam</h2>
+        
+        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", maxWidth: "1000px", margin: "0 auto"}}>
+          <div className="problem-side" style={{padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)"}}>
+            <h3 style={{color: "#dc2626", marginBottom: "24px", fontSize: "24px"}}>Lead Companies Steal Your Money</h3>
+            <ul style={{listStyle: "none", padding: 0, color: "var(--muted)"}}>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
+                Charge $20-150 per lead
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
+                Sell your info to 5+ competitors
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
+                Fake leads and tire kickers
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
+                No real customer info
+              </li>
+              <li style={{paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
+                You compete against 10+ others
+              </li>
+            </ul>
+          </div>
+          
+          <div className="solution-side" style={{padding: "32px", background: "linear-gradient(135deg, var(--brand), var(--brand-2))", borderRadius: "16px", color: "#fff"}}>
+            <h3 style={{marginBottom: "24px", fontSize: "24px"}}>TradeScout Direct Connect</h3>
+            <ul style={{listStyle: "none", padding: 0}}>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0}}>✓</span>
+                Direct contact, no middlemen
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0}}>✓</span>
+                Real homeowners, verified needs
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0}}>✓</span>
+                You keep 100% of your money
+              </li>
+              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0}}>✓</span>
+                Build real relationships
+              </li>
+              <li style={{paddingLeft: "24px", position: "relative"}}>
+                <span style={{position: "absolute", left: 0}}>✓</span>
+                No bidding wars or competition
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style={{textAlign: "center", marginTop: "48px", padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)", maxWidth: "600px", margin: "48px auto 0"}}>
+          <h4 style={{color: "var(--brand)", marginBottom: "16px", fontSize: "20px"}}>Stop Getting Screwed Over</h4>
+          <p style={{color: "var(--muted)", marginBottom: 0, fontSize: "16px"}}>
+            Contractors waste $3,000+ per month on lead fees. Homeowners get bombarded by pushy salespeople. 
+            We're building something better.
+          </p>
+        </div>
+      </section>
+
       {/* Network banner */}
       <div className="ribbon">
         Join 500,000+ people already connected on TradeScout.
@@ -208,55 +277,28 @@ export default function Home() {
           <p className="sub">Whether you're a contractor or a homeowner, TradeScout makes direct connection simple.</p>
         </div>
 
-        <form 
-          className="form" 
-          action="https://formspree.io/f/YOUR_FORM_ID" 
-          method="POST"
-          onSubmit={async (e) => {
-            e.preventDefault();
-            const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
-            if (!button) return;
-
+        <form className="form" onSubmit={(e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+          const data = Object.fromEntries(formData);
+          console.log('Form submitted:', data);
+          
+          // Show success message
+          const button = e.currentTarget.querySelector('button[type="submit"]');
+          if (button) {
             const originalText = button.textContent;
-            button.textContent = "Submitting...";
+            button.textContent = "🎉 You're In! Check Your Email";
             button.disabled = true;
-
-            try {
-              const formData = new FormData(e.currentTarget);
-              const response = await fetch(e.currentTarget.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-              });
-
-              if (response.ok) {
-                button.textContent = "🎉 You're In! Check Your Email";
-                button.style.background = "linear-gradient(135deg, #10b981, #059669)";
-                e.currentTarget.reset();
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                  gtag('event', 'signup', {
-                    event_category: 'engagement',
-                    event_label: 'early_access'
-                  });
-                }
-              } else {
-                throw new Error('Submission failed');
-              }
-            } catch (error) {
-              button.textContent = "Error - Try Again";
-              button.style.background = "linear-gradient(135deg, #dc2626, #b91c1c)";
-            }
-
+            button.style.background = "linear-gradient(135deg, #10b981, #059669)";
+            
             setTimeout(() => {
               button.textContent = originalText;
               button.disabled = false;
               button.style.background = "";
+              e.currentTarget.reset();
             }, 3000);
-          }} 
-          data-analytics="signup-form"
-        >
+          }
+        }} data-analytics="signup-form">
           {/* Email (required) */}
           <label className="sr-only" htmlFor="email">Email (required)</label>
           <input 
