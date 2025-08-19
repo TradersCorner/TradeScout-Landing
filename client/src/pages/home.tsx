@@ -132,7 +132,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container">
         <h1>Connection Without Compromise</h1>
-        <p>Predatory predecessors sold your information as "leads." TradeScout builds a network where homeowners and contractors connect directly — no middlemen, no games.</p>
+        <p>Predatory predecessors sold your information as "leads." TradeScout is a network where homeowners and contractors connect directly — no middlemen, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
