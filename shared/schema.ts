@@ -12,8 +12,10 @@ export const users = pgTable("users", {
 export const signups = pgTable("signups", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   email: text("email").notNull().unique(),
-  state: text("state").notNull(),
-  roles: text("roles").array().notNull(),
+  name: text("name"),
+  state: text("state"),
+  roles: text("roles").array(),
+  message: text("message"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -27,8 +29,10 @@ export const insertSignupSchema = createInsertSchema(signups).omit({
   createdAt: true,
 }).extend({
   email: z.string().email("Please enter a valid email address"),
-  state: z.string().min(1, "Please select a state"),
-  roles: z.array(z.enum(["homeowner", "contractor", "helper"])).min(1, "Please select at least one role"),
+  state: z.string().optional(),
+  name: z.string().optional(),
+  roles: z.array(z.enum(["Homeowner", "Contractor", "Service Provider"])).min(1, "Please select at least one role"),
+  message: z.string().optional(),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

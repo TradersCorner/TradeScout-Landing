@@ -286,6 +286,19 @@ export default function Home() {
             </label>
           </fieldset>
 
+          {/* Optional message */}
+          <label className="sr-only" htmlFor="message">Your message (optional)</label>
+          <textarea 
+            className="field full" 
+            id="message" 
+            name="message" 
+            placeholder="What excites you about TradeScout? (optional)" 
+            rows={3}
+            autoComplete="off"
+            aria-describedby="message-help"
+            data-testid="textarea-message"
+          ></textarea>
+
           {/* Submit */}
           <button 
             className="btn" 
@@ -318,6 +331,9 @@ export default function Home() {
         </div>
         <div id="submit-help" className="sr-only">
           Join our early access list to be among the first to experience direct contractor connections.
+        </div>
+        <div id="message-help" className="sr-only">
+          Share what excites you about connecting directly with contractors or homeowners.
         </div>
       </section>
 
