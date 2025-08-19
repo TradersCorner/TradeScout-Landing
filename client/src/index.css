@@ -228,6 +228,19 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   .card:hover .card-media img{transform:none}
 }
 
+/* Desktop layout improvements */
+@media (min-width: 1024px) {
+  .value-stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  
+  .feature-cards {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+  }
+}
+
 /* Dynamic audience message above form */
 .audience-msg{
   margin: 32px auto 28px;

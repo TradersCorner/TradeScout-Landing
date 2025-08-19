@@ -381,9 +381,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{
+          <div className="value-stats" style={{
             display: "grid", 
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", 
             gap: "32px",
             maxWidth: "800px",
             margin: "0 auto 60px"
@@ -433,10 +433,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{
+          <div className="feature-cards" style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "32px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "40px",
             marginBottom: "60px"
           }}>
             <div style={{
@@ -521,7 +521,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Trade services and collaborate on projects that benefit everyone.
+                Marketplace for tools, equipment, and services. Trade what you need with other professionals.
               </p>
             </div>
           </div>
