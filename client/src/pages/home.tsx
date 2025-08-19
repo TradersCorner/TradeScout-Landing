@@ -574,7 +574,10 @@ export default function Home() {
                 justifyContent: "center"
               }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{color: "white"}}>
-                  <path d="M12 2L13.5 8.5L20 7L14 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L10 12L4 7L10.5 8.5L12 2Z" fill="currentColor"/>
+                  <path d="M12 3L13.5 6L17 6.5L14.5 9L15 12.5L12 11L9 12.5L9.5 9L7 6.5L10.5 6L12 3Z" stroke="currentColor" strokeWidth="1.5" fill="currentColor"/>
+                  <rect x="4" y="15" width="16" height="2" rx="1" fill="currentColor"/>
+                  <rect x="6" y="18" width="12" height="1.5" rx="0.75" fill="currentColor"/>
+                  <circle cx="12" cy="21" r="1" fill="currentColor"/>
                 </svg>
               </div>
               
@@ -602,29 +605,33 @@ export default function Home() {
               <div style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "12px",
-                background: "rgba(255,255,255,0.1)",
-                padding: "16px 24px",
-                borderRadius: "50px",
-                border: "1px solid rgba(255,255,255,0.2)"
+                gap: "16px",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05))",
+                padding: "20px 32px",
+                borderRadius: "60px",
+                border: "2px solid rgba(255,255,255,0.25)",
+                backdropFilter: "blur(10px)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1)"
               }}>
                 <div style={{
-                  width: "24px",
-                  height: "24px",
-                  background: "var(--brand)",
+                  width: "28px",
+                  height: "28px",
+                  background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
                   borderRadius: "50%",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
+                  justifyContent: "center",
+                  boxShadow: "0 4px 12px rgba(255,107,53,0.3)"
                 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2.5" fill="none"/>
                   </svg>
                 </div>
                 <span style={{
                   color: "var(--text)",
-                  fontSize: "16px",
-                  fontWeight: 600
+                  fontSize: "17px",
+                  fontWeight: 700,
+                  textShadow: "0 1px 2px rgba(0,0,0,0.1)"
                 }}>
                   Proudly supporting Mike Rowe WORKS Foundation & skilled trade initiatives
                 </span>
