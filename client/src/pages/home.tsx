@@ -377,7 +377,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              Keep 100% of your earnings while building genuine relationships with verified people.
+              Contractors keep 100% of earnings while homeowners get direct access to trusted professionals.
             </p>
           </div>
 
@@ -448,7 +448,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Hyper-local pricing data for accurate bids and transparent costs in your specific market.
+                Hyper-local pricing data helping contractors bid accurately and homeowners understand fair costs.
               </p>
             </div>
 
