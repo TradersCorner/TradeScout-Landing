@@ -331,7 +331,7 @@ export default function Home() {
             className="field full" 
             id="message" 
             name="message" 
-            placeholder="Tell us how lead companies screwed you over. We're tired of it too. (optional)" 
+            placeholder="Share your thoughts or project needs (optional)" 
             rows={3}
             autoComplete="off"
             aria-describedby="message-help"
