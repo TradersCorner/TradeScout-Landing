@@ -28,6 +28,8 @@ header{
   border-bottom:1px solid rgba(255,255,255,.06);
 }
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.nav .cta{display:none}
+@media (min-width: 768px){.nav .cta{display:inline-flex}}
 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px;font-size:22px}
 .brand-icon{width:28px;height:28px;object-fit:cover}
 .cta{
