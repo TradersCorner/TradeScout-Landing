@@ -102,7 +102,9 @@ export default function Home() {
         <h2 id="whytitle" className="section-title">Why TradeScout?</h2>
         <div className="feature-grid">
           <article className="card">
-            <div className="card-media" style={{ backgroundImage: `url(${homeownerToolsPath})` }}></div>
+            <div className="card-media">
+              <img src={homeownerToolsPath} alt="Homeowner Tools Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
             <div className="card-body">
               <h3>Homeowner Tools</h3>
               <p>Plan projects, request bids, and hire with confidence.</p>
@@ -110,7 +112,9 @@ export default function Home() {
           </article>
 
           <article className="card">
-            <div className="card-media" style={{ backgroundImage: `url(${acceleratedGrowthPath})` }}></div>
+            <div className="card-media">
+              <img src={acceleratedGrowthPath} alt="Accelerated Growth Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
             <div className="card-body">
               <h3>Accelerated Growth</h3>
               <p>Get in front of real homeowners—no paywall, no junk leads.</p>
@@ -118,7 +122,9 @@ export default function Home() {
           </article>
 
           <article className="card">
-            <div className="card-media" style={{ backgroundImage: `url(${findHelpersPath})` }}></div>
+            <div className="card-media">
+              <img src={findHelpersPath} alt="Find Helpers Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
             <div className="card-body">
               <h3>Find Helpers &amp; Employees</h3>
               <p>Post roles, meet reliable helpers, and build your crew faster.</p>
@@ -126,7 +132,9 @@ export default function Home() {
           </article>
 
           <article className="card">
-            <div className="card-media" style={{ backgroundImage: `url(${directConnectPath})` }}></div>
+            <div className="card-media">
+              <img src={directConnectPath} alt="Direct Connect Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+            </div>
             <div className="card-body">
               <h3>Direct Connect</h3>
               <p>Homeowners and contractors, connected directly—no middlemen.</p>

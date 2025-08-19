@@ -74,10 +74,7 @@ header{
   background-size:cover;background-position:center;
 }
 .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.35))}
-.bg-accel  { background-image:url('@assets/accelerated-growth_1755576317371.jpg'); }
-.bg-helpers{ background-image:url('@assets/find-helpers-employees_1755576317371.jpg'); }
-.bg-direct { background-image:url('@assets/direct-connect_1755576317371.jpg'); }
-.bg-tools  { background-image:url('@assets/homeowner-tools_1755576317371.jpg'); }
+
 .card-body{padding:18px 18px 20px}
 .card h3{margin:0 0 8px;font-size:18px;font-weight:900}
 .card p{margin:0;color:var(--muted);line-height:1.65}
