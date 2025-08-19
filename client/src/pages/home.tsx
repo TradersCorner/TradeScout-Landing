@@ -599,15 +599,31 @@ export default function Home() {
                 Every connection on TradeScout helps fund trade education and workforce development programs that create pathways to meaningful careers.
               </p>
               
-              <div style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "12px",
-                background: "rgba(255,255,255,0.08)",
-                padding: "16px 28px",
-                borderRadius: "40px",
-                border: "1px solid rgba(255,255,255,0.1)"
-              }}>
+              <a 
+                href="https://www.mikeroweworks.org" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  background: "rgba(255,255,255,0.08)",
+                  padding: "16px 28px",
+                  borderRadius: "40px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.12)";
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{color: "var(--brand)"}}>
                   <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" fill="none"/>
                 </svg>
@@ -618,7 +634,7 @@ export default function Home() {
                 }}>
                   Proudly supporting Mike Rowe WORKS Foundation & skilled trade initiatives
                 </span>
-              </div>
+              </a>
             </div>
           </div>
         </div>
