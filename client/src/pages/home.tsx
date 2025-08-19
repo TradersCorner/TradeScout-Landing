@@ -207,7 +207,7 @@ export default function Home() {
 
       {/* Network banner */}
       <div className="ribbon">
-        Join 500,000+ people already connected on TradeScout.
+        Join 500,000+ people already connected through the TradeScout network.
       </div>
 
       {/* Email signup */}
