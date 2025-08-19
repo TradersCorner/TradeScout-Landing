@@ -226,11 +226,41 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   .email{padding:32px 0 40px}
   .email .lead{font-size:15px;margin:0 auto 24px;line-height:1.5}
   
-  /* Compact feature cards on mobile */
-  .feature-cards{gap:24px !important;margin-bottom:32px !important}
-  .feature-cards > div{padding:20px !important}
+  /* Horizontal scroll feature cards on mobile */
+  .feature-cards{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:20px !important;
+    margin-bottom:32px !important;
+    padding:0 0 16px 0 !important;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+  }
+  .feature-cards::-webkit-scrollbar{height:4px}
+  .feature-cards::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .feature-cards::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .feature-cards > div{
+    flex:0 0 260px !important;
+    padding:20px !important;
+  }
   .feature-cards h3{font-size:18px !important;margin-bottom:8px !important}
   .feature-cards p{font-size:14px !important}
+  
+  /* Horizontal scroll for value stats on mobile */
+  .value-stats{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:20px !important;
+    padding:0 0 16px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .value-stats::-webkit-scrollbar{height:4px}
+  .value-stats::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .value-stats::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .value-stats > div{
+    flex:0 0 200px !important;
+    text-align:center;
+  }
 }
 
 /* Performance and accessibility improvements */
