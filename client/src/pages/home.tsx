@@ -439,6 +439,240 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Foundation Impact Section */}
+      <section className="foundation-impact" style={{
+        padding: "100px 0",
+        background: "var(--panel)",
+        position: "relative"
+      }}>
+        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{textAlign: "center", marginBottom: "80px"}}>
+            <h2 style={{
+              fontSize: "clamp(28px, 4vw, 48px)",
+              marginBottom: "24px",
+              color: "var(--text)"
+            }}>
+              Every Connection Creates Impact
+            </h2>
+            <p style={{
+              fontSize: "20px",
+              color: "var(--muted)",
+              maxWidth: "600px",
+              margin: "0 auto",
+              lineHeight: 1.6
+            }}>
+              TradeScout isn't just a network — we're building stronger communities through skilled trades and giving back.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
+            gap: "40px",
+            marginBottom: "60px"
+          }}>
+            <div style={{
+              background: "var(--panel-2)",
+              borderRadius: "16px",
+              padding: "40px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center"
+            }}>
+              <div style={{
+                width: "80px",
+                height: "80px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "50%",
+                margin: "0 auto 24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "32px"
+              }}>
+                🎓
+              </div>
+              <h3 style={{fontSize: "24px", marginBottom: "16px", color: "var(--text)"}}>
+                Mike Rowe WORKS Foundation
+              </h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.6, margin: 0}}>
+                We've pledged to donate to skilled trades scholarships, helping the next generation 
+                of contractors build successful careers.
+              </p>
+            </div>
+
+            <div style={{
+              background: "var(--panel-2)",
+              borderRadius: "16px",
+              padding: "40px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center"
+            }}>
+              <div style={{
+                width: "80px",
+                height: "80px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "50%",
+                margin: "0 auto 24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "32px"
+              }}>
+                🏘️
+              </div>
+              <h3 style={{fontSize: "24px", marginBottom: "16px", color: "var(--text)"}}>
+                Community Projects
+              </h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.6, margin: 0}}>
+                Supporting local improvement projects in communities across the United States, 
+                one connection at a time.
+              </p>
+            </div>
+          </div>
+
+          <div style={{
+            background: "linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,140,66,0.05))",
+            borderRadius: "16px",
+            padding: "48px",
+            border: "1px solid rgba(255,107,53,0.2)",
+            textAlign: "center"
+          }}>
+            <h3 style={{
+              color: "var(--brand)",
+              fontSize: "28px",
+              marginBottom: "16px",
+              fontWeight: 700
+            }}>
+              Built on Values, Not Just Profit
+            </h3>
+            <p style={{
+              color: "var(--muted)",
+              fontSize: "18px",
+              lineHeight: 1.6,
+              margin: 0,
+              maxWidth: "800px",
+              margin: "0 auto"
+            }}>
+              When you succeed on TradeScout, communities grow stronger. Every project completed, 
+              every relationship built, and every dollar you keep contributes to a foundation that gives back.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Community Features Section */}
+      <section className="community-features" style={{
+        padding: "100px 0",
+        background: "linear-gradient(135deg, #0a0a0a, #1a1a1a)",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        {/* Background pattern */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${encodeURIComponent('ff6b35')}' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          opacity: 0.5
+        }}></div>
+
+        <div className="container" style={{position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{textAlign: "center", marginBottom: "80px"}}>
+            <h2 style={{
+              fontSize: "clamp(32px, 5vw, 56px)",
+              background: "linear-gradient(135deg, var(--brand), #fff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              marginBottom: "24px",
+              fontWeight: 900
+            }}>
+              More Than a Network
+            </h2>
+            <p style={{
+              fontSize: "20px",
+              color: "var(--muted)",
+              maxWidth: "700px",
+              margin: "0 auto",
+              lineHeight: 1.6
+            }}>
+              TradeScout is building the infrastructure that skilled trades deserve — 
+              tools, community, and support that actually work.
+            </p>
+          </div>
+
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "32px"
+          }}>
+            <div style={{
+              background: "rgba(255,255,255,0.02)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              padding: "32px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center",
+              transform: "translateY(0)",
+              transition: "transform 0.3s ease"
+            }}>
+              <div style={{fontSize: "40px", marginBottom: "20px"}}>📊</div>
+              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Calculator</h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
+                Fair pricing tools that help contractors bid competitively and homeowners understand real costs.
+              </p>
+            </div>
+
+            <div style={{
+              background: "rgba(255,255,255,0.02)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              padding: "32px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center"
+            }}>
+              <div style={{fontSize: "40px", marginBottom: "20px"}}>🤝</div>
+              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Helpers</h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
+                Connect experienced contractors with skilled helpers, building the next generation of trades.
+              </p>
+            </div>
+
+            <div style={{
+              background: "rgba(255,255,255,0.02)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              padding: "32px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center"
+            }}>
+              <div style={{fontSize: "40px", marginBottom: "20px"}}>💬</div>
+              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Community</h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
+                Share knowledge, solve problems, and build relationships with people who understand the trade.
+              </p>
+            </div>
+
+            <div style={{
+              background: "rgba(255,255,255,0.02)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "20px",
+              padding: "32px",
+              border: "1px solid rgba(255,255,255,0.1)",
+              textAlign: "center"
+            }}>
+              <div style={{fontSize: "40px", marginBottom: "20px"}}>🔄</div>
+              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Exchange</h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
+                Trade services, share resources, and collaborate on projects that benefit everyone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer role="contentinfo">
         <div className="container">
           © 2025 TradeScout. All rights reserved. Connecting homeowners and contractors directly since 2025.
