@@ -191,7 +191,7 @@ export default function Home() {
 
       {/* Reviews */}
       <section className="reviews container" aria-labelledby="reviewstitle">
-        <h2 id="reviewstitle">Early Feedback</h2>
+        <h2 id="reviewstitle">What People Are Saying</h2>
         <div className="reviews-grid">
           <blockquote className="review" aria-label="Review from Early Tester">
             <p className="quote">"Finally, a place where I can find contractors without getting bombarded by sales calls."</p>
