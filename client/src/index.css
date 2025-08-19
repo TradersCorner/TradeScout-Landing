@@ -15,52 +15,15 @@ body{
   color:var(--text);
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   scroll-behavior:smooth;
-  overflow-x:auto;
-  overflow-y:hidden;
-  height:100vh;
 }
 a{color:inherit;text-decoration:none}
-.container{width:min(var(--maxw),92vw);margin-inline:auto;height:100%}
+.container{width:min(var(--maxw),92vw);margin-inline:auto}
 @media (max-width: 767px){.container{width:min(var(--maxw),94vw)}}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* Horizontal scroll wrapper */
-.horizontal-wrapper{
-  display:flex;
-  width:max-content;
-  min-height:100vh;
-  padding-top:80px;
-}
-
-/* Horizontal sections */
-.horizontal-section{
-  width:100vw;
-  min-height:calc(100vh - 80px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:40px 0;
-  flex-shrink:0;
-}
-
-/* Custom scrollbar for horizontal scrolling */
-body::-webkit-scrollbar{
-  height:8px;
-}
-body::-webkit-scrollbar-track{
-  background:rgba(255,255,255,0.1);
-}
-body::-webkit-scrollbar-thumb{
-  background:var(--brand);
-  border-radius:4px;
-}
-body::-webkit-scrollbar-thumb:hover{
-  background:var(--brand-2);
-}
-
 /* Header */
 header{
-  position:fixed;top:0;left:0;right:0;z-index:50;
+  position:sticky;top:0;z-index:50;
   backdrop-filter:blur(10px);
   background:rgba(14,14,15,.7);
   border-bottom:1px solid rgba(255,255,255,.06);
@@ -298,6 +261,32 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
     flex:0 0 200px !important;
     text-align:center;
   }
+  
+  /* Horizontal scroll for all grids that make sense */
+  .feature-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:20px !important;
+    padding:0 0 16px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .feature-grid::-webkit-scrollbar{height:4px}
+  .feature-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .feature-grid::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .feature-grid .card{
+    flex:0 0 300px !important;
+    grid-column:unset !important;
+  }
+}
+
+/* Desktop layout adjustments - disable horizontal scroll on larger screens */
+@media (min-width: 860px){
+  .feature-grid{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .feature-grid .card{flex:unset !important;grid-column:span 12 !important}
+  .feature-cards{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .feature-cards > div{flex:unset !important}
+  .value-stats{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .value-stats > div{flex:unset !important}
 }
 
 /* Performance and accessibility improvements */
