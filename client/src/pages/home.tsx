@@ -110,8 +110,8 @@ export default function Home() {
 
       {/* Hero */}
       <section className="hero container">
-        <h1>Connection Without Compromise</h1>
-        <p>Predatory predecessors sold your information as "leads." TradeScout is a network where homeowners and contractors connect directly — no middlemen, no games.</p>
+        <h1>Find Local Contractors Near Me - Direct Connection, Zero Lead Fees</h1>
+        <p>Skip Angi, HomeAdvisor, and Thumbtack fees. TradeScout connects homeowners and contractors directly for home improvement, remodeling, and repair projects — no middlemen, no markups, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Why TradeScout */}
       <section className="container" id="why" aria-labelledby="whytitle" style={{marginTop:"32px"}}>
-        <h2 id="whytitle" className="section-title">Why TradeScout?</h2>
+        <h2 id="whytitle" className="section-title">Why Choose TradeScout Over Angi & HomeAdvisor?</h2>
         <div className="feature-grid">
           <article className="card" data-testid="card-homeowner-tools">
             <div className="card-media">
@@ -553,9 +553,91 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEO Content Section */}
+      <section style={{
+        padding: "60px 0",
+        background: "var(--background)",
+        borderTop: "1px solid rgba(255,255,255,0.05)"
+      }}>
+        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "40px",
+            marginBottom: "40px"
+          }}>
+            <div>
+              <h3 style={{
+                color: "var(--text)",
+                fontSize: "20px",
+                marginBottom: "16px",
+                fontWeight: 700
+              }}>
+                Find Local Contractors Near You
+              </h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+                Connect directly with verified contractors in your area for home improvement, remodeling, repairs, and construction projects. Skip the middleman fees and build real relationships with skilled professionals who care about quality work.
+              </p>
+            </div>
+            
+            <div>
+              <h3 style={{
+                color: "var(--text)",
+                fontSize: "20px",
+                marginBottom: "16px",
+                fontWeight: 700
+              }}>
+                Home Improvement Services
+              </h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+                Kitchen remodeling, bathroom renovation, roofing, plumbing, electrical, HVAC, flooring, painting, landscaping, decking, fencing, siding, windows, doors, and all your home repair needs.
+              </p>
+            </div>
+            
+            <div>
+              <h3 style={{
+                color: "var(--text)",
+                fontSize: "20px",
+                marginBottom: "16px",
+                fontWeight: 700
+              }}>
+                Better Than Angi, HomeAdvisor & Thumbtack
+              </h3>
+              <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
+                No lead fees, no middleman markups, no spam calls. TradeScout connects you directly with contractors who keep 100% of their earnings while homeowners get fair, transparent pricing.
+              </p>
+            </div>
+          </div>
+          
+          <div style={{
+            textAlign: "center",
+            padding: "40px 0",
+            borderTop: "1px solid rgba(255,255,255,0.05)"
+          }}>
+            <h2 style={{
+              color: "var(--text)",
+              fontSize: "28px",
+              marginBottom: "16px",
+              fontWeight: 700
+            }}>
+              Serving Homeowners & Contractors Nationwide
+            </h2>
+            <p style={{
+              color: "var(--muted)",
+              fontSize: "16px",
+              maxWidth: "600px",
+              margin: "0 auto",
+              lineHeight: 1.6
+            }}>
+              Whether you're a homeowner looking for reliable contractors or a contractor seeking direct client connections, TradeScout eliminates the middleman to create authentic professional relationships across all 50 states.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <footer role="contentinfo">
         <div className="container">
-          © 2025 TradeScout. All rights reserved. Connecting homeowners and contractors directly since 2025.
+          © 2025 TradeScout. All rights reserved. Direct contractor-homeowner connections nationwide. Alternative to Angi, HomeAdvisor, Thumbtack.
         </div>
       </footer>
     </>
