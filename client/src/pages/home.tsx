@@ -193,14 +193,14 @@ export default function Home() {
       <section className="reviews container" aria-labelledby="reviewstitle">
         <h2 id="reviewstitle">What People Are Saying</h2>
         <div className="reviews-grid">
-          <blockquote className="review" aria-label="Review from Early Tester">
-            <p className="quote">"Finally, a place where I can find contractors without getting bombarded by sales calls."</p>
-            <p className="author">— Sarah, Atlanta</p>
+          <blockquote className="review" aria-label="Review from Real Homeowner From The Future">
+            <p className="quote">"TradeScout made it simple to post my project and hire fast. Zero spam — just real pros."</p>
+            <p className="author">— Real Homeowner From The Future</p>
           </blockquote>
 
-          <blockquote className="review" aria-label="Review from Beta Contractor">
-            <p className="quote">"I spend my time working, not chasing fake leads. This is what we needed."</p>
-            <p className="author">— Mike, Denver</p>
+          <blockquote className="review" aria-label="Review from Real Contractor From The Future">
+            <p className="quote">"I connected with real homeowners directly and booked work without buying leads. Finally."</p>
+            <p className="author">— Real Contractor From The Future</p>
           </blockquote>
         </div>
       </section>
