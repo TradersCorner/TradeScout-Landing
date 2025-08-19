@@ -56,28 +56,44 @@ header{
 .hero .cta-wrap{margin-top:28px}
 
 /* Sections */
-.section-title{font-size:22px;font-weight:900;letter-spacing:.2px;margin:0 0 22px}
-.feature-grid{display:grid;gap:18px;grid-template-columns:repeat(12,1fr)}
+.section-title{font-size:clamp(28px,3.5vw,36px);font-weight:900;letter-spacing:-.02em;margin:0 0 48px;text-align:center}
+.feature-grid{display:grid;gap:24px;grid-template-columns:repeat(12,1fr)}
 .card{
   grid-column:span 12;
-  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
-  border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  border:1px solid rgba(255,255,255,.08);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   overflow:hidden;
+  transition:transform 0.2s ease,box-shadow 0.2s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+  border-color:rgba(255,255,255,.12);
 }
 @media (min-width:740px){.card{grid-column:span 6}}
 @media (min-width:1024px){.card{grid-column:span 3}}
-.card-media{
-  height:180px;position:relative;background:var(--panel);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  background-size:cover;background-position:center;
+@media (max-width:739px){
+  .feature-grid{gap:20px}
+  .card{margin-bottom:4px}
 }
-.card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.35))}
+.card-media{
+  height:200px;position:relative;background:var(--panel);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.card-media img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.3s ease;
+}
+.card:hover .card-media img{
+  transform:scale(1.05);
+}
 
-.card-body{padding:18px 18px 20px}
-.card h3{margin:0 0 8px;font-size:18px;font-weight:900}
-.card p{margin:0;color:var(--muted);line-height:1.65}
+.card-body{padding:24px 24px 28px}
+.card h3{margin:0 0 10px;font-size:20px;font-weight:900;letter-spacing:-.01em}
+.card p{margin:0;color:var(--muted);line-height:1.65;font-size:15px}
 
 /* Reviews */
 .reviews{padding:42px 0 12px}
@@ -98,15 +114,18 @@ header{
 
 /* Signup */
 .email{margin-top:40px;padding:56px 0 80px}
-.email .lead{text-align:center;color:var(--muted);max-width:900px;margin:0 auto 22px}
-.form{display:grid;gap:12px;grid-template-columns:1fr}
+.email .lead{text-align:center;color:var(--muted);max-width:900px;margin:0 auto 22px;font-size:16px;line-height:1.6}
+.form{display:grid;gap:12px;grid-template-columns:1fr;max-width:900px;margin:0 auto}
 @media (min-width:860px){.form{grid-template-columns:1.2fr .9fr .9fr auto}}
 .field{
   background:var(--panel-2);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;padding:12px 14px;color:var(--text);width:100%;
+  border-radius:12px;padding:16px 16px;color:var(--text);width:100%;
+  font-size:16px;line-height:1.5;
+  transition:border-color 0.2s ease,box-shadow 0.2s ease;
 }
 .field:focus{outline:none;box-shadow:var(--ring);border-color:rgba(255,255,255,.18)}
+.field::placeholder{color:var(--muted);opacity:0.8}
 select.field{
   appearance:none;
   background-image:
@@ -114,57 +133,107 @@ select.field{
     linear-gradient(135deg, rgba(255,255,255,.5) 50%, transparent 50%);
   background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%;
   background-size:6px 6px,6px 6px;background-repeat:no-repeat;
+  cursor:pointer;
 }
 .btn{
   background:linear-gradient(90deg,var(--brand),var(--brand-2));
-  color:#fff;border:none;border-radius:12px;padding:12px 18px;
-  font-weight:900;cursor:pointer;white-space:nowrap;
-  box-shadow:0 8px 20px rgba(255,106,0,.20);transition:transform .12s ease;
+  color:#fff;border:none;border-radius:12px;padding:16px 20px;
+  font-weight:900;cursor:pointer;white-space:nowrap;font-size:16px;
+  box-shadow:0 8px 20px rgba(255,106,0,.20);transition:all .2s ease;
+  min-height:56px;display:flex;align-items:center;justify-content:center;
 }
-.btn:hover{transform:translateY(-1px)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(255,106,0,.30)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
 footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;text-align:center;font-size:14px}
 
 /* Roles (multi-select) group */
 .checkgroup{
-  display:flex; flex-wrap:wrap; gap:10px;
+  display:flex; flex-wrap:wrap; gap:12px;
   background:var(--panel-2);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:12px; padding:10px 12px; color:var(--text);
+  border-radius:12px; padding:16px; color:var(--text);
+  min-height:56px;align-items:flex-start;
 }
 .checkgroup legend{
-  font-size:12px; letter-spacing:.2px; color:var(--muted);
-  padding:0 6px; margin:0 0 6px;
+  font-size:14px; letter-spacing:.2px; color:var(--muted);
+  padding:0 6px; margin:0 0 8px;font-weight:600;
 }
 .checkgroup label{
-  display:inline-flex; align-items:center; gap:8px;
+  display:inline-flex; align-items:center; gap:10px;
   background:rgba(255,255,255,.04);
   border:1px solid rgba(255,255,255,.08);
-  border-radius:10px; padding:8px 10px; cursor:pointer;
+  border-radius:10px; padding:12px 14px; cursor:pointer;
+  transition:all 0.2s ease;font-size:15px;font-weight:600;
+  min-height:44px;
 }
-.checkgroup input[type="checkbox"]{ accent-color: var(--brand); }
+.checkgroup label:hover{
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.15);
+}
+.checkgroup input[type="checkbox"]{ 
+  accent-color: var(--brand); 
+  width:18px;height:18px;margin:0;
+}
 .form .full { grid-column: 1 / -1; }
+
+/* Mobile-first responsive improvements */
+@media (max-width:859px){
+  .form{gap:16px}
+  .field{padding:18px 16px;font-size:16px;min-height:56px}
+  .btn{padding:18px 24px;font-size:16px;min-height:60px;font-weight:900}
+  .checkgroup{padding:20px 16px;gap:14px}
+  .checkgroup label{padding:14px 16px;font-size:16px;min-height:52px}
+  .hero{padding:48px 0 24px}
+  .hero h1{margin-bottom:20px}
+  .email{padding:48px 0 64px}
+  .section-title{margin-bottom:32px}
+}
+
+/* Performance and accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+}
+
+/* Touch improvements for mobile */
+@media (max-width:768px){
+  .cta,.btn,.field,select.field,.checkgroup label{
+    min-height:48px;touch-action:manipulation;
+  }
+  .card:hover{transform:none}
+  .card-media img{transition:none}
+  .card:hover .card-media img{transform:none}
+}
 
 /* Dynamic audience message above form */
 .audience-msg{
-  margin: 14px auto 18px;
+  margin: 20px auto 24px;
   max-width: 900px;
-  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.15);
   text-align:left;
+  transition:all 0.3s ease;
+}
+.audience-msg:hover{
+  border-color:rgba(255,255,255,.12);
+  box-shadow: 0 12px 40px rgba(0,0,0,.2);
 }
 .audience-msg .kicker{
   display:block;
   font-weight:900;
-  letter-spacing:.2px;
-  margin-bottom:4px;
+  letter-spacing:.3px;
+  margin-bottom:8px;
+  font-size:18px;
+  color:var(--text);
 }
 .audience-msg .sub{
   color: var(--muted);
   margin:0;
   line-height:1.6;
+  font-size:16px;
 }
 
 /* Mirrored CTA wrapper above form */

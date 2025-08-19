@@ -7,12 +7,35 @@ import homeownerToolsPath from "@assets/homeowner-tools_1755576317371.jpg";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "TradeScout — Connection Without Compromise";
+    // SEO optimization is handled in index.html, but we can add structured data
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "TradeScout",
+      "description": "Direct connection platform for homeowners and contractors",
+      "url": "https://thetradescout.us",
+      "logo": "https://thetradescout.us/assets/logo.png",
+      "sameAs": [],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "availableLanguage": "English"
+      },
+      "areaServed": "United States",
+      "serviceType": ["Home Improvement", "Construction", "Contractor Services"]
+    };
     
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute("content", "TradeScout connects homeowners and verified contractors directly—no gatekeepers, no spam. Get early access.");
-    }
+    // Add structured data to page
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(structuredData);
+    document.head.appendChild(script);
+    
+    return () => {
+      // Cleanup structured data script on component unmount
+      const existingScript = document.querySelector('script[type="application/ld+json"]');
+      if (existingScript) existingScript.remove();
+    };
 
     // Smooth scroll for in-page anchors
     const links = document.querySelectorAll('a[href^="#"]');
@@ -101,9 +124,9 @@ export default function Home() {
       <section className="container" id="why" aria-labelledby="whytitle" style={{marginTop:"32px"}}>
         <h2 id="whytitle" className="section-title">Why TradeScout?</h2>
         <div className="feature-grid">
-          <article className="card">
+          <article className="card" data-testid="card-homeowner-tools">
             <div className="card-media">
-              <img src={homeownerToolsPath} alt="Homeowner Tools Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              <img src={homeownerToolsPath} alt="Homeowner Tools Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} data-testid="img-homeowner-tools" />
             </div>
             <div className="card-body">
               <h3>Homeowner Tools</h3>
@@ -193,15 +216,40 @@ export default function Home() {
         }} data-analytics="signup-form">
           {/* Email (required) */}
           <label className="sr-only" htmlFor="email">Email (required)</label>
-          <input className="field" id="email" type="email" name="email" placeholder="Your Email (required)" required />
+          <input 
+            className="field" 
+            id="email" 
+            type="email" 
+            name="email" 
+            placeholder="Your Email (required)" 
+            required 
+            autoComplete="email"
+            aria-describedby="email-help"
+            data-testid="input-email"
+          />
 
           {/* Name (optional) */}
           <label className="sr-only" htmlFor="name">Your name (optional)</label>
-          <input className="field" id="name" type="text" name="name" placeholder="Your Name (optional)" />
+          <input 
+            className="field" 
+            id="name" 
+            type="text" 
+            name="name" 
+            placeholder="Your Name (optional)" 
+            autoComplete="name"
+            data-testid="input-name"
+          />
 
           {/* State (optional) */}
           <label className="sr-only" htmlFor="state">Your state (optional)</label>
-          <select className="field" id="state" name="state">
+          <select 
+            className="field" 
+            id="state" 
+            name="state"
+            autoComplete="address-level1"
+            aria-describedby="state-help"
+            data-testid="select-state"
+          >
             <option value="">Your State (optional)</option>
             <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
             <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
@@ -222,32 +270,62 @@ export default function Home() {
           <fieldset className="checkgroup full" aria-labelledby="roles-legend">
             <legend id="roles-legend">I am a… (select all that apply)</legend>
 
-            <label>
-              <input type="checkbox" name="roles[]" value="Homeowner" />
+            <label data-testid="checkbox-homeowner">
+              <input type="checkbox" name="roles[]" value="Homeowner" data-testid="input-homeowner" />
               Homeowner
             </label>
 
-            <label>
-              <input type="checkbox" name="roles[]" value="Contractor" />
+            <label data-testid="checkbox-contractor">
+              <input type="checkbox" name="roles[]" value="Contractor" data-testid="input-contractor" />
               Contractor
             </label>
 
-            <label>
-              <input type="checkbox" name="roles[]" value="Service Provider" />
+            <label data-testid="checkbox-service-provider">
+              <input type="checkbox" name="roles[]" value="Service Provider" data-testid="input-service-provider" />
               Service Provider
             </label>
           </fieldset>
 
           {/* Submit */}
-          <button className="btn" type="submit" aria-label="Notify me when TradeScout launches">Notify Me</button>
+          <button 
+            className="btn" 
+            type="submit" 
+            aria-label="Get notified when TradeScout launches"
+            aria-describedby="submit-help"
+            data-testid="button-submit"
+          >
+            Notify Me
+          </button>
           <input type="hidden" name="_redirect" value="thank-you" />
 
           {/* Honeypot to reduce spam */}
-          <input type="text" name="website" tabIndex={-1} style={{display:"none"}} />
+          <input 
+            type="text" 
+            name="website" 
+            tabIndex={-1} 
+            style={{display:"none"}} 
+            aria-hidden="true"
+            autoComplete="off"
+          />
         </form>
+        
+        {/* Hidden help text for screen readers */}
+        <div id="email-help" className="sr-only">
+          We'll only use your email to notify you when TradeScout launches. No spam.
+        </div>
+        <div id="state-help" className="sr-only">
+          Your state helps us prioritize regional rollout.
+        </div>
+        <div id="submit-help" className="sr-only">
+          Join our early access list to be among the first to experience direct contractor connections.
+        </div>
       </section>
 
-      <footer>© 2025 TradeScout. All rights reserved.</footer>
+      <footer role="contentinfo">
+        <div className="container">
+          © 2025 TradeScout. All rights reserved. Connecting homeowners and contractors directly since 2025.
+        </div>
+      </footer>
     </>
   );
 }
