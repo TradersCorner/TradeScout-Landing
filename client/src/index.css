@@ -246,6 +246,9 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 3px;
 }
 
 /* Add subtle animations to make it feel more alive */
