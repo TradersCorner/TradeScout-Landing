@@ -120,10 +120,6 @@ header{
   .form{grid-template-columns:2fr 1.5fr 1.5fr;gap:20px;align-items:start}
   .form .full{grid-column:1/-1;max-width:100%}
   .btn{grid-column:1/-1;justify-self:center;width:auto;min-width:200px}
-  .problem-solution div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
-}
-@media (max-width:859px){
-  .problem-solution div[style*="grid-template-columns"]{grid-template-columns:1fr !important}
 }
 .field{
   background:var(--panel-2);

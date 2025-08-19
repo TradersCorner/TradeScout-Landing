@@ -184,70 +184,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Problem/Solution Section */}
-      <section className="problem-solution container" style={{padding: "80px 0", background: "var(--panel)"}}>
-        <h2 style={{textAlign: "center", marginBottom: "60px", fontSize: "32px"}}>The Lead Generation Scam</h2>
+      {/* How It Works Section */}
+      <section className="how-it-works container" style={{padding: "80px 0"}}>
+        <h2 style={{textAlign: "center", marginBottom: "48px", fontSize: "32px", color: "var(--text)"}}>How TradeScout Works</h2>
         
-        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", maxWidth: "1000px", margin: "0 auto"}}>
-          <div className="problem-side" style={{padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)"}}>
-            <h3 style={{color: "#dc2626", marginBottom: "24px", fontSize: "24px"}}>Lead Companies Steal Your Money</h3>
-            <ul style={{listStyle: "none", padding: 0, color: "var(--muted)"}}>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
-                Charge $20-150 per lead
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
-                Sell your info to 5+ competitors
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
-                Fake leads and tire kickers
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
-                No real customer info
-              </li>
-              <li style={{paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0, color: "#dc2626"}}>✗</span>
-                You compete against 10+ others
-              </li>
-            </ul>
+        <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "32px", maxWidth: "1000px", margin: "0 auto"}}>
+          <div style={{padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center"}}>
+            <div style={{width: "60px", height: "60px", background: "var(--brand)", borderRadius: "50%", margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px"}}>1</div>
+            <h3 style={{marginBottom: "16px", fontSize: "20px"}}>Connect Directly</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "16px", lineHeight: 1.5}}>
+              Homeowners and contractors find each other without middlemen taking a cut or selling your information.
+            </p>
           </div>
           
-          <div className="solution-side" style={{padding: "32px", background: "linear-gradient(135deg, var(--brand), var(--brand-2))", borderRadius: "16px", color: "#fff"}}>
-            <h3 style={{marginBottom: "24px", fontSize: "24px"}}>TradeScout Direct Connect</h3>
-            <ul style={{listStyle: "none", padding: 0}}>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0}}>✓</span>
-                Direct contact, no middlemen
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0}}>✓</span>
-                Real homeowners, verified needs
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0}}>✓</span>
-                You keep 100% of your money
-              </li>
-              <li style={{marginBottom: "16px", paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0}}>✓</span>
-                Build real relationships
-              </li>
-              <li style={{paddingLeft: "24px", position: "relative"}}>
-                <span style={{position: "absolute", left: 0}}>✓</span>
-                No bidding wars or competition
-              </li>
-            </ul>
+          <div style={{padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center"}}>
+            <div style={{width: "60px", height: "60px", background: "var(--brand)", borderRadius: "50%", margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px"}}>2</div>
+            <h3 style={{marginBottom: "16px", fontSize: "20px"}}>Build Trust</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "16px", lineHeight: 1.5}}>
+              Real reviews and recommendations from actual customers help everyone make better decisions.
+            </p>
           </div>
-        </div>
-        
-        <div style={{textAlign: "center", marginTop: "48px", padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)", maxWidth: "600px", margin: "48px auto 0"}}>
-          <h4 style={{color: "var(--brand)", marginBottom: "16px", fontSize: "20px"}}>Stop Getting Screwed Over</h4>
-          <p style={{color: "var(--muted)", marginBottom: 0, fontSize: "16px"}}>
-            Contractors waste $3,000+ per month on lead fees. Homeowners get bombarded by pushy salespeople. 
-            We're building something better.
-          </p>
+          
+          <div style={{padding: "32px", background: "var(--panel-2)", borderRadius: "16px", border: "1px solid rgba(255,255,255,0.1)", textAlign: "center"}}>
+            <div style={{width: "60px", height: "60px", background: "var(--brand)", borderRadius: "50%", margin: "0 auto 24px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px"}}>3</div>
+            <h3 style={{marginBottom: "16px", fontSize: "20px"}}>Keep More Money</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "16px", lineHeight: 1.5}}>
+              No lead fees, no commission, no hidden costs. What you earn is what you keep.
+            </p>
+          </div>
         </div>
       </section>
 
