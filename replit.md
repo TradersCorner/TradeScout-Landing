@@ -7,6 +7,7 @@ TradeScout is a full-stack web application designed to connect homeowners and co
 Preferred communication style: Simple, everyday language.
 Messaging preference: Avoid overly salesy or aggressive marketing language; prefer educational and subtle approaches. Focus on TradeScout's value proposition rather than attacking competitors - show superiority through positive differentiation.
 Design philosophy: Break design molds and create unconventional, bold layouts that stand out from typical websites.
+Foundation work: TradeScout supports multiple charitable foundations and worthy causes, not exclusively Mike Rowe WORKS Foundation (which is one prominent example but not the only one).
 
 # System Architecture
 

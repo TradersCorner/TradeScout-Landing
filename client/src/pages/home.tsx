@@ -622,10 +622,10 @@ export default function Home() {
                   🎓
                 </div>
                 <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
-                  Mike Rowe WORKS Foundation
+                  Skilled Trades Scholarships
                 </h4>
                 <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
-                  Pledged donations to skilled trades scholarships
+                  Supporting education through multiple foundations including Mike Rowe WORKS
                 </p>
               </div>
 
@@ -644,10 +644,10 @@ export default function Home() {
                   🏘️
                 </div>
                 <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
-                  Community Projects
+                  Community Impact
                 </h4>
                 <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
-                  Supporting local improvements nationwide
+                  Supporting worthy causes and local projects nationwide
                 </p>
               </div>
             </div>
