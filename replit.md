@@ -6,6 +6,7 @@ TradeScout is a full-stack web application designed to connect homeowners and co
 
 Preferred communication style: Simple, everyday language.
 Messaging preference: Avoid overly salesy or aggressive marketing language; prefer educational and subtle approaches.
+Design philosophy: Break design molds and create unconventional, bold layouts that stand out from typical websites.
 
 # System Architecture
 
