@@ -157,7 +157,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container">
         <h1>Connection Without Compromise</h1>
-        <p>Where skilled professionals and homeowners meet directly. Build relationships that last beyond a single project.</p>
+        <p>Where skilled professionals and homeowners meet directly. Build real relationships that last beyond a single project.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -253,7 +253,7 @@ export default function Home() {
         {/* Dynamic message (changes when roles are toggled) */}
         <div id="form-message" className="audience-msg" aria-live="polite">
           <span className="kicker">Skip the Middleman.</span>
-          <p className="sub">Direct connections between people who value quality work.</p>
+          <p className="sub">Direct connections between real people who value quality work.</p>
         </div>
 
         <form className="form" onSubmit={(e) => {
@@ -621,7 +621,7 @@ export default function Home() {
                 Quality Work, Fair Price
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                Work with contractors who take pride in their craft. No games, no inflated costs, no fake reviews. Just honest professionals doing what they do best.
+                Work with real contractors who take pride in their craft. No games, no inflated costs, no fake reviews. Just honest professionals doing what they do best.
               </p>
             </div>
             
