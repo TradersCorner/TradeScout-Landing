@@ -131,7 +131,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="hero container">
-        <h1>Skip the Middleman.</h1>
+        <h1>Connection Without Compromise</h1>
         <p>Predatory predecessors sold your information as "leads." TradeScout builds a network where homeowners and contractors connect directly — no middlemen, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
@@ -227,7 +227,7 @@ export default function Home() {
 
         {/* Dynamic message (changes when roles are toggled) */}
         <div id="form-message" className="audience-msg" aria-live="polite">
-          <span className="kicker">Skip the Middleman.</span>
+          <span className="kicker">Connection Without Compromise.</span>
           <p className="sub">Direct connections between real people who value quality work.</p>
         </div>
 
