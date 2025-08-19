@@ -383,7 +383,7 @@ export default function Home() {
             maxWidth: "1200px",
             margin: "0 auto"
           }}>
-            {/* Left side - Value statement */}
+            {/* Left side - Bold statement */}
             <div>
               <h2 style={{
                 fontSize: "clamp(32px, 5vw, 64px)",
@@ -394,14 +394,13 @@ export default function Home() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text"
               }}>
-                Your Success<br/>
-                <span style={{fontWeight: 900, fontSize: "1.2em"}}>MATTERS</span>
+                Zero Fees<br/>
+                <span style={{fontWeight: 900, fontSize: "1.2em"}}>Real People</span>
               </h2>
               
               <div style={{
                 borderLeft: "4px solid var(--brand)",
-                paddingLeft: "24px",
-                marginBottom: "40px"
+                paddingLeft: "24px"
               }}>
                 <p style={{
                   fontSize: "20px",
@@ -409,67 +408,33 @@ export default function Home() {
                   lineHeight: 1.6,
                   margin: 0
                 }}>
-                  Direct connections create better relationships, higher satisfaction, 
-                  and more money in your pocket. That's the TradeScout difference.
+                  Keep 100% of your earnings while connecting with verified customers and trusted contractors.
                 </p>
               </div>
             </div>
 
-            {/* Right side - Value blocks */}
-            <div style={{display: "grid", gap: "20px"}}>
-              <div style={{
-                background: "rgba(255, 107, 53, 0.15)",
-                border: "1px solid var(--brand)",
-                padding: "24px",
-                borderRadius: "8px",
-                borderLeft: "4px solid var(--brand)"
-              }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
-                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>lead fees or commissions</div>
+            {/* Right side - Clean stats */}
+            <div style={{display: "grid", gap: "24px", gridTemplateColumns: "1fr 1fr"}}>
+              <div style={{textAlign: "center"}}>
+                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
+                <div style={{color: "var(--text)", fontSize: "16px"}}>Fees</div>
               </div>
               
-              <div style={{
-                background: "rgba(255, 107, 53, 0.15)",
-                border: "1px solid var(--brand)",
-                padding: "24px",
-                borderRadius: "8px",
-                borderLeft: "4px solid var(--brand)"
-              }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
-                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>direct connections, no competition</div>
+              <div style={{textAlign: "center"}}>
+                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
+                <div style={{color: "var(--text)", fontSize: "16px"}}>Direct</div>
               </div>
               
-              <div style={{
-                background: "rgba(255, 107, 53, 0.15)",
-                border: "1px solid var(--brand)",
-                padding: "24px",
-                borderRadius: "8px",
-                borderLeft: "4px solid var(--brand)"
-              }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
-                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>relationships with verified people</div>
+              <div style={{textAlign: "center"}}>
+                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
+                <div style={{color: "var(--text)", fontSize: "16px"}}>Yours</div>
+              </div>
+              
+              <div style={{textAlign: "center"}}>
+                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
+                <div style={{color: "var(--text)", fontSize: "16px"}}>People</div>
               </div>
             </div>
-          </div>
-          
-          {/* Bottom statement */}
-          <div style={{
-            textAlign: "center", 
-            marginTop: "80px", 
-            padding: "40px", 
-            background: "rgba(255, 107, 53, 0.1)", 
-            borderRadius: "16px", 
-            border: "1px solid rgba(255, 107, 53, 0.3)",
-            maxWidth: "800px", 
-            margin: "80px auto 0"
-          }}>
-            <h3 style={{color: "var(--brand)", marginBottom: "16px", fontSize: "24px", fontWeight: 700}}>
-              Built for Your Success
-            </h3>
-            <p style={{color: "var(--muted)", marginBottom: 0, fontSize: "18px", lineHeight: 1.6}}>
-              Every feature we build puts more money in contractors' pockets and gives homeowners 
-              the quality service they deserve. No games, no middlemen, just results.
-            </p>
           </div>
         </div>
       </section>
