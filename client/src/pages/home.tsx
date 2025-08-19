@@ -208,28 +208,55 @@ export default function Home() {
           <p className="sub">Whether you're a contractor or a homeowner, TradeScout makes direct connection simple.</p>
         </div>
 
-        <form className="form" onSubmit={(e) => {
-          e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const data = Object.fromEntries(formData);
-          console.log('Form submitted:', data);
-          
-          // Show success message
-          const button = e.currentTarget.querySelector('button[type="submit"]');
-          if (button) {
+        <form 
+          className="form" 
+          action="https://formspree.io/f/YOUR_FORM_ID" 
+          method="POST"
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+            if (!button) return;
+
             const originalText = button.textContent;
-            button.textContent = "🎉 You're In! Check Your Email";
+            button.textContent = "Submitting...";
             button.disabled = true;
-            button.style.background = "linear-gradient(135deg, #10b981, #059669)";
-            
+
+            try {
+              const formData = new FormData(e.currentTarget);
+              const response = await fetch(e.currentTarget.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+              });
+
+              if (response.ok) {
+                button.textContent = "🎉 You're In! Check Your Email";
+                button.style.background = "linear-gradient(135deg, #10b981, #059669)";
+                e.currentTarget.reset();
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'signup', {
+                    event_category: 'engagement',
+                    event_label: 'early_access'
+                  });
+                }
+              } else {
+                throw new Error('Submission failed');
+              }
+            } catch (error) {
+              button.textContent = "Error - Try Again";
+              button.style.background = "linear-gradient(135deg, #dc2626, #b91c1c)";
+            }
+
             setTimeout(() => {
               button.textContent = originalText;
               button.disabled = false;
               button.style.background = "";
-              e.currentTarget.reset();
             }, 3000);
-          }
-        }} data-analytics="signup-form">
+          }} 
+          data-analytics="signup-form"
+        >
           {/* Email (required) */}
           <label className="sr-only" htmlFor="email">Email (required)</label>
           <input 
