@@ -111,7 +111,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container">
         <h1>Find Local Contractors Near Me - Direct Connection, Zero Lead Fees</h1>
-        <p>Skip Angi, HomeAdvisor, and Thumbtack fees. TradeScout connects homeowners and contractors directly for home improvement, remodeling, and repair projects — no middlemen, no markups, no games.</p>
+        <p>Skip lead generation fees and middleman markups. TradeScout connects homeowners and contractors directly for home improvement, remodeling, and repair projects — no middlemen, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -124,7 +124,7 @@ export default function Home() {
 
       {/* Why TradeScout */}
       <section className="container" id="why" aria-labelledby="whytitle" style={{marginTop:"32px"}}>
-        <h2 id="whytitle" className="section-title">Why Choose TradeScout Over Angi & HomeAdvisor?</h2>
+        <h2 id="whytitle" className="section-title">Why Choose TradeScout Over Lead Platforms?</h2>
         <div className="feature-grid">
           <article className="card" data-testid="card-homeowner-tools">
             <div className="card-media">
@@ -601,7 +601,7 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Better Than Angi, HomeAdvisor & Thumbtack
+                Better Than Lead Generation Platforms
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
                 No lead fees, no middleman markups, no spam calls. TradeScout connects you directly with contractors who keep 100% of their earnings while homeowners get fair, transparent pricing.
@@ -637,7 +637,7 @@ export default function Home() {
 
       <footer role="contentinfo">
         <div className="container">
-          © 2025 TradeScout. All rights reserved. Direct contractor-homeowner connections nationwide. Alternative to Angi, HomeAdvisor, Thumbtack.
+          © 2025 TradeScout. All rights reserved. Direct contractor-homeowner connections nationwide. The lead-free alternative.
         </div>
       </footer>
     </>
