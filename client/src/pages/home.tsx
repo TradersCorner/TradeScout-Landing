@@ -549,7 +549,6 @@ export default function Home() {
               color: "var(--muted)",
               fontSize: "18px",
               lineHeight: 1.6,
-              margin: 0,
               maxWidth: "800px",
               margin: "0 auto"
             }}>
