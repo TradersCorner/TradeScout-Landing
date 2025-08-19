@@ -469,7 +469,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Connect contractors with skilled helpers, growing the trades community.
+                Match contractors needing extra hands with homeowners wanting to learn trades skills.
               </p>
             </div>
 
@@ -490,7 +490,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Community</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Share knowledge and solve problems with people who understand the trade.
+                Knowledge sharing between contractors and homeowners, solving problems together.
               </p>
             </div>
 
@@ -512,7 +512,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Marketplace for tools, equipment, and services. Trade what you need with other professionals.
+                Marketplace where contractors and homeowners trade tools, equipment, and services.
               </p>
             </div>
           </div>
