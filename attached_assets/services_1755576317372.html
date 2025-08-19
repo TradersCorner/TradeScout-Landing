@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essentials -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home Improvement Services | TradeScout</title>
+  <meta name="description" content="Explore TradeScout service categories: remodeling, painting, roofing, flooring, concrete, plumbing, electrical, windows, siding, decks, drywall, insulation, and more. Direct connections with verified contractors—no middlemen." />
+  <link rel="canonical" href="https://info.thetradescout.us/services.html" />
+  <meta name="theme-color" content="#0e0e0f" />
+
+  <!-- Open Graph / Twitter (use a real image you host) -->
+  <meta property="og:title" content="TradeScout Services — Remodeling, Painting, Roofing & More" />
+  <meta property="og:description" content="Homeowners connect directly with verified contractors across top home services. No overpriced leads. No middlemen." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://info.thetradescout.us/services.html" />
+  <meta property="og:image" content="https://info.thetradescout.us/assets/images/direct-connect.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TradeScout Services — Remodeling, Painting, Roofing & More" />
+  <meta name="twitter:description" content="Direct connection between homeowners and verified contractors across dozens of categories." />
+  <meta name="twitter:image" content="https://info.thetradescout.us/assets/images/direct-connect.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons (optional) -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <style>
+    :root{
+      --bg:#0e0e0f;
+      --panel:#141416;
+      --panel-2:#17181a;
+      --muted:#9aa0a6;
+      --text:#f7f7f8;
+      --brand:#ff6a00;
+      --brand-2:#e55900;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+      --ring:0 0 0 3px rgba(255,106,0,.25);
+      --maxw:1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:radial-gradient(1200px 600px at 50% -200px, #17181a 0%, transparent 60%), var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--maxw),92vw);margin-inline:auto}
+
+    /* Header */
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(14,14,15,.7);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{font-weight:900;letter-spacing:.2px;font-size:22px}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .link{color:var(--muted);font-weight:700}
+    .link:hover{color:#fff}
+
+    .cta{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(90deg,var(--brand),var(--brand-2));
+      color:#fff;padding:10px 16px;border:none;border-radius:999px;
+      font-weight:800;cursor:pointer;white-space:nowrap;
+      box-shadow:0 8px 20px rgba(255,106,0,.20);
+      transition:transform .12s ease;
+    }
+    .cta:hover{transform:translateY(-1px)}
+    .cta svg{opacity:.9}
+
+    /* Hero mini */
+    .hero{
+      padding:60px 0 28px;text-align:center
+    }
+    .hero h1{
+      margin:0 0 10px;font-size:clamp(28px,3.2vw,44px);line-height:1.1;font-weight:900
+    }
+    .hero p{margin:0 auto;max-width:800px;color:var(--muted)}
+
+    /* Feature header (image strip) */
+    .feature-strip{
+      margin-top:24px;display:grid;gap:14px;grid-template-columns:repeat(12,1fr)
+    }
+    .strip-card{
+      grid-column:span 12;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)
+    }
+    @media (min-width:860px){.strip-card{grid-column:span 4}}
+    .strip-media{height:180px;background:var(--panel);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .strip-media img{width:100%;height:100%;object-fit:cover}
+    .strip-body{padding:14px 16px}
+    .strip-body h3{margin:0 0 6px;font-size:16px;font-weight:900}
+    .strip-body p{margin:0;color:var(--muted)}
+
+    /* Services grid */
+    .section-title{font-size:22px;font-weight:900;letter-spacing:.2px;margin:40px 0 16px}
+    .grid{display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+    @media (min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
+    @media (min-width:1024px){.grid{grid-template-columns:repeat(4,1fr)}}
+    .svc{
+      background:var(--panel-2);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;padding:12px 14px;
+      font-weight:700;letter-spacing:.2px
+    }
+
+    .ribbon{
+      margin:34px auto 10px;width:min(var(--maxw),92vw);
+      background:linear-gradient(90deg,#ff7a1a,#e55a00);color:#fff;
+      padding:16px 20px;border-radius:14px;text-align:center;
+      font-weight:900;letter-spacing:.2px;box-shadow:0 10px 30px rgba(229,90,0,.25)
+    }
+
+    footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;text-align:center;font-size:14px}
+  </style>
+
+  <!-- Schema.org ItemList for services -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"TradeScout Service Categories",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Remodeling"},
+      {"@type":"ListItem","position":2,"name":"Painting"},
+      {"@type":"ListItem","position":3,"name":"Roofing"},
+      {"@type":"ListItem","position":4,"name":"Flooring"},
+      {"@type":"ListItem","position":5,"name":"Concrete"},
+      {"@type":"ListItem","position":6,"name":"Plumbing"},
+      {"@type":"ListItem","position":7,"name":"Electrical"},
+      {"@type":"ListItem","position":8,"name":"Windows"},
+      {"@type":"ListItem","position":9,"name":"Siding"},
+      {"@type":"ListItem","position":10,"name":"Decks"},
+      {"@type":"ListItem","position":11,"name":"Drywall"},
+      {"@type":"ListItem","position":12,"name":"Insulation"},
+      {"@type":"ListItem","position":13,"name":"Cabinets"},
+      {"@type":"ListItem","position":14,"name":"Tile"},
+      {"@type":"ListItem","position":15,"name":"Hardwood"},
+      {"@type":"ListItem","position":16,"name":"Shingles"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">TradeScout</div>
+      <div class="nav-links">
+        <a class="link" href="/">Home</a>
+        <a class="link" href="/services.html" aria-current="page">Services</a>
+        <a class="cta" href="/#signup" aria-label="Get early access">Get Early Access</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <h1>Explore Services</h1>
+    <p>Direct connections with verified contractors across every major home improvement category.</p>
+
+    <!-- Quick highlight strip using your real images -->
+    <div class="feature-strip">
+      <article class="strip-card">
+        <div class="strip-media"><img src="assets/images/accelerated-growth.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="strip-body">
+          <h3>Accelerated Growth</h3>
+          <p>Find trusted pros faster — without the middlemen.</p>
+        </div>
+      </article>
+
+      <article class="strip-card">
+        <div class="strip-media"><img src="assets/images/direct-connect.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="strip-body">
+          <h3>Direct Connect</h3>
+          <p>Homeowners & contractors, connected directly.</p>
+        </div>
+      </article>
+
+      <article class="strip-card">
+        <div class="strip-media"><img src="assets/images/homeowner-tools.jpg" alt="" loading="lazy" decoding="async"></div>
+        <div class="strip-body">
+          <h3>Homeowner Tools</h3>
+          <p>Plan, request bids, and hire with confidence.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="container">
+    <h2 class="section-title">Top Categories</h2>
+    <div class="grid" role="list">
+      <div class="svc" role="listitem">Remodeling</div>
+      <div class="svc" role="listitem">Painting</div>
+      <div class="svc" role="listitem">Roofing</div>
+      <div class="svc" role="listitem">Flooring</div>
+      <div class="svc" role="listitem">Concrete</div>
+      <div class="svc" role="listitem">Plumbing</div>
+      <div class="svc" role="listitem">Electrical</div>
+      <div class="svc" role="listitem">Windows</div>
+      <div class="svc" role="listitem">Siding</div>
+      <div class="svc" role="listitem">Decks</div>
+      <div class="svc" role="listitem">Drywall</div>
+      <div class="svc" role="listitem">Insulation</div>
+      <div class="svc" role="listitem">Cabinets</div>
+      <div class="svc" role="listitem">Tile</div>
+      <div class="svc" role="listitem">Hardwood</div>
+      <div class="svc" role="listitem">Shingles</div>
+    </div>
+  </section>
+
+  <!-- Ribbon CTA -->
+  <div class="ribbon">
+    Ready to connect? Join 500,000+ people who trust TradeScout —
+    <a href="/#signup" style="text-decoration:underline;color:#fff">get early access</a>.
+  </div>
+
+  <footer>© 2025 TradeScout. Local connection. Without compromise.</footer>
+</body>
+</html>
+
