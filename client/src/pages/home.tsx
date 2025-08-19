@@ -220,7 +220,7 @@ export default function Home() {
           const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
           if (button) {
             const originalText = button.textContent;
-            button.textContent = "🎉 You're In! Check Your Email";
+            button.textContent = "Thanks! We'll be in touch.";
             button.disabled = true;
             button.style.background = "linear-gradient(135deg, #10b981, #059669)";
             
