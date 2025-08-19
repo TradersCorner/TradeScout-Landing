@@ -585,7 +585,7 @@ export default function Home() {
               maxWidth: "700px",
               margin: "0 auto 24px"
             }}>
-              Every connection helps support trade education, charitable work for homeowners, and community projects across America.
+              Every connection helps support trade education and community projects. Real impact, not just profit.
             </p>
             <p style={{
               color: "var(--text)",
