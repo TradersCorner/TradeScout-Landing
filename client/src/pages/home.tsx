@@ -535,36 +535,101 @@ export default function Home() {
           </div>
 
           <div style={{
-            background: "rgba(255,107,53,0.1)",
-            borderRadius: "16px",
-            padding: "40px",
-            border: "1px solid rgba(255,107,53,0.2)",
-            textAlign: "center"
+            background: "linear-gradient(135deg, rgba(255,107,53,0.15), rgba(255,107,53,0.05))",
+            borderRadius: "20px",
+            padding: "48px 40px",
+            border: "2px solid rgba(255,107,53,0.3)",
+            textAlign: "center",
+            position: "relative",
+            overflow: "hidden"
           }}>
-            <h3 style={{
-              color: "var(--brand)",
-              fontSize: "24px",
-              marginBottom: "16px",
-              fontWeight: 700
-            }}>
-              Supporting Skilled Trades
-            </h3>
-            <p style={{
-              color: "var(--muted)",
-              fontSize: "16px",
-              lineHeight: 1.6,
-              maxWidth: "700px",
-              margin: "0 auto 24px"
-            }}>
-              Every connection helps support trade education and community projects. Building careers, strengthening communities.
-            </p>
-            <p style={{
-              color: "var(--text)",
-              fontSize: "14px",
-              opacity: 0.8
-            }}>
-              Supporting Mike Rowe WORKS Foundation and community initiatives nationwide
-            </p>
+            <div style={{
+              position: "absolute",
+              top: "-50%",
+              right: "-20%",
+              width: "200px",
+              height: "200px",
+              background: "radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%)",
+              borderRadius: "50%"
+            }} />
+            <div style={{
+              position: "absolute",
+              bottom: "-30%",
+              left: "-10%",
+              width: "150px",
+              height: "150px",
+              background: "radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%)",
+              borderRadius: "50%"
+            }} />
+            
+            <div style={{position: "relative", zIndex: 2}}>
+              <div style={{
+                width: "60px",
+                height: "60px",
+                background: "var(--brand)",
+                borderRadius: "50%",
+                margin: "0 auto 24px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style={{color: "white"}}>
+                  <path d="M12 2L13.5 8.5L20 7L14 12L20 17L13.5 15.5L12 22L10.5 15.5L4 17L10 12L4 7L10.5 8.5L12 2Z" fill="currentColor"/>
+                </svg>
+              </div>
+              
+              <h3 style={{
+                color: "var(--brand)",
+                fontSize: "28px",
+                marginBottom: "20px",
+                fontWeight: 800,
+                letterSpacing: "-0.5px"
+              }}>
+                Building the Future of Work
+              </h3>
+              
+              <p style={{
+                color: "var(--text)",
+                fontSize: "18px",
+                lineHeight: 1.7,
+                maxWidth: "650px",
+                margin: "0 auto 28px",
+                fontWeight: 500
+              }}>
+                Every connection on TradeScout helps fund trade education and workforce development programs that create pathways to meaningful careers.
+              </p>
+              
+              <div style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "12px",
+                background: "rgba(255,255,255,0.1)",
+                padding: "16px 24px",
+                borderRadius: "50px",
+                border: "1px solid rgba(255,255,255,0.2)"
+              }}>
+                <div style={{
+                  width: "24px",
+                  height: "24px",
+                  background: "var(--brand)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  </svg>
+                </div>
+                <span style={{
+                  color: "var(--text)",
+                  fontSize: "16px",
+                  fontWeight: 600
+                }}>
+                  Proudly supporting Mike Rowe WORKS Foundation & skilled trade initiatives
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
