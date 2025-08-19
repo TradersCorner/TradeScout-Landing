@@ -576,7 +576,7 @@ export default function Home() {
               marginBottom: "16px",
               fontWeight: 700
             }}>
-              Building Something Better
+              Supporting Skilled Trades
             </h3>
             <p style={{
               color: "var(--muted)",
