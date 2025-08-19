@@ -355,319 +355,321 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TradeScout Advantage Section - Unconventional Design */}
-      <section className="tradescout-advantage" style={{
-        padding: "120px 0", 
-        background: "linear-gradient(45deg, #1a1a1a, #0f0f0f)",
+      {/* Value Proposition - Primary Section */}
+      <section className="value-proposition" style={{
+        padding: "80px 0", 
+        background: "linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%)",
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Diagonal background elements */}
+        {/* Subtle diagonal accent */}
         <div style={{
           position: "absolute",
           top: "-50%",
-          left: "-20%",
+          right: "-20%",
           width: "60%",
           height: "200%",
-          background: "linear-gradient(135deg, var(--brand), transparent)",
-          opacity: 0.05,
-          transform: "rotate(-15deg)"
+          background: "linear-gradient(135deg, transparent, var(--brand))",
+          opacity: 0.02,
+          transform: "rotate(15deg)"
         }}></div>
         
-        <div className="container" style={{position: "relative", zIndex: 1}}>
-          <div style={{
-            display: "grid", 
-            gridTemplateColumns: "1fr 1fr", 
-            gap: "80px", 
-            alignItems: "center",
-            maxWidth: "1200px",
-            margin: "0 auto"
-          }}>
-            {/* Left side - Bold statement */}
-            <div>
-              <h2 style={{
-                fontSize: "clamp(32px, 5vw, 64px)",
-                lineHeight: 1.1,
-                marginBottom: "32px",
-                background: "linear-gradient(135deg, var(--brand), #fff)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text"
-              }}>
-                Zero Fees<br/>
-                <span style={{fontWeight: 900, fontSize: "1.2em"}}>Real People</span>
-              </h2>
-              
-              <div style={{
-                borderLeft: "4px solid var(--brand)",
-                paddingLeft: "24px"
-              }}>
-                <p style={{
-                  fontSize: "20px",
-                  color: "var(--muted)",
-                  lineHeight: 1.6,
-                  margin: 0
-                }}>
-                  Keep 100% of your earnings while connecting with verified customers and trusted contractors.
-                </p>
-              </div>
-            </div>
-
-            {/* Right side - Clean stats */}
-            <div style={{display: "grid", gap: "24px", gridTemplateColumns: "1fr 1fr"}}>
-              <div style={{textAlign: "center"}}>
-                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
-                <div style={{color: "var(--text)", fontSize: "16px"}}>Fees</div>
-              </div>
-              
-              <div style={{textAlign: "center"}}>
-                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
-                <div style={{color: "var(--text)", fontSize: "16px"}}>Direct</div>
-              </div>
-              
-              <div style={{textAlign: "center"}}>
-                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
-                <div style={{color: "var(--text)", fontSize: "16px"}}>Yours</div>
-              </div>
-              
-              <div style={{textAlign: "center"}}>
-                <div style={{fontSize: "48px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
-                <div style={{color: "var(--text)", fontSize: "16px"}}>People</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Foundation Impact Section */}
-      <section className="foundation-impact" style={{
-        padding: "100px 0",
-        background: "var(--panel)",
-        position: "relative"
-      }}>
-        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
-          <div style={{textAlign: "center", marginBottom: "80px"}}>
+        <div className="container" style={{position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{textAlign: "center", marginBottom: "60px"}}>
             <h2 style={{
               fontSize: "clamp(28px, 4vw, 48px)",
-              marginBottom: "24px",
-              color: "var(--text)"
+              marginBottom: "20px",
+              background: "linear-gradient(135deg, var(--brand), #fff)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              fontWeight: 700
             }}>
-              Every Connection Creates Impact
+              Zero Fees, Real Connections
             </h2>
             <p style={{
-              fontSize: "20px",
+              fontSize: "18px",
               color: "var(--muted)",
               maxWidth: "600px",
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              TradeScout isn't just a network — we're building stronger communities through skilled trades and giving back.
+              Keep 100% of your earnings while building genuine relationships with verified people.
             </p>
           </div>
 
+          {/* Stats Grid */}
           <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))",
-            gap: "40px",
-            marginBottom: "60px"
+            display: "grid", 
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", 
+            gap: "32px",
+            maxWidth: "800px",
+            margin: "0 auto"
           }}>
             <div style={{
-              background: "var(--panel-2)",
+              textAlign: "center",
+              background: "rgba(255,255,255,0.02)",
               borderRadius: "16px",
-              padding: "40px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              textAlign: "center"
+              padding: "32px 24px",
+              border: "1px solid rgba(255,255,255,0.05)"
             }}>
-              <div style={{
-                width: "80px",
-                height: "80px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "50%",
-                margin: "0 auto 24px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "32px"
-              }}>
-                🎓
-              </div>
-              <h3 style={{fontSize: "24px", marginBottom: "16px", color: "var(--text)"}}>
-                Mike Rowe WORKS Foundation
-              </h3>
-              <p style={{color: "var(--muted)", lineHeight: 1.6, margin: 0}}>
-                We've pledged to donate to skilled trades scholarships, helping the next generation 
-                of contractors build successful careers.
-              </p>
+              <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
+              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Lead Fees</div>
             </div>
-
+            
             <div style={{
-              background: "var(--panel-2)",
+              textAlign: "center",
+              background: "rgba(255,255,255,0.02)",
               borderRadius: "16px",
-              padding: "40px",
-              border: "1px solid rgba(255,255,255,0.1)",
-              textAlign: "center"
+              padding: "32px 24px",
+              border: "1px solid rgba(255,255,255,0.05)"
             }}>
-              <div style={{
-                width: "80px",
-                height: "80px",
-                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
-                borderRadius: "50%",
-                margin: "0 auto 24px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "32px"
-              }}>
-                🏘️
-              </div>
-              <h3 style={{fontSize: "24px", marginBottom: "16px", color: "var(--text)"}}>
-                Community Projects
-              </h3>
-              <p style={{color: "var(--muted)", lineHeight: 1.6, margin: 0}}>
-                Supporting local improvement projects in communities across the United States, 
-                one connection at a time.
-              </p>
+              <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
+              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Direct</div>
             </div>
-          </div>
-
-          <div style={{
-            background: "linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,140,66,0.05))",
-            borderRadius: "16px",
-            padding: "48px",
-            border: "1px solid rgba(255,107,53,0.2)",
-            textAlign: "center"
-          }}>
-            <h3 style={{
-              color: "var(--brand)",
-              fontSize: "28px",
-              marginBottom: "16px",
-              fontWeight: 700
+            
+            <div style={{
+              textAlign: "center",
+              background: "rgba(255,255,255,0.02)",
+              borderRadius: "16px",
+              padding: "32px 24px",
+              border: "1px solid rgba(255,255,255,0.05)"
             }}>
-              Built on Values, Not Just Profit
-            </h3>
-            <p style={{
-              color: "var(--muted)",
-              fontSize: "18px",
-              lineHeight: 1.6,
-              maxWidth: "800px",
-              margin: "0 auto"
+              <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
+              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>Yours</div>
+            </div>
+            
+            <div style={{
+              textAlign: "center",
+              background: "rgba(255,255,255,0.02)",
+              borderRadius: "16px",
+              padding: "32px 24px",
+              border: "1px solid rgba(255,255,255,0.05)"
             }}>
-              When you succeed on TradeScout, communities grow stronger. Every project completed, 
-              every relationship built, and every dollar you keep contributes to a foundation that gives back.
-            </p>
+              <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
+              <div style={{color: "var(--text)", fontSize: "16px", fontWeight: 500}}>People</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Community Features Section */}
-      <section className="community-features" style={{
-        padding: "100px 0",
-        background: "linear-gradient(135deg, #0a0a0a, #1a1a1a)",
-        position: "relative",
-        overflow: "hidden"
+      {/* Platform Features - Comprehensive Tools */}
+      <section className="platform-features" style={{
+        padding: "80px 0",
+        background: "var(--panel)",
+        position: "relative"
       }}>
-        {/* Background pattern */}
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${encodeURIComponent('ff6b35')}' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          opacity: 0.5
-        }}></div>
-
-        <div className="container" style={{position: "relative", zIndex: 1, maxWidth: "1200px", margin: "0 auto"}}>
-          <div style={{textAlign: "center", marginBottom: "80px"}}>
+        <div className="container" style={{maxWidth: "1200px", margin: "0 auto"}}>
+          <div style={{textAlign: "center", marginBottom: "60px"}}>
             <h2 style={{
-              fontSize: "clamp(32px, 5vw, 56px)",
-              background: "linear-gradient(135deg, var(--brand), #fff)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-              marginBottom: "24px",
-              fontWeight: 900
+              fontSize: "clamp(28px, 4vw, 48px)",
+              marginBottom: "20px",
+              color: "var(--text)",
+              fontWeight: 700
             }}>
-              More Than a Network
+              Built for Your Success
             </h2>
             <p style={{
-              fontSize: "20px",
+              fontSize: "18px",
               color: "var(--muted)",
               maxWidth: "700px",
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              TradeScout is building the infrastructure that skilled trades deserve — 
-              tools, community, and support that actually work.
+              More than a network — comprehensive tools and community support that skilled trades deserve.
             </p>
           </div>
 
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "32px"
+            gap: "32px",
+            marginBottom: "60px"
           }}>
             <div style={{
-              background: "rgba(255,255,255,0.02)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
+              background: "var(--panel-2)",
+              borderRadius: "16px",
               padding: "32px",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center",
-              transform: "translateY(0)",
-              transition: "transform 0.3s ease"
+              transition: "transform 0.2s ease"
             }}>
-              <div style={{fontSize: "40px", marginBottom: "20px"}}>📊</div>
-              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Calculator</h3>
+              <div style={{
+                width: "60px",
+                height: "60px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "12px",
+                margin: "0 auto 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px"
+              }}>
+                📊
+              </div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Fair pricing tools that help contractors bid competitively and homeowners understand real costs.
+                Fair pricing tools for competitive bidding and transparent costs.
               </p>
             </div>
 
             <div style={{
-              background: "rgba(255,255,255,0.02)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
+              background: "var(--panel-2)",
+              borderRadius: "16px",
               padding: "32px",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "40px", marginBottom: "20px"}}>🤝</div>
-              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Helpers</h3>
+              <div style={{
+                width: "60px",
+                height: "60px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "12px",
+                margin: "0 auto 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px"
+              }}>
+                🤝
+              </div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Connect experienced contractors with skilled helpers, building the next generation of trades.
+                Connect contractors with skilled helpers, growing the trades community.
               </p>
             </div>
 
             <div style={{
-              background: "rgba(255,255,255,0.02)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
+              background: "var(--panel-2)",
+              borderRadius: "16px",
               padding: "32px",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "40px", marginBottom: "20px"}}>💬</div>
-              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Community</h3>
+              <div style={{
+                width: "60px",
+                height: "60px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "12px",
+                margin: "0 auto 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px"
+              }}>
+                💬
+              </div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Community</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Share knowledge, solve problems, and build relationships with people who understand the trade.
+                Share knowledge and solve problems with people who understand the trade.
               </p>
             </div>
 
             <div style={{
-              background: "rgba(255,255,255,0.02)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
+              background: "var(--panel-2)",
+              borderRadius: "16px",
               padding: "32px",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "40px", marginBottom: "20px"}}>🔄</div>
-              <h3 style={{fontSize: "20px", marginBottom: "16px", color: "var(--text)"}}>Exchange</h3>
+              <div style={{
+                width: "60px",
+                height: "60px",
+                background: "linear-gradient(135deg, var(--brand), #ff8c42)",
+                borderRadius: "12px",
+                margin: "0 auto 20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px"
+              }}>
+                🔄
+              </div>
+              <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)", fontWeight: 600}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Trade services, share resources, and collaborate on projects that benefit everyone.
+                Trade services and collaborate on projects that benefit everyone.
               </p>
             </div>
+          </div>
+
+          {/* Foundation Impact */}
+          <div style={{
+            background: "linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,140,66,0.04))",
+            borderRadius: "20px",
+            padding: "48px",
+            border: "1px solid rgba(255,107,53,0.15)",
+            textAlign: "center"
+          }}>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "40px",
+              alignItems: "center",
+              marginBottom: "32px"
+            }}>
+              <div>
+                <div style={{
+                  width: "50px",
+                  height: "50px",
+                  background: "var(--brand)",
+                  borderRadius: "12px",
+                  margin: "0 auto 16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "20px"
+                }}>
+                  🎓
+                </div>
+                <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
+                  Mike Rowe WORKS Foundation
+                </h4>
+                <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
+                  Pledged donations to skilled trades scholarships
+                </p>
+              </div>
+
+              <div>
+                <div style={{
+                  width: "50px",
+                  height: "50px",
+                  background: "var(--brand)",
+                  borderRadius: "12px",
+                  margin: "0 auto 16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "20px"
+                }}>
+                  🏘️
+                </div>
+                <h4 style={{fontSize: "18px", marginBottom: "8px", color: "var(--text)", fontWeight: 600}}>
+                  Community Projects
+                </h4>
+                <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "14px"}}>
+                  Supporting local improvements nationwide
+                </p>
+              </div>
+            </div>
+            
+            <h3 style={{
+              color: "var(--brand)",
+              fontSize: "24px",
+              marginBottom: "16px",
+              fontWeight: 700
+            }}>
+              Values-Driven Network
+            </h3>
+            <p style={{
+              color: "var(--muted)",
+              fontSize: "16px",
+              lineHeight: 1.6,
+              maxWidth: "700px",
+              margin: "0 auto"
+            }}>
+              When you succeed on TradeScout, communities grow stronger. Every connection 
+              contributes to a foundation that gives back to the trades that built America.
+            </p>
           </div>
         </div>
       </section>
