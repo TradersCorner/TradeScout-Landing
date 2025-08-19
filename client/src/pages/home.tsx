@@ -225,11 +225,7 @@ export default function Home() {
         <h2 id="get-started" className="section-title" style={{textAlign:"center"}}>Join the Network</h2>
         <p className="lead">Be among the first when we launch.</p>
 
-        {/* Dynamic message (changes when roles are toggled) */}
-        <div id="form-message" className="audience-msg" aria-live="polite">
-          <span className="kicker">Connection Without Compromise.</span>
-          <p className="sub">Direct connections between real people who value quality work.</p>
-        </div>
+
 
         <form className="form" onSubmit={(e) => {
           e.preventDefault();
