@@ -157,7 +157,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container">
         <h1>Connection Without Compromise</h1>
-        <p>Where skilled professionals and homeowners meet directly. Build real relationships that last beyond a single project.</p>
+        <p>Where skilled professionals and homeowners meet directly. Build relationships that last beyond a single project.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -253,7 +253,7 @@ export default function Home() {
         {/* Dynamic message (changes when roles are toggled) */}
         <div id="form-message" className="audience-msg" aria-live="polite">
           <span className="kicker">Skip the Middleman.</span>
-          <p className="sub">Direct connections between real people who value quality work.</p>
+          <p className="sub">Direct connections between people who value quality work.</p>
         </div>
 
         <form className="form" onSubmit={(e) => {
@@ -423,7 +423,7 @@ export default function Home() {
               margin: "0 auto",
               lineHeight: 1.6
             }}>
-              Keep what you earn. Work with people who value quality. Build lasting professional relationships.
+              Keep what you earn. Work with people who value quality. Build lasting connections.
             </p>
           </div>
 
@@ -646,10 +646,10 @@ export default function Home() {
                 marginBottom: "16px",
                 fontWeight: 700
               }}>
-                Real Connections
+                No Middleman
               </h3>
               <p style={{color: "var(--muted)", lineHeight: 1.6, fontSize: "15px"}}>
-                No fake leads. No inflated prices. Just real people doing great work together.
+                No fake leads. No inflated prices. Just people doing great work together.
               </p>
             </div>
           </div>
@@ -665,7 +665,7 @@ export default function Home() {
               marginBottom: "16px",
               fontWeight: 700
             }}>
-              Built for Real People
+              Built for Everyone
             </h2>
             <p style={{
               color: "var(--muted)",
