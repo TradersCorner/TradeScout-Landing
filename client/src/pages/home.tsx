@@ -1,11 +1,55 @@
-import { useEffect } from "react";
-import logoPath from "@assets/logo_1755576317372.png";
+import { useEffect, useState } from "react";
+// Construction logos will be inline SVG
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
 import homeownerToolsPath from "@assets/homeowner-tools_1755576317371.jpg";
 
 export default function Home() {
+  const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
+
+  const constructionLogos = [
+    // Hammer
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hammer">
+      <path d="M20.2 4.8l-1.4-1.4L12 10.2l-2.8-2.8L8 8.6l2.8 2.8-6.6 6.6 1.4 1.4L12 12.8l2.8 2.8 1.2-1.2-2.8-2.8 6.6-6.6z"/>
+    </svg>,
+    
+    // Wrench
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="wrench">
+      <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1.1.4 1.5 0l2.3-2.3c.5-.4.5-1.1 0-1.4z"/>
+    </svg>,
+    
+    // Hard Hat
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="hardhat">
+      <path d="M12 2C8.7 2 6 4.7 6 8v8h12V8c0-3.3-2.7-6-6-6z"/>
+      <path d="M4 18h16c1.1 0 2 .9 2 2s-.9 2-2 2H4c-1.1 0-2-.9-2-2s.9-2 2-2z"/>
+    </svg>,
+    
+    // Drill
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="drill">
+      <path d="M20.5 6c-.3 0-.5.2-.5.5V8h-3.5c-.8 0-1.5.7-1.5 1.5v3c0 .8.7 1.5 1.5 1.5H20v1.5c0 .3.2.5.5.5s.5-.2.5-.5v-9c0-.3-.2-.5-.5-.5z"/>
+      <path d="M15 9H3c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h12v-6z"/>
+      <circle cx="6" cy="12" r="1.5"/>
+    </svg>,
+    
+    // Level Tool
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" key="level">
+      <path d="M2 10h20v4H2z"/>
+      <circle cx="12" cy="12" r="1"/>
+      <circle cx="6" cy="12" r=".5"/>
+      <circle cx="18" cy="12" r=".5"/>
+    </svg>
+  ];
+
+  useEffect(() => {
+    // Rotate logo every 3 seconds
+    const logoInterval = setInterval(() => {
+      setCurrentLogoIndex((prev) => (prev + 1) % constructionLogos.length);
+    }, 3000);
+
+    return () => clearInterval(logoInterval);
+  }, [constructionLogos.length]);
+
   useEffect(() => {
     // SEO optimization is handled in index.html, but we can add structured data
     const structuredData = {
@@ -96,7 +140,9 @@ export default function Home() {
       <header>
         <div className="container nav">
           <div className="brand">
-            <img className="brand-icon" src={logoPath} alt="" width="28" height="28" />
+            <div className="brand-icon" style={{color: "var(--brand)", transition: "all 0.3s ease"}}>
+              {constructionLogos[currentLogoIndex]}
+            </div>
             <span>TradeScout</span>
           </div>
           <a className="cta" href="#signup" aria-label="Get early access">
@@ -201,13 +247,13 @@ export default function Home() {
           </a>
         </div>
 
-        <h2 id="get-started" className="section-title" style={{textAlign:"center"}}>Get Early Access</h2>
-        <p className="lead">Drop your email and we'll notify you the moment we go live.</p>
+        <h2 id="get-started" className="section-title" style={{textAlign:"center"}}>Join the Network</h2>
+        <p className="lead">Get early access when we launch. No spam, no BS.</p>
 
         {/* Dynamic message (changes when roles are toggled) */}
         <div id="form-message" className="audience-msg" aria-live="polite">
-          <span className="kicker">Get Matched the Right Way.</span>
-          <p className="sub">Whether you're a contractor or a homeowner, TradeScout makes direct connection simple.</p>
+          <span className="kicker">Skip the Middleman.</span>
+          <p className="sub">Direct connections between real people who value quality work.</p>
         </div>
 
         <form className="form" onSubmit={(e) => {
@@ -530,7 +576,7 @@ export default function Home() {
               marginBottom: "16px",
               fontWeight: 700
             }}>
-              Values-Driven Network
+              Building Something Better
             </h3>
             <p style={{
               color: "var(--muted)",
@@ -539,15 +585,14 @@ export default function Home() {
               maxWidth: "700px",
               margin: "0 auto 24px"
             }}>
-              Every connection contributes to supporting skilled trades education, community projects, 
-              and worthy causes across America.
+              Every connection helps support trade education and community projects. Real impact, not just profit.
             </p>
             <p style={{
               color: "var(--text)",
               fontSize: "14px",
               opacity: 0.8
             }}>
-              Supporting foundations including Mike Rowe WORKS and local community initiatives
+              Supporting Mike Rowe WORKS Foundation and community initiatives nationwide
             </p>
           </div>
         </div>

@@ -241,6 +241,41 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   }
 }
 
+/* Logo animation */
+.brand-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add subtle animations to make it feel more alive */
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e55a2b;
+}
+
 /* Dynamic audience message above form */
 .audience-msg{
   margin: 32px auto 28px;
