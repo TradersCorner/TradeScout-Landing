@@ -308,7 +308,7 @@ export default function Home() {
             className="field full" 
             id="message" 
             name="message" 
-            placeholder="What problem with lead companies or middlemen is TradeScout solving for you? (optional)" 
+            placeholder="Tell us how lead companies screwed you over. We're tired of it too. (optional)" 
             rows={3}
             autoComplete="off"
             aria-describedby="message-help"
@@ -349,7 +349,7 @@ export default function Home() {
           Join our early access list to be among the first to experience direct contractor connections.
         </div>
         <div id="message-help" className="sr-only">
-          Tell us about the problems you've experienced with lead companies or middlemen.
+          Share your frustrations with lead companies and middlemen that take advantage of contractors and homeowners.
         </div>
       </section>
 
