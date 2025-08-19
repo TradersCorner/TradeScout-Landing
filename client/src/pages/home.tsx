@@ -355,8 +355,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Broken System Section - Unconventional Design */}
-      <section className="broken-system" style={{
+      {/* TradeScout Advantage Section - Unconventional Design */}
+      <section className="tradescout-advantage" style={{
         padding: "120px 0", 
         background: "linear-gradient(45deg, #1a1a1a, #0f0f0f)",
         position: "relative",
@@ -383,7 +383,7 @@ export default function Home() {
             maxWidth: "1200px",
             margin: "0 auto"
           }}>
-            {/* Left side - Big statement */}
+            {/* Left side - Value statement */}
             <div>
               <h2 style={{
                 fontSize: "clamp(32px, 5vw, 64px)",
@@ -394,8 +394,8 @@ export default function Home() {
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text"
               }}>
-                The System is<br/>
-                <span style={{fontWeight: 900, fontSize: "1.2em"}}>BROKEN</span>
+                Your Success<br/>
+                <span style={{fontWeight: 900, fontSize: "1.2em"}}>MATTERS</span>
               </h2>
               
               <div style={{
@@ -409,47 +409,67 @@ export default function Home() {
                   lineHeight: 1.6,
                   margin: 0
                 }}>
-                  Lead companies profit while contractors struggle and homeowners get hassled. 
-                  We're not fixing the system — we're replacing it.
+                  Direct connections create better relationships, higher satisfaction, 
+                  and more money in your pocket. That's the TradeScout difference.
                 </p>
               </div>
             </div>
 
-            {/* Right side - Raw data blocks */}
+            {/* Right side - Value blocks */}
             <div style={{display: "grid", gap: "20px"}}>
               <div style={{
-                background: "rgba(220, 38, 38, 0.1)",
-                border: "1px solid rgba(220, 38, 38, 0.3)",
-                padding: "24px",
-                borderRadius: "8px",
-                borderLeft: "4px solid #dc2626"
-              }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "#dc2626", marginBottom: "8px"}}>$3,000+</div>
-                <div style={{color: "var(--muted)", fontSize: "14px"}}>wasted monthly on lead fees</div>
-              </div>
-              
-              <div style={{
-                background: "rgba(220, 38, 38, 0.1)",
-                border: "1px solid rgba(220, 38, 38, 0.3)",
-                padding: "24px",
-                borderRadius: "8px",
-                borderLeft: "4px solid #dc2626"
-              }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "#dc2626", marginBottom: "8px"}}>5-15</div>
-                <div style={{color: "var(--muted)", fontSize: "14px"}}>contractors competing per "lead"</div>
-              </div>
-              
-              <div style={{
-                background: "rgba(255, 107, 53, 0.1)",
+                background: "rgba(255, 107, 53, 0.15)",
                 border: "1px solid var(--brand)",
                 padding: "24px",
                 borderRadius: "8px",
                 borderLeft: "4px solid var(--brand)"
               }}>
-                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
-                <div style={{color: "var(--muted)", fontSize: "14px"}}>of your money stays with you</div>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>$0</div>
+                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>lead fees or commissions</div>
+              </div>
+              
+              <div style={{
+                background: "rgba(255, 107, 53, 0.15)",
+                border: "1px solid var(--brand)",
+                padding: "24px",
+                borderRadius: "8px",
+                borderLeft: "4px solid var(--brand)"
+              }}>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>1:1</div>
+                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>direct connections, no competition</div>
+              </div>
+              
+              <div style={{
+                background: "rgba(255, 107, 53, 0.15)",
+                border: "1px solid var(--brand)",
+                padding: "24px",
+                borderRadius: "8px",
+                borderLeft: "4px solid var(--brand)"
+              }}>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
+                <div style={{color: "var(--text)", fontSize: "14px", fontWeight: 500}}>relationships with verified people</div>
               </div>
             </div>
+          </div>
+          
+          {/* Bottom statement */}
+          <div style={{
+            textAlign: "center", 
+            marginTop: "80px", 
+            padding: "40px", 
+            background: "rgba(255, 107, 53, 0.1)", 
+            borderRadius: "16px", 
+            border: "1px solid rgba(255, 107, 53, 0.3)",
+            maxWidth: "800px", 
+            margin: "80px auto 0"
+          }}>
+            <h3 style={{color: "var(--brand)", marginBottom: "16px", fontSize: "24px", fontWeight: 700}}>
+              Built for Your Success
+            </h3>
+            <p style={{color: "var(--muted)", marginBottom: 0, fontSize: "18px", lineHeight: 1.6}}>
+              Every feature we build puts more money in contractors' pockets and gives homeowners 
+              the quality service they deserve. No games, no middlemen, just results.
+            </p>
           </div>
         </div>
       </section>

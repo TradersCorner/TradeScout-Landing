@@ -122,8 +122,8 @@ header{
   .btn{grid-column:1/-1;justify-self:center;width:auto;min-width:200px}
 }
 @media (max-width:859px){
-  .broken-system div[style*="grid-template-columns"]{grid-template-columns:1fr !important}
-  .broken-system h2{text-align:center !important}
+  .tradescout-advantage div[style*="grid-template-columns"]{grid-template-columns:1fr !important}
+  .tradescout-advantage h2{text-align:center !important}
 }
 .field{
   background:var(--panel-2);
