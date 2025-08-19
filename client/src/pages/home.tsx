@@ -446,7 +446,12 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "32px", marginBottom: "16px"}}>📊</div>
+              <div style={{marginBottom: "16px"}}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{margin: "0 auto", display: "block"}}>
+                  <rect x="3" y="4" width="18" height="14" rx="2" stroke="var(--brand)" strokeWidth="2"/>
+                  <path d="M8 10h8M8 14h4" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Fair pricing tools for competitive bidding and transparent costs.
@@ -460,7 +465,13 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "32px", marginBottom: "16px"}}>🤝</div>
+              <div style={{marginBottom: "16px"}}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{margin: "0 auto", display: "block"}}>
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="var(--brand)" strokeWidth="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="var(--brand)" strokeWidth="2"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="var(--brand)" strokeWidth="2"/>
+                </svg>
+              </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Connect contractors with skilled helpers, growing the trades community.
@@ -474,7 +485,12 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "32px", marginBottom: "16px"}}>💬</div>
+              <div style={{marginBottom: "16px"}}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{margin: "0 auto", display: "block"}}>
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="var(--brand)" strokeWidth="2"/>
+                  <path d="M9 9h6M9 13h3" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Community</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Share knowledge and solve problems with people who understand the trade.
@@ -488,7 +504,13 @@ export default function Home() {
               border: "1px solid rgba(255,255,255,0.05)",
               textAlign: "center"
             }}>
-              <div style={{fontSize: "32px", marginBottom: "16px"}}>🔄</div>
+              <div style={{marginBottom: "16px"}}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{margin: "0 auto", display: "block"}}>
+                  <path d="M7 17L17 7M17 7H7M17 7v10" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="7" cy="17" r="2" stroke="var(--brand)" strokeWidth="2"/>
+                  <circle cx="17" cy="7" r="2" stroke="var(--brand)" strokeWidth="2"/>
+                </svg>
+              </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Exchange</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
                 Trade services and collaborate on projects that benefit everyone.
