@@ -29,7 +29,7 @@ header{
 }
 .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .brand{display:inline-flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px;font-size:22px}
-.brand-icon{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.12)}
+.brand-icon{width:28px;height:28px;object-fit:cover}
 .cta{
   display:inline-flex;align-items:center;gap:10px;
   background:linear-gradient(135deg,var(--brand),var(--brand-2));
@@ -246,9 +246,6 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  padding: 3px;
 }
 
 /* Add subtle animations to make it feel more alive */

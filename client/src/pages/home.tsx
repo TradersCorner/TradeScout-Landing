@@ -9,11 +9,11 @@ export default function Home() {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
   const constructionLogos = [
-    <Hammer key="hammer" size={22} />,
-    <Wrench key="wrench" size={22} />,
-    <HardHat key="hardhat" size={22} />,
-    <HomeIcon key="home" size={22} />,
-    <Drill key="drill" size={22} />
+    <Hammer key="hammer" size={28} />,
+    <Wrench key="wrench" size={28} />,
+    <HardHat key="hardhat" size={28} />,
+    <HomeIcon key="home" size={28} />,
+    <Drill key="drill" size={28} />
   ];
 
   useEffect(() => {
