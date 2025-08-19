@@ -469,7 +469,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Match contractors needing extra hands with homeowners wanting to learn trades skills.
+                Contractors find employees while homeowners find laborers or people starting their trades business.
               </p>
             </div>
 

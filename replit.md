@@ -10,6 +10,7 @@ Design philosophy: Break design molds and create unconventional, bold layouts th
 Foundation work: TradeScout supports multiple charitable foundations and worthy causes, not exclusively Mike Rowe WORKS Foundation (which is one prominent example but not the only one).
 Visual preferences: Prefer clean SVG icons over emojis for better design consistency.
 Calculator feature: Uses hyper-local information and market data to provide the most accurate pricing possible for specific geographic areas.
+Helpers feature: Platform for contractors to find employees and for homeowners to find laborers or people starting their trades business/side gig.
 
 # System Architecture
 
