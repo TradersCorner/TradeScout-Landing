@@ -231,7 +231,7 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
 /* Desktop layout improvements */
 @media (min-width: 1024px) {
   .value-stats {
-    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
   
   .feature-cards {

@@ -421,16 +421,7 @@ export default function Home() {
               <div style={{color: "var(--text)", fontSize: "16px"}}>Yours</div>
             </div>
             
-            <div style={{
-              textAlign: "center",
-              background: "var(--panel-2)",
-              borderRadius: "16px",
-              padding: "32px 24px",
-              border: "1px solid rgba(255,255,255,0.05)"
-            }}>
-              <div style={{fontSize: "40px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>Real</div>
-              <div style={{color: "var(--text)", fontSize: "16px"}}>People</div>
-            </div>
+
           </div>
 
           <div className="feature-cards" style={{
