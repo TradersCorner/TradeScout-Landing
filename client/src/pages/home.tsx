@@ -355,6 +355,105 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Broken System Section - Unconventional Design */}
+      <section className="broken-system" style={{
+        padding: "120px 0", 
+        background: "linear-gradient(45deg, #1a1a1a, #0f0f0f)",
+        position: "relative",
+        overflow: "hidden"
+      }}>
+        {/* Diagonal background elements */}
+        <div style={{
+          position: "absolute",
+          top: "-50%",
+          left: "-20%",
+          width: "60%",
+          height: "200%",
+          background: "linear-gradient(135deg, var(--brand), transparent)",
+          opacity: 0.05,
+          transform: "rotate(-15deg)"
+        }}></div>
+        
+        <div className="container" style={{position: "relative", zIndex: 1}}>
+          <div style={{
+            display: "grid", 
+            gridTemplateColumns: "1fr 1fr", 
+            gap: "80px", 
+            alignItems: "center",
+            maxWidth: "1200px",
+            margin: "0 auto"
+          }}>
+            {/* Left side - Big statement */}
+            <div>
+              <h2 style={{
+                fontSize: "clamp(32px, 5vw, 64px)",
+                lineHeight: 1.1,
+                marginBottom: "32px",
+                background: "linear-gradient(135deg, var(--brand), #fff)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text"
+              }}>
+                The System is<br/>
+                <span style={{fontWeight: 900, fontSize: "1.2em"}}>BROKEN</span>
+              </h2>
+              
+              <div style={{
+                borderLeft: "4px solid var(--brand)",
+                paddingLeft: "24px",
+                marginBottom: "40px"
+              }}>
+                <p style={{
+                  fontSize: "20px",
+                  color: "var(--muted)",
+                  lineHeight: 1.6,
+                  margin: 0
+                }}>
+                  Lead companies profit while contractors struggle and homeowners get hassled. 
+                  We're not fixing the system — we're replacing it.
+                </p>
+              </div>
+            </div>
+
+            {/* Right side - Raw data blocks */}
+            <div style={{display: "grid", gap: "20px"}}>
+              <div style={{
+                background: "rgba(220, 38, 38, 0.1)",
+                border: "1px solid rgba(220, 38, 38, 0.3)",
+                padding: "24px",
+                borderRadius: "8px",
+                borderLeft: "4px solid #dc2626"
+              }}>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "#dc2626", marginBottom: "8px"}}>$3,000+</div>
+                <div style={{color: "var(--muted)", fontSize: "14px"}}>wasted monthly on lead fees</div>
+              </div>
+              
+              <div style={{
+                background: "rgba(220, 38, 38, 0.1)",
+                border: "1px solid rgba(220, 38, 38, 0.3)",
+                padding: "24px",
+                borderRadius: "8px",
+                borderLeft: "4px solid #dc2626"
+              }}>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "#dc2626", marginBottom: "8px"}}>5-15</div>
+                <div style={{color: "var(--muted)", fontSize: "14px"}}>contractors competing per "lead"</div>
+              </div>
+              
+              <div style={{
+                background: "rgba(255, 107, 53, 0.1)",
+                border: "1px solid var(--brand)",
+                padding: "24px",
+                borderRadius: "8px",
+                borderLeft: "4px solid var(--brand)"
+              }}>
+                <div style={{fontSize: "32px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px"}}>100%</div>
+                <div style={{color: "var(--muted)", fontSize: "14px"}}>of your money stays with you</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer role="contentinfo">
         <div className="container">
           © 2025 TradeScout. All rights reserved. Connecting homeowners and contractors directly since 2025.
