@@ -457,7 +457,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Fair pricing tools for competitive bidding and transparent costs.
+                Hyper-local pricing data for accurate bids and transparent costs in your specific market.
               </p>
             </div>
 
