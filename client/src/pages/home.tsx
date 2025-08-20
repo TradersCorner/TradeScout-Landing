@@ -237,7 +237,7 @@ export default function Home() {
           const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
           if (button) {
             const originalText = button.textContent;
-            button.textContent = "Thanks! We'll be in touch.";
+            button.textContent = "Thanks! You'll hear from us when we go live.";
             button.disabled = true;
             button.style.background = "linear-gradient(135deg, #10b981, #059669)";
             
@@ -333,6 +333,25 @@ export default function Home() {
             aria-describedby="message-help"
             data-testid="textarea-message"
           ></textarea>
+
+          <div style={{
+            textAlign: "center",
+            margin: "20px 0",
+            padding: "16px",
+            background: "rgba(255,255,255,0.03)",
+            borderRadius: "8px",
+            border: "1px solid rgba(255,255,255,0.08)"
+          }}>
+            <p style={{
+              color: "var(--muted)",
+              fontSize: "14px",
+              lineHeight: 1.5,
+              margin: 0
+            }}>
+              <strong style={{color: "var(--text)"}}>We're not selling anything</strong> — including your information. 
+              Zero spam, zero sharing with third parties.
+            </p>
+          </div>
 
           {/* Submit */}
           <button 
