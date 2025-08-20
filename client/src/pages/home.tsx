@@ -90,7 +90,20 @@ export default function Home() {
       const roles = Array.from(document.querySelectorAll('input[name="roles[]"]')) as HTMLInputElement[];
       const render = ({ kicker, sub }: { kicker: string; sub: string }) => {
         if (msgBox) {
-          msgBox.innerHTML = `<span class="kicker">${kicker}</span><p class="sub">${sub}</p>`;
+          // Clear existing content
+          msgBox.textContent = '';
+          
+          // Create and append kicker span
+          const kickerSpan = document.createElement('span');
+          kickerSpan.className = 'kicker';
+          kickerSpan.textContent = kicker;
+          msgBox.appendChild(kickerSpan);
+          
+          // Create and append sub paragraph
+          const subP = document.createElement('p');
+          subP.className = 'sub';
+          subP.textContent = sub;
+          msgBox.appendChild(subP);
         }
       };
 
