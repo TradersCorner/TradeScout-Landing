@@ -302,24 +302,127 @@ export default function Home() {
           </select>
 
           {/* Roles (multi-select) */}
-          <fieldset className="checkgroup full" aria-labelledby="roles-legend">
-            <legend id="roles-legend">I am a… (select all that apply)</legend>
-
-            <label data-testid="checkbox-homeowner">
-              <input type="checkbox" name="roles[]" value="Homeowner" data-testid="input-homeowner" />
-              Homeowner
+          <div style={{marginBottom: "20px"}}>
+            <label style={{
+              display: "block",
+              marginBottom: "12px",
+              fontSize: "14px",
+              color: "var(--muted)",
+              fontWeight: 500
+            }}>
+              I am a… (select all that apply)
             </label>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+              gap: "12px"
+            }}>
+              <label style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 16px",
+                background: "var(--panel-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                fontSize: "14px",
+                color: "var(--text)"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--panel)";
+                e.currentTarget.style.borderColor = "var(--brand)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--panel-2)";
+                e.currentTarget.style.borderColor = "var(--border)";
+              }}
+              data-testid="checkbox-homeowner">
+                <input 
+                  type="checkbox" 
+                  name="roles[]" 
+                  value="Homeowner" 
+                  data-testid="input-homeowner"
+                  style={{
+                    accentColor: "var(--brand)",
+                    margin: 0
+                  }}
+                />
+                <span>Homeowner</span>
+              </label>
 
-            <label data-testid="checkbox-contractor">
-              <input type="checkbox" name="roles[]" value="Contractor" data-testid="input-contractor" />
-              Contractor
-            </label>
+              <label style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 16px",
+                background: "var(--panel-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                fontSize: "14px",
+                color: "var(--text)"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--panel)";
+                e.currentTarget.style.borderColor = "var(--brand)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--panel-2)";
+                e.currentTarget.style.borderColor = "var(--border)";
+              }}
+              data-testid="checkbox-contractor">
+                <input 
+                  type="checkbox" 
+                  name="roles[]" 
+                  value="Contractor" 
+                  data-testid="input-contractor"
+                  style={{
+                    accentColor: "var(--brand)",
+                    margin: 0
+                  }}
+                />
+                <span>Contractor</span>
+              </label>
 
-            <label data-testid="checkbox-service-provider">
-              <input type="checkbox" name="roles[]" value="Service Provider" data-testid="input-service-provider" />
-              Service Provider
-            </label>
-          </fieldset>
+              <label style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "12px 16px",
+                background: "var(--panel-2)",
+                border: "1px solid var(--border)",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                fontSize: "14px",
+                color: "var(--text)"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--panel)";
+                e.currentTarget.style.borderColor = "var(--brand)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--panel-2)";
+                e.currentTarget.style.borderColor = "var(--border)";
+              }}
+              data-testid="checkbox-service-provider">
+                <input 
+                  type="checkbox" 
+                  name="roles[]" 
+                  value="Service Provider" 
+                  data-testid="input-service-provider"
+                  style={{
+                    accentColor: "var(--brand)",
+                    margin: 0
+                  }}
+                />
+                <span>Service Provider</span>
+              </label>
+            </div>
+          </div>
 
           {/* Optional message */}
           <label className="sr-only" htmlFor="message">Your message (optional)</label>
