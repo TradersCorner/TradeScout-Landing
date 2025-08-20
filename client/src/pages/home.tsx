@@ -113,19 +113,39 @@ export default function Home() {
     <>
       {/* Header */}
       <header>
-        <div className="container nav">
-          <div className="brand">
-            <div className="brand-icon" style={{color: "var(--brand)", transition: "all 0.3s ease"}}>
+        <div className="container" style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          padding: "20px 0"
+        }}>
+          <div style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "8px"
+          }}>
+            <div className="brand-icon" style={{
+              color: "var(--brand)", 
+              transition: "all 0.3s ease",
+              fontSize: "32px",
+              width: "32px",
+              height: "32px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
               {constructionLogos[currentLogoIndex]}
             </div>
-            <span>TradeScout</span>
+            <span style={{
+              fontSize: "24px",
+              fontWeight: 900,
+              letterSpacing: "0.2px",
+              color: "var(--text)"
+            }}>
+              TradeScout
+            </span>
           </div>
-          <a className="cta" href="#signup" aria-label="Get early access">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2l3 7h7l-5.7 4.1 2.3 7-6.6-4.8-6.6 4.8 2.3-7L2 9h7z"/>
-            </svg>
-            Get Early Access
-          </a>
         </div>
       </header>
 
