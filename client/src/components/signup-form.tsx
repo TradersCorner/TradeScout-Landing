@@ -158,13 +158,18 @@ export default function SignupForm() {
         </button>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 lg:grid-cols-4 gap-3">
+      <form 
+        action="https://formspree.io/f/xovlzjlq" 
+        method="POST"
+        className="grid grid-cols-1 lg:grid-cols-4 gap-3"
+      >
         <div className="lg:col-span-1">
           <Input
             type="email"
+            name="email"
             placeholder="Enter your email"
             className="w-full bg-panel-2 border border-white/8 rounded-xl px-4 py-3 text-text focus:outline-none focus:ring-3 focus:ring-brand/25 focus:border-white/18"
-            {...register("email")}
+            required
             data-testid="input-email"
           />
           {errors.email && (
@@ -174,7 +179,7 @@ export default function SignupForm() {
 
         <div className="lg:col-span-1">
           <select 
-            {...register("state")}
+            name="state"
             className="w-full bg-panel-2 border border-white/8 rounded-xl px-4 py-3 text-text appearance-none focus:outline-none focus:ring-3 focus:ring-brand/25 focus:border-white/18"
             style={{
               backgroundImage: `linear-gradient(45deg, transparent 50%, rgba(255,255,255,.5) 50%), linear-gradient(135deg, rgba(255,255,255,.5) 50%, transparent 50%)`,
@@ -202,9 +207,10 @@ export default function SignupForm() {
                 key={role.value}
                 className="inline-flex items-center gap-2 bg-white/4 border border-white/8 rounded-lg px-3 py-2 cursor-pointer hover:bg-white/6"
               >
-                <Checkbox
-                  checked={selectedRoles.includes(role.value)}
-                  onCheckedChange={(checked) => handleRoleChange(role.value, checked as boolean)}
+                <input
+                  type="checkbox"
+                  name="roles[]"
+                  value={role.value}
                   className="accent-brand"
                   data-testid={`checkbox-${role.value}`}
                 />
@@ -218,14 +224,15 @@ export default function SignupForm() {
         </fieldset>
 
         <div className="lg:col-span-1">
-          <Button
+          <button
             type="submit"
-            disabled={signupMutation.isPending}
-            className="w-full brand-gradient text-white border-none rounded-xl px-4 py-3 font-black cursor-pointer whitespace-nowrap shadow-lg shadow-brand/20 hover:-translate-y-0.5 focus:outline-none focus:ring-3 focus:ring-brand/35 transition-transform duration-150 disabled:opacity-50 disabled:hover:translate-y-0"
+            className="w-full brand-gradient text-white border-none rounded-xl px-4 py-3 font-black cursor-pointer whitespace-nowrap shadow-lg shadow-brand/20 hover:-translate-y-0.5 focus:outline-none focus:ring-3 focus:ring-brand/35 transition-transform duration-150"
             data-testid="button-submit"
           >
-            {signupMutation.isPending ? "Signing Up..." : "Get Early Access"}
-          </Button>
+            Get Early Access
+          </button>
+          <input type="hidden" name="_redirect" value="https://info.thetradescout.us/thank-you" />
+          <input type="hidden" name="_subject" value="New TradeScout Early Access Signup" />
         </div>
       </form>
 
