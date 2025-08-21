@@ -260,28 +260,20 @@ export default function Home() {
 
 
 
-        <form className="form" onSubmit={(e) => {
-          e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const data = Object.fromEntries(formData);
-          console.log('Form submitted:', data);
-          
-          // Show success message
-          const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
-          if (button) {
-            const originalText = button.textContent;
-            button.textContent = "Thanks! You'll hear from us when we go live.";
-            button.disabled = true;
-            button.style.background = "linear-gradient(135deg, #10b981, #059669)";
-            
-            setTimeout(() => {
-              button.textContent = originalText;
-              button.disabled = false;
-              button.style.background = "";
-              e.currentTarget.reset();
-            }, 3000);
-          }
-        }} data-analytics="signup-form">
+        <form 
+          className="form" 
+          action="https://formspree.io/f/xovlzjlq"
+          method="POST"
+          onSubmit={(e) => {
+            // Allow the form to submit to Formspree, but show loading state
+            const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+            if (button) {
+              button.textContent = "Submitting...";
+              button.disabled = true;
+            }
+          }} 
+          data-analytics="signup-form"
+        >
           {/* Email (required) */}
           <label className="sr-only" htmlFor="email">Email (required)</label>
           <input 
