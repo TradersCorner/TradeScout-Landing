@@ -116,16 +116,7 @@ export default function SignupForm() {
     signupMutation.mutate(data);
   };
 
-  const handleRoleChange = (roleValue: string, checked: boolean) => {
-    let newRoles: string[];
-    if (checked) {
-      newRoles = [...selectedRoles, roleValue];
-    } else {
-      newRoles = selectedRoles.filter(role => role !== roleValue);
-    }
-    setSelectedRoles(newRoles);
-    setValue("roles", newRoles as ("homeowner" | "contractor" | "helper")[]);
-  };
+  // Form now submits directly to Formspree - no need for role change handler
 
   const focusEmailField = () => {
     const emailField = document.querySelector('input[type="email"]') as HTMLInputElement;
