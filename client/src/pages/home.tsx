@@ -264,14 +264,6 @@ export default function Home() {
           className="form" 
           action="https://formspree.io/f/xovlzjlq"
           method="POST"
-          onSubmit={(e) => {
-            // Allow the form to submit to Formspree, but show loading state
-            const button = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
-            if (button) {
-              button.textContent = "Submitting...";
-              button.disabled = true;
-            }
-          }} 
           data-analytics="signup-form"
         >
           {/* Email (required) */}
@@ -491,7 +483,8 @@ export default function Home() {
           >
             Notify Me
           </button>
-          <input type="hidden" name="_redirect" value="thank-you" />
+          <input type="hidden" name="_redirect" value="https://info.thetradescout.us/thank-you" />
+          <input type="hidden" name="_subject" value="New TradeScout Early Access Signup" />
 
           {/* Honeypot to reduce spam */}
           <input 
