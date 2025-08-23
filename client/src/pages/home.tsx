@@ -291,14 +291,19 @@ export default function Home() {
   const shareViaWhatsApp = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const message = encodeURIComponent(`🏠 Hey! Join me on TradeScout - the direct connection platform for homeowners & contractors. No middlemen, no lead fees! Get priority access: ${referralLink}`);
+    
+    // Try WhatsApp app first, then fallback to web
+    const appUrl = `whatsapp://send?text=${message}`;
+    const webUrl = `https://wa.me/?text=${message}`;
+    
     try {
-      // Try WhatsApp Web/App
-      const whatsappUrl = `https://wa.me/?text=${message}`;
-      window.open(whatsappUrl, '_blank');
+      window.location.href = appUrl;
+      // Fallback to web after short delay if app doesn't open
+      setTimeout(() => {
+        window.open(webUrl, '_blank');
+      }, 1500);
     } catch (err) {
-      // Fallback: copy message
-      navigator.clipboard?.writeText(decodeURIComponent(message));
-      alert('WhatsApp not available. Message copied to clipboard!');
+      window.open(webUrl, '_blank');
     }
   };
 
@@ -324,29 +329,59 @@ export default function Home() {
   const shareViaTwitter = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const text = encodeURIComponent(`🏠 Excited to join TradeScout - finally, a platform where homeowners and contractors connect directly! No middlemen, no lead fees. Join me: ${referralLink} #TradeScout #HomeImprovement`);
-    // Try X.com first (new Twitter domain)
-    window.open(`https://x.com/intent/tweet?text=${text}`, '_blank');
+    
+    // Try Twitter app first, then fallback to web
+    const appUrl = `twitter://post?message=${text}`;
+    const webUrl = `https://x.com/intent/tweet?text=${text}`;
+    
+    try {
+      window.location.href = appUrl;
+      // Fallback to web after short delay if app doesn't open
+      setTimeout(() => {
+        window.open(webUrl, '_blank');
+      }, 1500);
+    } catch (err) {
+      window.open(webUrl, '_blank');
+    }
   };
 
   const shareViaLinkedIn = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const url = encodeURIComponent(referralLink);
-    // Updated LinkedIn sharing URL format - they simplified the API
     const text = encodeURIComponent(`🏠 Excited to join TradeScout - a professional network connecting homeowners and contractors directly! No middlemen, no lead fees. Check it out: ${referralLink} #TradeScout #HomeImprovement #Construction`);
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+    
+    // Try LinkedIn app first, then fallback to web
+    const appUrl = `linkedin://sharing?url=${url}&text=${text}`;
+    const webUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    
+    try {
+      window.location.href = appUrl;
+      // Fallback to web after short delay if app doesn't open
+      setTimeout(() => {
+        window.open(webUrl, '_blank');
+      }, 1500);
+    } catch (err) {
+      window.open(webUrl, '_blank');
+    }
   };
 
   const shareViaFacebook = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const url = encodeURIComponent(referralLink);
     const quote = encodeURIComponent('🏠 Join me on TradeScout - the direct connection platform for homeowners and contractors! No middlemen, no lead fees.');
+    
+    // Try Facebook app first, then fallback to web
+    const appUrl = `fb://share?href=${referralLink}`;
+    const webUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${quote}`;
+    
     try {
-      // Facebook sharing API
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${quote}`, '_blank');
+      window.location.href = appUrl;
+      // Fallback to web after short delay if app doesn't open
+      setTimeout(() => {
+        window.open(webUrl, '_blank');
+      }, 1500);
     } catch (err) {
-      // Fallback: copy message
-      navigator.clipboard?.writeText(`${decodeURIComponent(quote)} ${referralLink}`);
-      alert('Facebook not available. Message copied to clipboard!');
+      window.open(webUrl, '_blank');
     }
   };
 
