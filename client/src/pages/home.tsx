@@ -608,7 +608,34 @@ export default function Home() {
                           calculatorData.projectType === 'roofing' ? 25000 : 8000) 
                           * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
                     </div>
-                    <p style={{fontSize: "12px", color: "var(--muted)", margin: 0}}>Based on {calculatorData.zipCode} area pricing • Updated weekly</p>
+                    <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 12px"}}>Based on {calculatorData.zipCode} area pricing • Updated weekly</p>
+                    
+                    <div style={{
+                      background: "rgba(37, 99, 235, 0.1)",
+                      border: "1px solid rgba(37, 99, 235, 0.2)",
+                      borderRadius: "6px",
+                      padding: "12px",
+                      textAlign: "center"
+                    }}>
+                      <p style={{fontSize: "13px", color: "var(--text)", margin: "0 0 8px", fontWeight: 600}}>
+                        💡 Want to connect with verified contractors in your area?
+                      </p>
+                      <button 
+                        style={{
+                          background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                          color: "white",
+                          border: "none",
+                          borderRadius: "6px",
+                          padding: "8px 16px",
+                          fontSize: "13px",
+                          fontWeight: 600,
+                          cursor: "pointer"
+                        }}
+                        onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
+                      >
+                        Join TradeScout →
+                      </button>
+                    </div>
                   </div>
                 )}
                 
@@ -629,8 +656,11 @@ export default function Home() {
                     Close
                   </button>
                   <button 
+                    onClick={() => {
+                      setCalculatorData({...calculatorData, zipCode: ''});
+                    }}
                     style={{
-                      background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                      background: "var(--accent)",
                       color: "white",
                       border: "none",
                       borderRadius: "6px",
@@ -638,11 +668,10 @@ export default function Home() {
                       fontSize: "14px",
                       fontWeight: 600,
                       cursor: "pointer",
-                      flex: 2
+                      flex: 1
                     }}
-                    onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
                   >
-                    Get Full Access →
+                    Try Again
                   </button>
                 </div>
               </div>
