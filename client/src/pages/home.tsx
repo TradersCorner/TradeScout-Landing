@@ -656,27 +656,32 @@ export default function Home() {
                   />
                 </div>
                 
-                {calculatorData.zipCode.length >= 5 && (
-                  <div style={{
-                    background: "rgba(255,107,53,0.1)",
-                    border: "1px solid rgba(255,107,53,0.3)",
-                    borderRadius: "8px",
-                    padding: "16px",
-                    marginBottom: "16px"
-                  }}>
-                    <h4 style={{fontSize: "16px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Estimated Cost Range</h4>
-                    <div style={{fontSize: "24px", fontWeight: 900, color: "var(--brand)", marginBottom: "4px"}}>
-                      ${((calculatorData.projectType === 'painting' ? 3000 : 
-                          calculatorData.projectType === 'flooring' ? 8000 :
-                          calculatorData.projectType === 'roofing' ? 12000 : 3000) 
-                          * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()} - 
-                      ${((calculatorData.projectType === 'painting' ? 8000 : 
-                          calculatorData.projectType === 'flooring' ? 15000 :
-                          calculatorData.projectType === 'roofing' ? 25000 : 8000) 
-                          * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
-                    </div>
-                    <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 12px"}}>Based on {calculatorData.zipCode} area pricing • Updated weekly</p>
-                    
+                <div style={{
+                  background: "rgba(255,107,53,0.1)",
+                  border: "1px solid rgba(255,107,53,0.3)",
+                  borderRadius: "8px",
+                  padding: "16px",
+                  marginBottom: "16px"
+                }}>
+                  <h4 style={{fontSize: "16px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Live Estimate</h4>
+                  <div style={{fontSize: "24px", fontWeight: 900, color: "var(--brand)", marginBottom: "4px"}}>
+                    ${((calculatorData.projectType === 'painting' ? 3000 : 
+                        calculatorData.projectType === 'flooring' ? 8000 :
+                        calculatorData.projectType === 'roofing' ? 12000 : 3000) 
+                        * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()} - 
+                    ${((calculatorData.projectType === 'painting' ? 8000 : 
+                        calculatorData.projectType === 'flooring' ? 15000 :
+                        calculatorData.projectType === 'roofing' ? 25000 : 8000) 
+                        * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
+                  </div>
+                  <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 12px"}}>
+                    {calculatorData.zipCode.length >= 5 
+                      ? `Based on ${calculatorData.zipCode} area pricing • Updated weekly`
+                      : "National average • Enter zip code for local pricing"
+                    }
+                  </p>
+                  
+                  {calculatorData.zipCode.length >= 5 && (
                     <div style={{
                       background: "rgba(37, 99, 235, 0.1)",
                       border: "1px solid rgba(37, 99, 235, 0.2)",
@@ -703,8 +708,8 @@ export default function Home() {
                         Join TradeScout →
                       </button>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
                 
                 <div style={{display: "flex", gap: "8px"}}>
                   <button 
