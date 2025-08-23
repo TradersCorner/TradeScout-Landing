@@ -758,41 +758,58 @@ export default function Home() {
                 </div>
                 
                 {(() => {
-                  // Enhanced pricing calculation
-                  const baseRates = {
-                    painting: { min: 3000, max: 8000 },
-                    flooring: { min: 8000, max: 15000 },
-                    roofing: { min: 12000, max: 25000 }
+                  // Realistic pricing per square foot
+                  const homeSize = parseInt(calculatorData.homeSize);
+                  
+                  const pricePerSqFt = {
+                    painting: {
+                      basic: { min: 2.5, max: 4.0 },
+                      standard: { min: 3.5, max: 5.5 },
+                      premium: { min: 5.0, max: 8.0 }
+                    },
+                    flooring: {
+                      basic: { min: 4.0, max: 7.0 },
+                      standard: { min: 6.0, max: 10.0 },
+                      premium: { min: 9.0, max: 16.0 }
+                    },
+                    roofing: {
+                      basic: { min: 6.0, max: 9.0 },
+                      standard: { min: 8.0, max: 12.0 },
+                      premium: { min: 11.0, max: 18.0 }
+                    }
                   };
                   
-                  const qualityMultipliers = {
-                    basic: { min: 0.8, max: 0.85 },
-                    standard: { min: 1.0, max: 1.0 },
-                    premium: { min: 1.4, max: 1.6 }
+                  // Project coverage adjustments (not all sq ft of home applies)
+                  const coverageMultipliers = {
+                    painting: 0.85, // Interior walls + some exterior
+                    flooring: 0.75, // Excludes bathrooms, utility areas
+                    roofing: 0.6    // Roof area is less than floor area
                   };
                   
                   const urgencyMultipliers = {
                     flexible: 0.9,
                     normal: 1.0,
-                    urgent: 1.25
+                    urgent: 1.15
                   };
                   
-                  const sizeMultiplier = parseInt(calculatorData.homeSize) / 1500;
-                  const locationMultiplier = calculatorData.zipCode.length >= 5 ? 1.1 : 1.0;
+                  const locationMultiplier = calculatorData.zipCode.length >= 5 ? 1.08 : 1.0;
                   
-                  const baseRate = baseRates[calculatorData.projectType as keyof typeof baseRates];
-                  const qualityMult = qualityMultipliers[calculatorData.quality as keyof typeof qualityMultipliers];
+                  const projectType = calculatorData.projectType as keyof typeof pricePerSqFt;
+                  const quality = calculatorData.quality as keyof typeof pricePerSqFt.painting;
+                  const rates = pricePerSqFt[projectType][quality];
+                  const coverage = coverageMultipliers[projectType];
                   const urgencyMult = urgencyMultipliers[calculatorData.urgency as keyof typeof urgencyMultipliers];
                   
-                  const minPrice = Math.round((baseRate.min * qualityMult.min * urgencyMult * sizeMultiplier * locationMultiplier));
-                  const maxPrice = Math.round((baseRate.max * qualityMult.max * urgencyMult * sizeMultiplier * locationMultiplier));
+                  const effectiveArea = homeSize * coverage;
+                  const minPrice = Math.round(rates.min * effectiveArea * urgencyMult * locationMultiplier);
+                  const maxPrice = Math.round(rates.max * effectiveArea * urgencyMult * locationMultiplier);
                   
-                  const costPerSqFt = Math.round((minPrice + maxPrice) / 2 / parseInt(calculatorData.homeSize));
+                  const avgPricePerSqFt = ((rates.min + rates.max) / 2 * urgencyMult * locationMultiplier);
                   
                   const timelineMap = {
-                    painting: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-8 weeks',
-                    flooring: calculatorData.urgency === 'urgent' ? '2-3 weeks' : calculatorData.urgency === 'normal' ? '3-6 weeks' : '6-12 weeks',
-                    roofing: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-8 weeks'
+                    painting: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-3 weeks' : '3-5 weeks',
+                    flooring: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-6 weeks',
+                    roofing: calculatorData.urgency === 'urgent' ? '3-5 days' : calculatorData.urgency === 'normal' ? '1-2 weeks' : '2-4 weeks'
                   };
                   
                   return (
@@ -813,7 +830,7 @@ export default function Home() {
                       {/* Cost breakdown */}
                       <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px", margin: "12px 0"}}>
                         <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
-                          <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>${costPerSqFt}</div>
+                          <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>${avgPricePerSqFt.toFixed(2)}</div>
                           <div style={{fontSize: "11px", color: "var(--muted)"}}>per sq ft</div>
                         </div>
                         <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
@@ -835,7 +852,7 @@ export default function Home() {
                       
                       {/* Price factors */}
                       <div style={{background: "rgba(255,255,255,0.05)", borderRadius: "6px", padding: "10px", fontSize: "11px", color: "var(--muted)", marginBottom: "12px"}}>
-                        <strong>Estimate includes:</strong> {calculatorData.quality} materials, {calculatorData.urgency} timeline, {parseInt(calculatorData.homeSize).toLocaleString()} sq ft
+                        <strong>Estimate includes:</strong> {calculatorData.quality} materials, {calculatorData.urgency} timeline, ~{Math.round(effectiveArea).toLocaleString()} sq ft coverage
                       </div>
                       
                       {calculatorData.zipCode.length >= 5 && (
