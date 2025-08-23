@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users, Copy, Share2, MessageCircle, Mail, Link2, Star } from "lucide-react";
-import ContractorProfileCard from "../components/contractor-profile-card";
-import TrustScore from "../components/trust-score";
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
@@ -29,64 +27,6 @@ export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [referralCode, setReferralCode] = useState('');
   const [userReferralCode, setUserReferralCode] = useState('');
-
-  // Sample contractor data for demonstration
-  const sampleContractors = [
-    {
-      id: "1",
-      name: "Mike Rodriguez",
-      email: "mike@qualitypainting.com",
-      phone: "(555) 123-4567",
-      specialties: ["Interior Painting", "Exterior Painting", "Drywall Repair"],
-      state: "Texas",
-      city: "Austin",
-      licenseNumber: "TX-12345",
-      insuranceVerified: true,
-      backgroundCheckPassed: true,
-      yearsExperience: 12,
-      completedProjects: 248,
-      averageRating: 4.8,
-      trustScore: 92,
-      verificationStatus: "verified",
-      bio: "Professional painter with over a decade of experience. Specializing in high-quality residential and commercial painting services."
-    },
-    {
-      id: "2", 
-      name: "Sarah Johnson",
-      email: "sarah@flooringpros.com",
-      phone: "(555) 987-6543",
-      specialties: ["Hardwood Flooring", "Tile Installation", "Laminate"],
-      state: "California",
-      city: "San Francisco",
-      licenseNumber: "CA-67890",
-      insuranceVerified: true,
-      backgroundCheckPassed: true,
-      yearsExperience: 8,
-      completedProjects: 156,
-      averageRating: 4.9,
-      trustScore: 89,
-      verificationStatus: "verified",
-      bio: "Expert flooring contractor specializing in premium hardwood and tile installations with attention to detail."
-    },
-    {
-      id: "3",
-      name: "David Chen",
-      email: "david@roofingexperts.com",
-      phone: "(555) 456-7890", 
-      specialties: ["Roof Replacement", "Roof Repair", "Gutter Installation"],
-      state: "Florida",
-      city: "Miami",
-      licenseNumber: "FL-54321",
-      insuranceVerified: true,
-      backgroundCheckPassed: false,
-      yearsExperience: 15,
-      completedProjects: 302,
-      averageRating: 4.7,
-      trustScore: 85,
-      verificationStatus: "verified",
-      bio: "Licensed roofing contractor with 15 years of experience in residential and commercial roofing projects."
-    }
-  ];
 
   const constructionLogos = [
     <Hammer key="hammer" size={28} />,
