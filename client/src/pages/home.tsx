@@ -17,7 +17,7 @@ export default function Home() {
   });
   const [showCalculator, setShowCalculator] = useState(false);
   const [calculatorData, setCalculatorData] = useState({
-    projectType: 'bathroom-remodel',
+    projectType: 'painting',
     homeSize: '1500',
     zipCode: ''
   });
@@ -548,10 +548,9 @@ export default function Home() {
                       color: "var(--text)"
                     }}
                   >
-                    <option value="bathroom-remodel">Bathroom Remodel</option>
-                    <option value="kitchen-remodel">Kitchen Remodel</option>
-                    <option value="roof-replacement">Roof Replacement</option>
+                    <option value="painting">Interior/Exterior Painting</option>
                     <option value="flooring">Flooring Installation</option>
+                    <option value="roofing">Roof Replacement</option>
                   </select>
                 </div>
                 
@@ -600,13 +599,13 @@ export default function Home() {
                   }}>
                     <h4 style={{fontSize: "16px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Estimated Cost Range</h4>
                     <div style={{fontSize: "24px", fontWeight: 900, color: "var(--brand)", marginBottom: "4px"}}>
-                      ${((calculatorData.projectType === 'bathroom-remodel' ? 15000 : 
-                          calculatorData.projectType === 'kitchen-remodel' ? 25000 :
-                          calculatorData.projectType === 'roof-replacement' ? 12000 : 8000) 
+                      ${((calculatorData.projectType === 'painting' ? 3000 : 
+                          calculatorData.projectType === 'flooring' ? 8000 :
+                          calculatorData.projectType === 'roofing' ? 12000 : 3000) 
                           * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()} - 
-                      ${((calculatorData.projectType === 'bathroom-remodel' ? 35000 : 
-                          calculatorData.projectType === 'kitchen-remodel' ? 65000 :
-                          calculatorData.projectType === 'roof-replacement' ? 25000 : 15000) 
+                      ${((calculatorData.projectType === 'painting' ? 8000 : 
+                          calculatorData.projectType === 'flooring' ? 15000 :
+                          calculatorData.projectType === 'roofing' ? 25000 : 8000) 
                           * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
                     </div>
                     <p style={{fontSize: "12px", color: "var(--muted)", margin: 0}}>Based on {calculatorData.zipCode} area pricing • Updated weekly</p>
