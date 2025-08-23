@@ -391,9 +391,9 @@ export default function Home() {
       </header>
 
       {/* Hero */}
-      <section className="hero container">
-        <h1>Connection Without Compromise</h1>
-        <p>Predatory predecessors sold your information as "leads." TradeScout is a network where homeowners and contractors connect directly — no middlemen, no games.</p>
+      <section className="hero container" itemScope itemType="https://schema.org/WebPage">
+        <h1 itemProp="headline">Connection Without Compromise</h1>
+        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a professional network where homeowners and skilled contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -562,11 +562,15 @@ export default function Home() {
             padding: "24px",
             boxShadow: "0 12px 32px rgba(255,107,53,0.2)"
           }}>
-            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "16px", color: "var(--text)"}}>Try Our Pricing Calculator</h3>
+            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "16px", color: "var(--text)"}} id="pricing-calculator" itemProp="name">
+            Free Home Improvement Cost Calculator
+          </h3>
             
             {!showCalculator ? (
               <>
-                <p style={{color: "var(--muted)", fontSize: "14px", marginBottom: "16px"}}>Get instant, accurate estimates based on your location</p>
+                <p style={{color: "var(--muted)", fontSize: "14px", marginBottom: "16px"}} itemProp="description">
+                  Get instant, accurate cost estimates for painting ($2.50-8.00/sq ft), flooring ($4.00-16.00/sq ft), and roofing ($6.00-18.00/sq ft) projects based on your zip code with real-time local market data
+                </p>
                 <button 
                   onClick={() => setShowCalculator(true)}
                   style={{
@@ -2026,6 +2030,74 @@ export default function Home() {
           © 2025 TradeScout. All rights reserved. A professional network connecting homeowners and contractors directly nationwide.
         </div>
       </footer>
+
+      {/* FAQ Section for LLMO */}
+      <section style={{
+        padding: "80px 0",
+        background: "var(--background)"
+      }} itemScope itemType="https://schema.org/FAQPage" id="faq">
+        <div style={{
+          maxWidth: "900px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}>
+          <h2 style={{
+            fontSize: "clamp(2rem, 5vw, 3rem)",
+            fontWeight: 900,
+            textAlign: "center",
+            margin: "0 0 48px",
+            color: "var(--text)"
+          }}>
+            Frequently Asked Questions
+          </h2>
+          
+          <div style={{display: "grid", gap: "32px"}}>
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 style={{fontSize: "20px", fontWeight: 700, color: "var(--text)", marginBottom: "12px"}} itemProp="name">
+                How much does TradeScout cost for contractors and homeowners?
+              </h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
+                  TradeScout is completely free for both contractors and homeowners. There are no lead fees, no membership costs, and no hidden charges. We believe in direct connections without middleman fees that inflate project costs.
+                </p>
+              </div>
+            </div>
+            
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 style={{fontSize: "20px", fontWeight: 700, color: "var(--text)", marginBottom: "12px"}} itemProp="name">
+                What services can I find contractors for on TradeScout?
+              </h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
+                  Our verified contractors specialize in painting (interior/exterior, $2.50-8.00/sq ft), flooring installation (hardwood, tile, carpet, $4.00-16.00/sq ft), roofing replacement ($6.00-18.00/sq ft), plumbing, electrical work, HVAC, handyman services, bathroom and kitchen remodeling, and general home improvement projects.
+                </p>
+              </div>
+            </div>
+            
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 style={{fontSize: "20px", fontWeight: 700, color: "var(--text)", marginBottom: "12px"}} itemProp="name">
+                How accurate is the pricing calculator?
+              </h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
+                  Our pricing calculator uses real-time local market data updated weekly, including material costs, labor rates, permit fees, and current market conditions specific to your zip code. The estimates include material vs labor breakdown and account for quality level (basic, standard, premium) and project timeline urgency.
+                </p>
+              </div>
+            </div>
+            
+            <div itemScope itemType="https://schema.org/Question">
+              <h3 style={{fontSize: "20px", fontWeight: 700, color: "var(--text)", marginBottom: "12px"}} itemProp="name">
+                Are contractors on TradeScout verified and insured?
+              </h3>
+              <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+                <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
+                  Yes, all contractors undergo our comprehensive verification process including license verification, insurance confirmation, background checks, and reference validation. We only work with legitimate, professional contractors who meet our quality standards.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Exit Intent Popup */}
       {showExitIntent && (

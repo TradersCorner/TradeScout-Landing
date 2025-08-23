@@ -9,13 +9,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="pt-16 pb-8 text-center">
+    <section className="pt-16 pb-8 text-center" itemScope itemType="https://schema.org/Organization">
       <div className="w-full max-w-container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-wide mb-4">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-wide mb-4" itemProp="name">
           Connection Without Compromise
         </h1>
-        <p className="text-base md:text-lg text-muted-text max-w-4xl mx-auto leading-relaxed">
-          Predatory predecessors sold your information as "leads." TradeScout builds a network where homeowners and contractors connect directly — no middlemen, no games.
+        <p className="text-base md:text-lg text-muted-text max-w-4xl mx-auto leading-relaxed" itemProp="description">
+          Predatory predecessors sold your information as "leads." TradeScout builds a professional network where homeowners and skilled contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.
         </p>
         <div className="mt-7">
           <button 
