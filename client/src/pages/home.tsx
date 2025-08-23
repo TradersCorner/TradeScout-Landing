@@ -19,7 +19,9 @@ export default function Home() {
   const [calculatorData, setCalculatorData] = useState({
     projectType: 'painting',
     homeSize: '1500',
-    zipCode: ''
+    zipCode: '',
+    quality: 'standard',
+    urgency: 'normal'
   });
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [showExitIntent, setShowExitIntent] = useState(false);
@@ -534,87 +536,186 @@ export default function Home() {
               </>
             ) : (
               <div style={{textAlign: "left"}}>
-                <div style={{marginBottom: "16px"}}>
-                  <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Project Type</label>
-                  <select 
-                    value={calculatorData.projectType}
-                    onChange={(e) => setCalculatorData({...calculatorData, projectType: e.target.value})}
-                    style={{
-                      width: "100%",
-                      padding: "12px 40px 12px 12px",
-                      borderRadius: "8px",
-                      border: "2px solid var(--border)",
-                      background: "var(--panel-2)",
-                      color: "var(--text)",
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      appearance: "none",
-                      backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "right 12px center",
-                      backgroundSize: "16px 16px",
-                      cursor: "pointer",
-                      transition: "all 0.2s ease",
-                      outline: "none"
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = "var(--brand)";
-                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = "var(--border)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "var(--brand)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (document.activeElement !== e.currentTarget) {
+                <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
+                  <div>
+                    <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Project Type</label>
+                    <select 
+                      value={calculatorData.projectType}
+                      onChange={(e) => setCalculatorData({...calculatorData, projectType: e.target.value})}
+                      style={{
+                        width: "100%",
+                        padding: "12px 40px 12px 12px",
+                        borderRadius: "8px",
+                        border: "2px solid var(--border)",
+                        background: "var(--panel-2)",
+                        color: "var(--text)",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        appearance: "none",
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 12px center",
+                        backgroundSize: "16px 16px",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                        outline: "none"
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                      }}
+                      onBlur={(e) => {
                         e.currentTarget.style.borderColor = "var(--border)";
-                      }
-                    }}
-                  >
-                    <option value="painting">Interior/Exterior Painting</option>
-                    <option value="flooring">Flooring Installation</option>
-                    <option value="roofing">Roof Replacement</option>
-                  </select>
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (document.activeElement !== e.currentTarget) {
+                          e.currentTarget.style.borderColor = "var(--border)";
+                        }
+                      }}
+                    >
+                      <option value="painting">Interior/Exterior Painting</option>
+                      <option value="flooring">Flooring Installation</option>
+                      <option value="roofing">Roof Replacement</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Quality Level</label>
+                    <select 
+                      value={calculatorData.quality}
+                      onChange={(e) => setCalculatorData({...calculatorData, quality: e.target.value})}
+                      style={{
+                        width: "100%",
+                        padding: "12px 40px 12px 12px",
+                        borderRadius: "8px",
+                        border: "2px solid var(--border)",
+                        background: "var(--panel-2)",
+                        color: "var(--text)",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        appearance: "none",
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 12px center",
+                        backgroundSize: "16px 16px",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                        outline: "none"
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = "var(--border)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (document.activeElement !== e.currentTarget) {
+                          e.currentTarget.style.borderColor = "var(--border)";
+                        }
+                      }}
+                    >
+                      <option value="basic">Basic Quality</option>
+                      <option value="standard">Standard Quality</option>
+                      <option value="premium">Premium Quality</option>
+                    </select>
+                  </div>
                 </div>
                 
-                <div style={{marginBottom: "16px"}}>
-                  <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Home Size (sq ft)</label>
-                  <input 
-                    type="number"
-                    value={calculatorData.homeSize}
-                    onChange={(e) => setCalculatorData({...calculatorData, homeSize: e.target.value})}
-                    style={{
-                      width: "100%",
-                      padding: "12px",
-                      borderRadius: "8px",
-                      border: "2px solid var(--border)",
-                      background: "var(--panel-2)",
-                      color: "var(--text)",
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      transition: "all 0.2s ease",
-                      outline: "none"
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = "var(--brand)";
-                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = "var(--border)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "var(--brand)";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (document.activeElement !== e.currentTarget) {
+                <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
+                  <div>
+                    <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Home Size (sq ft)</label>
+                    <input 
+                      type="number"
+                      value={calculatorData.homeSize}
+                      onChange={(e) => setCalculatorData({...calculatorData, homeSize: e.target.value})}
+                      min="500"
+                      max="10000"
+                      step="100"
+                      style={{
+                        width: "100%",
+                        padding: "12px",
+                        borderRadius: "8px",
+                        border: "2px solid var(--border)",
+                        background: "var(--panel-2)",
+                        color: "var(--text)",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        transition: "all 0.2s ease",
+                        outline: "none"
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                      }}
+                      onBlur={(e) => {
                         e.currentTarget.style.borderColor = "var(--border)";
-                      }
-                    }}
-                  />
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (document.activeElement !== e.currentTarget) {
+                          e.currentTarget.style.borderColor = "var(--border)";
+                        }
+                      }}
+                    />
+                  </div>
+                  
+                  <div>
+                    <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Timeline</label>
+                    <select 
+                      value={calculatorData.urgency}
+                      onChange={(e) => setCalculatorData({...calculatorData, urgency: e.target.value})}
+                      style={{
+                        width: "100%",
+                        padding: "12px 40px 12px 12px",
+                        borderRadius: "8px",
+                        border: "2px solid var(--border)",
+                        background: "var(--panel-2)",
+                        color: "var(--text)",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                        appearance: "none",
+                        backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "right 12px center",
+                        backgroundSize: "16px 16px",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease",
+                        outline: "none"
+                      }}
+                      onFocus={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                        e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                      }}
+                      onBlur={(e) => {
+                        e.currentTarget.style.borderColor = "var(--border)";
+                        e.currentTarget.style.boxShadow = "none";
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "var(--brand)";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (document.activeElement !== e.currentTarget) {
+                          e.currentTarget.style.borderColor = "var(--border)";
+                        }
+                      }}
+                    >
+                      <option value="flexible">Flexible (3+ months)</option>
+                      <option value="normal">Normal (1-3 months)</option>
+                      <option value="urgent">Urgent (within 1 month)</option>
+                    </select>
+                  </div>
                 </div>
                 
                 <div style={{marginBottom: "16px"}}>
@@ -656,60 +757,121 @@ export default function Home() {
                   />
                 </div>
                 
-                <div style={{
-                  background: "rgba(255,107,53,0.1)",
-                  border: "1px solid rgba(255,107,53,0.3)",
-                  borderRadius: "8px",
-                  padding: "16px",
-                  marginBottom: "16px"
-                }}>
-                  <h4 style={{fontSize: "16px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Live Estimate</h4>
-                  <div style={{fontSize: "24px", fontWeight: 900, color: "var(--brand)", marginBottom: "4px"}}>
-                    ${((calculatorData.projectType === 'painting' ? 3000 : 
-                        calculatorData.projectType === 'flooring' ? 8000 :
-                        calculatorData.projectType === 'roofing' ? 12000 : 3000) 
-                        * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()} - 
-                    ${((calculatorData.projectType === 'painting' ? 8000 : 
-                        calculatorData.projectType === 'flooring' ? 15000 :
-                        calculatorData.projectType === 'roofing' ? 25000 : 8000) 
-                        * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
-                  </div>
-                  <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 12px"}}>
-                    {calculatorData.zipCode.length >= 5 
-                      ? `Based on ${calculatorData.zipCode} area pricing • Updated weekly`
-                      : "National average • Enter zip code for local pricing"
-                    }
-                  </p>
+                {(() => {
+                  // Enhanced pricing calculation
+                  const baseRates = {
+                    painting: { min: 3000, max: 8000 },
+                    flooring: { min: 8000, max: 15000 },
+                    roofing: { min: 12000, max: 25000 }
+                  };
                   
-                  {calculatorData.zipCode.length >= 5 && (
+                  const qualityMultipliers = {
+                    basic: { min: 0.8, max: 0.85 },
+                    standard: { min: 1.0, max: 1.0 },
+                    premium: { min: 1.4, max: 1.6 }
+                  };
+                  
+                  const urgencyMultipliers = {
+                    flexible: 0.9,
+                    normal: 1.0,
+                    urgent: 1.25
+                  };
+                  
+                  const sizeMultiplier = parseInt(calculatorData.homeSize) / 1500;
+                  const locationMultiplier = calculatorData.zipCode.length >= 5 ? 1.1 : 1.0;
+                  
+                  const baseRate = baseRates[calculatorData.projectType as keyof typeof baseRates];
+                  const qualityMult = qualityMultipliers[calculatorData.quality as keyof typeof qualityMultipliers];
+                  const urgencyMult = urgencyMultipliers[calculatorData.urgency as keyof typeof urgencyMultipliers];
+                  
+                  const minPrice = Math.round((baseRate.min * qualityMult.min * urgencyMult * sizeMultiplier * locationMultiplier));
+                  const maxPrice = Math.round((baseRate.max * qualityMult.max * urgencyMult * sizeMultiplier * locationMultiplier));
+                  
+                  const costPerSqFt = Math.round((minPrice + maxPrice) / 2 / parseInt(calculatorData.homeSize));
+                  
+                  const timelineMap = {
+                    painting: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-8 weeks',
+                    flooring: calculatorData.urgency === 'urgent' ? '2-3 weeks' : calculatorData.urgency === 'normal' ? '3-6 weeks' : '6-12 weeks',
+                    roofing: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-8 weeks'
+                  };
+                  
+                  return (
                     <div style={{
-                      background: "rgba(37, 99, 235, 0.1)",
-                      border: "1px solid rgba(37, 99, 235, 0.2)",
-                      borderRadius: "6px",
-                      padding: "12px",
-                      textAlign: "center"
+                      background: "rgba(255,107,53,0.1)",
+                      border: "1px solid rgba(255,107,53,0.3)",
+                      borderRadius: "8px",
+                      padding: "20px",
+                      marginBottom: "16px"
                     }}>
-                      <p style={{fontSize: "13px", color: "var(--text)", margin: "0 0 8px", fontWeight: 600}}>
-                        💡 Want to connect with verified contractors in your area?
+                      <h4 style={{fontSize: "18px", fontWeight: 700, marginBottom: "12px", color: "var(--text)"}}>Live Estimate</h4>
+                      
+                      {/* Main price range */}
+                      <div style={{fontSize: "28px", fontWeight: 900, color: "var(--brand)", marginBottom: "8px", transition: "all 0.3s ease"}}>
+                        ${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()}
+                      </div>
+                      
+                      {/* Cost breakdown */}
+                      <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "12px", margin: "12px 0"}}>
+                        <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
+                          <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>${costPerSqFt}</div>
+                          <div style={{fontSize: "11px", color: "var(--muted)"}}>per sq ft</div>
+                        </div>
+                        <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
+                          <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>{timelineMap[calculatorData.projectType as keyof typeof timelineMap]}</div>
+                          <div style={{fontSize: "11px", color: "var(--muted)"}}>timeline</div>
+                        </div>
+                        <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
+                          <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>{calculatorData.quality.charAt(0).toUpperCase() + calculatorData.quality.slice(1)}</div>
+                          <div style={{fontSize: "11px", color: "var(--muted)"}}>quality</div>
+                        </div>
+                      </div>
+                      
+                      <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 12px"}}>
+                        {calculatorData.zipCode.length >= 5 
+                          ? `✓ Based on ${calculatorData.zipCode} area pricing • Updated weekly`
+                          : "ℹ️ National average • Enter zip code for local pricing"
+                        }
                       </p>
-                      <button 
-                        style={{
-                          background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
-                          color: "white",
-                          border: "none",
+                      
+                      {/* Price factors */}
+                      <div style={{background: "rgba(255,255,255,0.05)", borderRadius: "6px", padding: "10px", fontSize: "11px", color: "var(--muted)", marginBottom: "12px"}}>
+                        <strong>Estimate includes:</strong> {calculatorData.quality} materials, {calculatorData.urgency} timeline, {parseInt(calculatorData.homeSize).toLocaleString()} sq ft
+                      </div>
+                      
+                      {calculatorData.zipCode.length >= 5 && (
+                        <div style={{
+                          background: "rgba(37, 99, 235, 0.1)",
+                          border: "1px solid rgba(37, 99, 235, 0.2)",
                           borderRadius: "6px",
-                          padding: "8px 16px",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          cursor: "pointer"
-                        }}
-                        onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
-                      >
-                        Join TradeScout →
-                      </button>
+                          padding: "12px",
+                          textAlign: "center"
+                        }}>
+                          <p style={{fontSize: "13px", color: "var(--text)", margin: "0 0 8px", fontWeight: 600}}>
+                            💡 Ready to connect with verified contractors in your area?
+                          </p>
+                          <button 
+                            style={{
+                              background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                              color: "white",
+                              border: "none",
+                              borderRadius: "6px",
+                              padding: "8px 16px",
+                              fontSize: "13px",
+                              fontWeight: 600,
+                              cursor: "pointer",
+                              transition: "all 0.2s ease"
+                            }}
+                            onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
+                            onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-1px)"}
+                            onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0px)"}
+                          >
+                            Join TradeScout →
+                          </button>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </div>
+                  );
+                })()}
                 
                 <div style={{display: "flex", gap: "8px"}}>
                   <button 
