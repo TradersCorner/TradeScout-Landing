@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users } from "lucide-react";
+import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users, Copy, Share2, MessageCircle, Mail, Link2 } from "lucide-react";
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
@@ -245,10 +245,54 @@ export default function Home() {
     // Let the form submit normally to Formspree when online
   };
 
-  const copyReferralLink = () => {
+  const copyReferralLink = async () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
-    navigator.clipboard.writeText(referralLink);
-    alert('Referral link copied! Share it to help others join TradeScout.');
+    try {
+      await navigator.clipboard.writeText(referralLink);
+      alert('✅ Referral link copied to clipboard!');
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = referralLink;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert('✅ Referral link copied to clipboard!');
+    }
+  };
+
+  const shareViaEmail = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const subject = encodeURIComponent('Join me on TradeScout - Direct connections for home projects');
+    const body = encodeURIComponent(`Hey! I thought you'd be interested in TradeScout - a new platform where homeowners and contractors connect directly without middlemen.\n\nJoin through my link for priority access: ${referralLink}\n\nNo lead fees, no spam, just real connections. Check it out!`);
+    window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+  };
+
+  const shareViaWhatsApp = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const message = encodeURIComponent(`🏠 Hey! Join me on TradeScout - the direct connection platform for homeowners & contractors. No middlemen, no lead fees! Get priority access: ${referralLink}`);
+    window.open(`https://wa.me/?text=${message}`, '_blank');
+  };
+
+  const shareViaSMS = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const message = encodeURIComponent(`Hey! Join TradeScout for direct connections between homeowners & contractors. No middlemen! Get priority access: ${referralLink}`);
+    window.open(`sms:?body=${message}`, '_blank');
+  };
+
+  const shareViaTwitter = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const text = encodeURIComponent(`🏠 Excited to join @TradeScout - finally, a platform where homeowners and contractors connect directly! No middlemen, no lead fees. Join me: ${referralLink} #TradeScout #HomeImprovement`);
+    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+  };
+
+  const shareViaLinkedIn = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const url = encodeURIComponent(referralLink);
+    const title = encodeURIComponent('TradeScout - Direct Connections for Home Projects');
+    const summary = encodeURIComponent('A professional network connecting homeowners and contractors directly. No middlemen, no lead fees, just real connections.');
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`, '_blank');
   };
 
   return (
@@ -994,30 +1038,37 @@ export default function Home() {
           Tell us about your projects or experience.
         </div>
         
-        {/* Referral System */}
+        {/* Enhanced Referral System */}
         <div style={{
           textAlign: "center",
           margin: "32px auto",
-          maxWidth: "600px",
-          padding: "20px",
-          background: "rgba(37, 99, 235, 0.08)",
-          borderRadius: "12px",
-          border: "1px solid rgba(37, 99, 235, 0.2)"
+          maxWidth: "700px",
+          padding: "24px",
+          background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
+          borderRadius: "16px",
+          border: "1px solid rgba(37, 99, 235, 0.2)",
+          boxShadow: "0 8px 32px rgba(37, 99, 235, 0.1)"
         }}>
-          <h3 style={{fontSize: "18px", fontWeight: 700, margin: "0 0 12px", color: "var(--text)"}}>Invite Friends & Move Up the List</h3>
-          <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 16px", lineHeight: 1.5}}>
+          <div style={{marginBottom: "16px"}}>
+            <Share2 size={32} style={{color: "var(--accent)", margin: "0 auto"}} />
+          </div>
+          <h3 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Invite Friends & Move Up the List</h3>
+          <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 20px", lineHeight: 1.5}}>
             Share your referral link and get priority access for every person who joins through your link.
           </p>
           
+          {/* Referral Link Display */}
           <div style={{
             display: "flex",
-            gap: "12px",
+            gap: "8px",
             alignItems: "center",
             background: "var(--panel-2)",
-            borderRadius: "8px",
+            borderRadius: "10px",
             padding: "12px",
-            border: "1px solid var(--border)"
+            border: "1px solid var(--border)",
+            marginBottom: "20px"
           }}>
+            <Link2 size={16} style={{color: "var(--muted)", flexShrink: 0}} />
             <input 
               type="text"
               value={`${window.location.origin}/?ref=${userReferralCode}`}
@@ -1028,7 +1079,8 @@ export default function Home() {
                 border: "none",
                 color: "var(--text)",
                 fontSize: "14px",
-                outline: "none"
+                outline: "none",
+                fontFamily: "monospace"
               }}
             />
             <button 
@@ -1038,23 +1090,220 @@ export default function Home() {
                 color: "white",
                 border: "none",
                 borderRadius: "6px",
-                padding: "8px 16px",
-                fontSize: "14px",
+                padding: "8px 12px",
+                fontSize: "13px",
                 fontWeight: 600,
                 cursor: "pointer",
-                whiteSpace: "nowrap"
+                whiteSpace: "nowrap",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+                transition: "all 0.2s ease"
               }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-1px)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
               data-testid="button-copy-referral"
             >
-              Copy Link
+              <Copy size={14} />
+              Copy
             </button>
           </div>
           
+          {/* Social Share Options */}
+          <div style={{marginBottom: "16px"}}>
+            <p style={{fontSize: "14px", fontWeight: 600, margin: "0 0 12px", color: "var(--text)"}}>Share via:</p>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+              gap: "8px",
+              maxWidth: "500px",
+              margin: "0 auto"
+            }}>
+              {/* Email Share */}
+              <button 
+                onClick={shareViaEmail}
+                style={{
+                  background: "#EA4335",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(234, 67, 53, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-email"
+              >
+                <Mail size={14} />
+                Email
+              </button>
+              
+              {/* WhatsApp Share */}
+              <button 
+                onClick={shareViaWhatsApp}
+                style={{
+                  background: "#25D366",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 211, 102, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-whatsapp"
+              >
+                <MessageCircle size={14} />
+                WhatsApp
+              </button>
+              
+              {/* SMS Share */}
+              <button 
+                onClick={shareViaSMS}
+                style={{
+                  background: "#0084FF",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 132, 255, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-sms"
+              >
+                <MessageCircle size={14} />
+                SMS
+              </button>
+              
+              {/* Twitter Share */}
+              <button 
+                onClick={shareViaTwitter}
+                style={{
+                  background: "#1DA1F2",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(29, 161, 242, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-twitter"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                </svg>
+                Twitter
+              </button>
+              
+              {/* LinkedIn Share */}
+              <button 
+                onClick={shareViaLinkedIn}
+                style={{
+                  background: "#0077B5",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(0, 119, 181, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-linkedin"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+                LinkedIn
+              </button>
+            </div>
+          </div>
+          
           {referralCode && (
-            <p style={{fontSize: "12px", color: "var(--success)", margin: "12px 0 0", fontWeight: 600}}>
-              ✅ You joined through {referralCode}'s link - you're both getting priority access!
-            </p>
+            <div style={{
+              background: "rgba(16, 185, 129, 0.1)",
+              border: "1px solid rgba(16, 185, 129, 0.3)",
+              borderRadius: "8px",
+              padding: "12px",
+              margin: "16px 0 0"
+            }}>
+              <p style={{fontSize: "13px", color: "var(--success)", margin: 0, fontWeight: 600}}>
+                ✅ You joined through {referralCode}'s link - you're both getting priority access!
+              </p>
+            </div>
           )}
+          
+          <p style={{fontSize: "12px", color: "var(--muted)", margin: "16px 0 0", opacity: 0.8}}>
+            💡 <strong>Pro tip:</strong> The more people you refer, the higher you move up the early access list!
+          </p>
         </div>
       </section>
 
