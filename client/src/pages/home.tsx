@@ -428,7 +428,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container" itemScope itemType="https://schema.org/WebPage">
         <h1 itemProp="headline">Connection Without Compromise</h1>
-        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout USA is a professional network where American homeowners and skilled US contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
+        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a professional network where American homeowners and skilled US contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -2062,7 +2062,7 @@ export default function Home() {
 
       <footer role="contentinfo">
         <div className="container">
-          © 2025 TradeScout USA. All rights reserved. A United States-based professional network connecting American homeowners and contractors directly nationwide.
+          © 2025 TradeScout. All rights reserved. A United States-based professional network connecting American homeowners and contractors directly nationwide.
           <br /><br />
           <span style={{fontSize: "12px", opacity: 0.8}}>
             <strong>Disclaimer:</strong> While we perform due diligence in vetting contractors, homeowners should independently verify licenses, insurance, and credentials before hiring any contractor.
@@ -2097,7 +2097,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  TradeScout USA is completely free for both American contractors and homeowners. There are no lead fees, no membership costs, and no hidden charges. We believe in direct connections within the US market without middleman fees that inflate project costs.
+                  TradeScout is completely free for both American contractors and homeowners. There are no lead fees, no membership costs, and no hidden charges. We believe in direct connections within the US market without middleman fees that inflate project costs.
                 </p>
               </div>
             </div>
@@ -2133,7 +2133,7 @@ export default function Home() {
                   Yes, all US contractors undergo our comprehensive American verification process including license verification, insurance confirmation, background checks, and reference validation. We only work with legitimate, professional American contractors who meet our quality standards.
                 </p>
                 <p style={{color: "var(--muted)", fontSize: "14px", fontStyle: "italic", marginTop: "12px", padding: "12px", background: "var(--panel-2)", borderRadius: "8px", border: "1px solid var(--border)"}}>
-                  <strong>Important Disclaimer:</strong> While TradeScout USA performs due diligence in vetting contractors, homeowners are encouraged to independently verify contractor licenses, insurance coverage, and credentials through their state licensing boards before hiring. Always request proof of insurance and obtain multiple quotes for your project.
+                  <strong>Important Disclaimer:</strong> While TradeScout performs due diligence in vetting contractors, homeowners are encouraged to independently verify contractor licenses, insurance coverage, and credentials through their state licensing boards before hiring. Always request proof of insurance and obtain multiple quotes for your project.
                 </p>
               </div>
             </div>
