@@ -336,6 +336,20 @@ export default function Home() {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
   };
 
+  const shareViaFacebook = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    const url = encodeURIComponent(referralLink);
+    const quote = encodeURIComponent('🏠 Join me on TradeScout - the direct connection platform for homeowners and contractors! No middlemen, no lead fees.');
+    try {
+      // Facebook sharing API
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${quote}`, '_blank');
+    } catch (err) {
+      // Fallback: copy message
+      navigator.clipboard?.writeText(`${decodeURIComponent(quote)} ${referralLink}`);
+      alert('Facebook not available. Message copied to clipboard!');
+    }
+  };
+
   return (
     <>
       {/* Header */}
@@ -1679,6 +1693,40 @@ export default function Home() {
                   <circle cx="4" cy="4" r="2"/>
                 </svg>
                 LinkedIn
+              </button>
+              
+              {/* Facebook Share */}
+              <button 
+                onClick={shareViaFacebook}
+                style={{
+                  background: "#1877F2",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(24, 119, 242, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-facebook"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Facebook
               </button>
             </div>
           </div>
