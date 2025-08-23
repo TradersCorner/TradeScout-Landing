@@ -1,6 +1,6 @@
 # Overview
 
-TradeScout is a full-stack web application designed to connect homeowners and contractors directly without intermediaries. The platform serves as a landing page with early access signup functionality, targeting users who want to avoid traditional lead generation platforms that act as middlemen. TradeScout is a network where homeowners can find verified contractors for various home improvement services including remodeling, painting, roofing, flooring, and other construction-related work.
+TradeScout USA is a full-stack web application designed to connect American homeowners and US contractors directly without intermediaries. The platform serves as a landing page with early access signup functionality, targeting users who want to avoid traditional lead generation platforms that act as middlemen. TradeScout is a network where homeowners can find verified contractors for various home improvement services including remodeling, painting, roofing, flooring, and other construction-related work.
 
 # User Preferences
 

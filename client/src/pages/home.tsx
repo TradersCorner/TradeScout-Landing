@@ -393,7 +393,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container" itemScope itemType="https://schema.org/WebPage">
         <h1 itemProp="headline">Connection Without Compromise</h1>
-        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a professional network where homeowners and skilled contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
+        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout USA is a professional network where American homeowners and skilled US contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -2027,7 +2027,7 @@ export default function Home() {
 
       <footer role="contentinfo">
         <div className="container">
-          © 2025 TradeScout. All rights reserved. A professional network connecting homeowners and contractors directly nationwide.
+          © 2025 TradeScout USA. All rights reserved. A United States-based professional network connecting American homeowners and contractors directly nationwide.
         </div>
       </footer>
 
@@ -2058,7 +2058,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  TradeScout is completely free for both contractors and homeowners. There are no lead fees, no membership costs, and no hidden charges. We believe in direct connections without middleman fees that inflate project costs.
+                  TradeScout USA is completely free for both American contractors and homeowners. There are no lead fees, no membership costs, and no hidden charges. We believe in direct connections within the US market without middleman fees that inflate project costs.
                 </p>
               </div>
             </div>
@@ -2069,7 +2069,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  Our verified contractors specialize in painting (interior/exterior, $2.50-8.00/sq ft), flooring installation (hardwood, tile, carpet, $4.00-16.00/sq ft), roofing replacement ($6.00-18.00/sq ft), plumbing, electrical work, HVAC, handyman services, bathroom and kitchen remodeling, and general home improvement projects.
+                  Our verified US contractors specialize in painting (interior/exterior, $2.50-8.00/sq ft), flooring installation (hardwood, tile, carpet, $4.00-16.00/sq ft), roofing replacement ($6.00-18.00/sq ft), plumbing, electrical work, HVAC, handyman services, bathroom and kitchen remodeling, and general home improvement projects across America.
                 </p>
               </div>
             </div>
@@ -2080,7 +2080,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  Our pricing calculator uses real-time local market data updated weekly, including material costs, labor rates, permit fees, and current market conditions specific to your zip code. The estimates include material vs labor breakdown and account for quality level (basic, standard, premium) and project timeline urgency.
+                  Our US pricing calculator uses real-time American market data updated weekly, including material costs, labor rates, permit fees, and current market conditions specific to your US zip code. The estimates include material vs labor breakdown and account for quality level (basic, standard, premium) and project timeline urgency.
                 </p>
               </div>
             </div>
@@ -2091,7 +2091,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  Yes, all contractors undergo our comprehensive verification process including license verification, insurance confirmation, background checks, and reference validation. We only work with legitimate, professional contractors who meet our quality standards.
+                  Yes, all US contractors undergo our comprehensive American verification process including license verification, insurance confirmation, background checks, and reference validation. We only work with legitimate, professional American contractors who meet our quality standards.
                 </p>
               </div>
             </div>
