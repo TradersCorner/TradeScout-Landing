@@ -250,17 +250,28 @@ export default function Home() {
   const copyReferralLink = async () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     try {
-      await navigator.clipboard.writeText(referralLink);
-      alert('✅ Referral link copied to clipboard!');
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(referralLink);
+        alert('✅ Referral link copied to clipboard!');
+      } else {
+        // Fallback for non-HTTPS or unsupported browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = referralLink;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          alert('✅ Referral link copied to clipboard!');
+        } catch (copyErr) {
+          alert(`Copy failed. Please manually copy: ${referralLink}`);
+        }
+        document.body.removeChild(textArea);
+      }
     } catch (err) {
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = referralLink;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      alert('✅ Referral link copied to clipboard!');
+      alert(`Copy failed. Please manually copy: ${referralLink}`);
     }
   };
 
@@ -268,33 +279,61 @@ export default function Home() {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const subject = encodeURIComponent('Join me on TradeScout - Direct connections for home projects');
     const body = encodeURIComponent(`Hey! I thought you'd be interested in TradeScout - a new platform where homeowners and contractors connect directly without middlemen.\n\nJoin through my link for priority access: ${referralLink}\n\nNo lead fees, no spam, just real connections. Check it out!`);
-    window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    try {
+      window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    } catch (err) {
+      // Fallback: copy to clipboard if email client doesn't open
+      navigator.clipboard?.writeText(`${decodeURIComponent(subject)}\n\n${decodeURIComponent(body)}`);
+      alert('Email client not found. Message copied to clipboard!');
+    }
   };
 
   const shareViaWhatsApp = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const message = encodeURIComponent(`🏠 Hey! Join me on TradeScout - the direct connection platform for homeowners & contractors. No middlemen, no lead fees! Get priority access: ${referralLink}`);
-    window.open(`https://wa.me/?text=${message}`, '_blank');
+    try {
+      // Try WhatsApp Web/App
+      const whatsappUrl = `https://wa.me/?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    } catch (err) {
+      // Fallback: copy message
+      navigator.clipboard?.writeText(decodeURIComponent(message));
+      alert('WhatsApp not available. Message copied to clipboard!');
+    }
   };
 
   const shareViaSMS = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const message = encodeURIComponent(`Hey! Join TradeScout for direct connections between homeowners & contractors. No middlemen! Get priority access: ${referralLink}`);
-    window.open(`sms:?body=${message}`, '_blank');
+    
+    // Better SMS handling for different platforms
+    const userAgent = navigator.userAgent.toLowerCase();
+    let smsUrl;
+    
+    if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
+      // iOS format
+      smsUrl = `sms:&body=${message}`;
+    } else {
+      // Android and other platforms
+      smsUrl = `sms:?body=${message}`;
+    }
+    
+    window.open(smsUrl, '_blank');
   };
 
   const shareViaTwitter = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
-    const text = encodeURIComponent(`🏠 Excited to join @TradeScout - finally, a platform where homeowners and contractors connect directly! No middlemen, no lead fees. Join me: ${referralLink} #TradeScout #HomeImprovement`);
-    window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+    const text = encodeURIComponent(`🏠 Excited to join TradeScout - finally, a platform where homeowners and contractors connect directly! No middlemen, no lead fees. Join me: ${referralLink} #TradeScout #HomeImprovement`);
+    // Try X.com first (new Twitter domain)
+    window.open(`https://x.com/intent/tweet?text=${text}`, '_blank');
   };
 
   const shareViaLinkedIn = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const url = encodeURIComponent(referralLink);
-    const title = encodeURIComponent('TradeScout - Direct Connections for Home Projects');
-    const summary = encodeURIComponent('A professional network connecting homeowners and contractors directly. No middlemen, no lead fees, just real connections.');
-    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}&title=${title}&summary=${summary}`, '_blank');
+    // Updated LinkedIn sharing URL format - they simplified the API
+    const text = encodeURIComponent(`🏠 Excited to join TradeScout - a professional network connecting homeowners and contractors directly! No middlemen, no lead fees. Check it out: ${referralLink} #TradeScout #HomeImprovement #Construction`);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
   };
 
   return (
