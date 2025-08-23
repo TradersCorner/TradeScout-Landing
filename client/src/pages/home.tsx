@@ -806,6 +806,21 @@ export default function Home() {
                   
                   const avgPricePerSqFt = ((rates.min + rates.max) / 2 * urgencyMult * locationMultiplier);
                   
+                  // Material vs Labor breakdown by project type
+                  const materialLaborSplit = {
+                    painting: { materials: 0.25, labor: 0.75 },
+                    flooring: {
+                      materials: calculatorData.quality === 'basic' ? 0.45 : calculatorData.quality === 'standard' ? 0.55 : 0.65,
+                      labor: calculatorData.quality === 'basic' ? 0.55 : calculatorData.quality === 'standard' ? 0.45 : 0.35
+                    },
+                    roofing: { materials: 0.45, labor: 0.55 }
+                  };
+                  
+                  const split = materialLaborSplit[projectType];
+                  const avgCost = (minPrice + maxPrice) / 2;
+                  const materialCost = avgCost * split.materials;
+                  const laborCost = avgCost * split.labor;
+                  
                   const timelineMap = {
                     painting: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-3 weeks' : '3-5 weeks',
                     flooring: calculatorData.urgency === 'urgent' ? '1-2 weeks' : calculatorData.urgency === 'normal' ? '2-4 weeks' : '4-6 weeks',
@@ -840,6 +855,23 @@ export default function Home() {
                         <div style={{textAlign: "center", padding: "8px", background: "rgba(255,255,255,0.05)", borderRadius: "6px"}}>
                           <div style={{fontSize: "14px", fontWeight: 700, color: "var(--text)"}}>{calculatorData.quality.charAt(0).toUpperCase() + calculatorData.quality.slice(1)}</div>
                           <div style={{fontSize: "11px", color: "var(--muted)"}}>quality</div>
+                        </div>
+                      </div>
+                      
+                      {/* Material vs Labor Breakdown */}
+                      <div style={{background: "rgba(37, 99, 235, 0.1)", border: "1px solid rgba(37, 99, 235, 0.2)", borderRadius: "8px", padding: "16px", margin: "12px 0"}}>
+                        <h5 style={{fontSize: "14px", fontWeight: 700, color: "var(--text)", margin: "0 0 10px"}}>Cost Breakdown</h5>
+                        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px"}}>
+                          <div style={{textAlign: "center", padding: "10px", background: "rgba(255,255,255,0.1)", borderRadius: "6px"}}>
+                            <div style={{fontSize: "16px", fontWeight: 700, color: "var(--text)"}}>${materialCost.toLocaleString()}</div>
+                            <div style={{fontSize: "12px", color: "var(--muted)", marginBottom: "4px"}}>Materials ({Math.round(split.materials * 100)}%)</div>
+                            <div style={{fontSize: "10px", color: "var(--muted)"}}>Equipment, supplies, permits</div>
+                          </div>
+                          <div style={{textAlign: "center", padding: "10px", background: "rgba(255,255,255,0.1)", borderRadius: "6px"}}>
+                            <div style={{fontSize: "16px", fontWeight: 700, color: "var(--text)"}}>${laborCost.toLocaleString()}</div>
+                            <div style={{fontSize: "12px", color: "var(--muted)", marginBottom: "4px"}}>Labor ({Math.round(split.labor * 100)}%)</div>
+                            <div style={{fontSize: "10px", color: "var(--muted)"}}>Installation, cleanup, warranty</div>
+                          </div>
                         </div>
                       </div>
                       
