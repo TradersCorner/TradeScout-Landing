@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users, Copy, Share2, MessageCircle, Mail, Link2 } from "lucide-react";
+import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users, Copy, Share2, MessageCircle, Mail, Link2, Star } from "lucide-react";
+import ContractorProfileCard from "../components/contractor-profile-card";
+import TrustScore from "../components/trust-score";
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
@@ -27,6 +29,64 @@ export default function Home() {
   const [showExitIntent, setShowExitIntent] = useState(false);
   const [referralCode, setReferralCode] = useState('');
   const [userReferralCode, setUserReferralCode] = useState('');
+
+  // Sample contractor data for demonstration
+  const sampleContractors = [
+    {
+      id: "1",
+      name: "Mike Rodriguez",
+      email: "mike@qualitypainting.com",
+      phone: "(555) 123-4567",
+      specialties: ["Interior Painting", "Exterior Painting", "Drywall Repair"],
+      state: "Texas",
+      city: "Austin",
+      licenseNumber: "TX-12345",
+      insuranceVerified: true,
+      backgroundCheckPassed: true,
+      yearsExperience: 12,
+      completedProjects: 248,
+      averageRating: 4.8,
+      trustScore: 92,
+      verificationStatus: "verified",
+      bio: "Professional painter with over a decade of experience. Specializing in high-quality residential and commercial painting services."
+    },
+    {
+      id: "2", 
+      name: "Sarah Johnson",
+      email: "sarah@flooringpros.com",
+      phone: "(555) 987-6543",
+      specialties: ["Hardwood Flooring", "Tile Installation", "Laminate"],
+      state: "California",
+      city: "San Francisco",
+      licenseNumber: "CA-67890",
+      insuranceVerified: true,
+      backgroundCheckPassed: true,
+      yearsExperience: 8,
+      completedProjects: 156,
+      averageRating: 4.9,
+      trustScore: 89,
+      verificationStatus: "verified",
+      bio: "Expert flooring contractor specializing in premium hardwood and tile installations with attention to detail."
+    },
+    {
+      id: "3",
+      name: "David Chen",
+      email: "david@roofingexperts.com",
+      phone: "(555) 456-7890", 
+      specialties: ["Roof Replacement", "Roof Repair", "Gutter Installation"],
+      state: "Florida",
+      city: "Miami",
+      licenseNumber: "FL-54321",
+      insuranceVerified: true,
+      backgroundCheckPassed: false,
+      yearsExperience: 15,
+      completedProjects: 302,
+      averageRating: 4.7,
+      trustScore: 85,
+      verificationStatus: "verified",
+      bio: "Licensed roofing contractor with 15 years of experience in residential and commercial roofing projects."
+    }
+  ];
 
   const constructionLogos = [
     <Hammer key="hammer" size={28} />,
@@ -2069,6 +2129,186 @@ export default function Home() {
           </span>
         </div>
       </footer>
+
+      {/* Contractor Trust Score Demo */}
+      <section style={{
+        padding: "80px 0",
+        background: "var(--panel)"
+      }} id="contractor-profiles">
+        <div style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 20px"
+        }}>
+          <div style={{textAlign: "center", marginBottom: "60px"}}>
+            <h2 style={{
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontWeight: 900,
+              margin: "0 0 20px",
+              color: "var(--text)"
+            }}>
+              Meet Our Verified Contractors
+            </h2>
+            <p style={{
+              fontSize: "18px", 
+              color: "var(--muted)",
+              maxWidth: "700px",
+              margin: "0 auto",
+              lineHeight: 1.6
+            }}>
+              Every contractor on TradeScout USA is verified through our comprehensive trust scoring system. 
+              See how we evaluate experience, credentials, and customer satisfaction.
+            </p>
+          </div>
+
+          {/* Trust Score Overview */}
+          <div style={{
+            background: "var(--background)",
+            borderRadius: "16px",
+            padding: "40px",
+            marginBottom: "40px",
+            border: "1px solid var(--border)"
+          }}>
+            <h3 style={{
+              fontSize: "24px",
+              fontWeight: 700,
+              color: "var(--text)",
+              marginBottom: "24px",
+              textAlign: "center"
+            }}>
+              How Our Trust Score Works
+            </h3>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "24px",
+              marginBottom: "32px"
+            }}>
+              <div style={{textAlign: "center"}}>
+                <TrustScore
+                  score={90}
+                  verificationStatus="verified"
+                  insuranceVerified={true}
+                  backgroundCheckPassed={true}
+                  yearsExperience={10}
+                  completedProjects={200}
+                  averageRating={4.8}
+                  size="sm"
+                  showDetails={false}
+                />
+                <h4 style={{fontSize: "16px", fontWeight: 600, color: "var(--text)", margin: "16px 0 8px"}}>
+                  Excellent (90-100)
+                </h4>
+                <p style={{fontSize: "14px", color: "var(--muted)", margin: 0}}>
+                  Top-tier contractors with proven track record
+                </p>
+              </div>
+              <div style={{textAlign: "center"}}>
+                <TrustScore
+                  score={80}
+                  verificationStatus="verified"
+                  insuranceVerified={true}
+                  backgroundCheckPassed={true}
+                  yearsExperience={5}
+                  completedProjects={100}
+                  averageRating={4.5}
+                  size="sm"
+                  showDetails={false}
+                />
+                <h4 style={{fontSize: "16px", fontWeight: 600, color: "var(--text)", margin: "16px 0 8px"}}>
+                  Very Good (80-89)
+                </h4>
+                <p style={{fontSize: "14px", color: "var(--muted)", margin: 0}}>
+                  Reliable contractors with solid experience
+                </p>
+              </div>
+              <div style={{textAlign: "center"}}>
+                <TrustScore
+                  score={70}
+                  verificationStatus="verified"
+                  insuranceVerified={true}
+                  backgroundCheckPassed={false}
+                  yearsExperience={3}
+                  completedProjects={50}
+                  averageRating={4.2}
+                  size="sm"
+                  showDetails={false}
+                />
+                <h4 style={{fontSize: "16px", fontWeight: 600, color: "var(--text)", margin: "16px 0 8px"}}>
+                  Good (70-79)
+                </h4>
+                <p style={{fontSize: "14px", color: "var(--muted)", margin: 0}}>
+                  Qualified contractors building reputation
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Sample Contractor Profiles */}
+          <div style={{
+            display: "grid",
+            gap: "24px",
+            marginBottom: "40px"
+          }}>
+            {sampleContractors.map((contractor, index) => (
+              <ContractorProfileCard
+                key={contractor.id}
+                contractor={contractor}
+                compact={index > 0}
+              />
+            ))}
+          </div>
+
+          <div style={{
+            textAlign: "center",
+            padding: "32px",
+            background: "var(--background)",
+            borderRadius: "12px",
+            border: "1px solid var(--border)"
+          }}>
+            <p style={{
+              fontSize: "16px",
+              color: "var(--text)",
+              margin: "0 0 16px",
+              fontWeight: 600
+            }}>
+              Ready to work with verified contractors?
+            </p>
+            <p style={{
+              fontSize: "14px",
+              color: "var(--muted)",
+              margin: "0 0 24px"
+            }}>
+              Join thousands of homeowners who found their perfect contractor match on TradeScout USA.
+            </p>
+            <a 
+              href="#signup"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                color: "white",
+                padding: "12px 24px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "16px",
+                transition: "transform 0.2s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <Star className="w-5 h-5" />
+              Get Started Today
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section for LLMO */}
       <section style={{
