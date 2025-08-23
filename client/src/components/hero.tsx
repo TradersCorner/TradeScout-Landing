@@ -15,7 +15,7 @@ export default function Hero() {
           Connection Without Compromise
         </h1>
         <p className="text-base md:text-lg text-muted-text max-w-4xl mx-auto leading-relaxed" itemProp="description">
-          Predatory predecessors sold your information as "leads." TradeScout builds a professional network where American homeowners and skilled US contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.
+          Predatory predecessors sold your information as "leads." TradeScout builds a professional network where homeowners and contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.
         </p>
         <div className="mt-7">
           <button 
