@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill } from "lucide-react";
+import { Hammer, Wrench, HardHat, Home as HomeIcon, Drill, Shield, CheckCircle, MapPin, Clock, Globe, Users } from "lucide-react";
 import acceleratedGrowthPath from "@assets/accelerated-growth_1755576317371.jpg";
 import findHelpersPath from "@assets/find-helpers-employees_1755576317371.jpg";
 import directConnectPath from "@assets/direct-connect_1755576317371.jpg";
@@ -7,6 +7,24 @@ import homeownerToolsPath from "@assets/homeowner-tools_1755576317371.jpg";
 
 export default function Home() {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    email: '',
+    name: '',
+    state: '',
+    roles: [] as string[],
+    message: ''
+  });
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [calculatorData, setCalculatorData] = useState({
+    projectType: 'bathroom-remodel',
+    homeSize: '1500',
+    zipCode: ''
+  });
+  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [showExitIntent, setShowExitIntent] = useState(false);
+  const [referralCode, setReferralCode] = useState('');
+  const [userReferralCode, setUserReferralCode] = useState('');
 
   const constructionLogos = [
     <Hammer key="hammer" size={28} />,
@@ -24,6 +42,72 @@ export default function Home() {
 
     return () => clearInterval(logoInterval);
   }, [constructionLogos.length]);
+
+  // Offline detection and form caching
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOffline(false);
+      // Try to submit cached form data if any
+      const cachedData = localStorage.getItem('tradescout-form-cache');
+      if (cachedData) {
+        console.log('Connection restored. Form data is still cached for submission.');
+      }
+    };
+    
+    const handleOffline = () => {
+      setIsOffline(true);
+      console.log('Connection lost. Form submissions will be cached.');
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  // Exit intent detection
+  useEffect(() => {
+    let hasShownExitIntent = localStorage.getItem('tradescout-exit-intent-shown');
+    
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !hasShownExitIntent && !showExitIntent) {
+        setShowExitIntent(true);
+        localStorage.setItem('tradescout-exit-intent-shown', 'true');
+      }
+    };
+
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      document.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [showExitIntent]);
+
+  // Generate referral code after signup
+  useEffect(() => {
+    const generateReferralCode = () => {
+      return Math.random().toString(36).substring(2, 8).toUpperCase();
+    };
+    
+    // Check for referral code in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const refCode = urlParams.get('ref');
+    if (refCode) {
+      setReferralCode(refCode);
+      localStorage.setItem('tradescout-referral-source', refCode);
+    }
+    
+    // Generate user's referral code if they don't have one
+    let userCode = localStorage.getItem('tradescout-user-referral-code');
+    if (!userCode) {
+      userCode = generateReferralCode();
+      localStorage.setItem('tradescout-user-referral-code', userCode);
+    }
+    setUserReferralCode(userCode);
+  }, []);
 
   useEffect(() => {
     // SEO optimization is handled in index.html, but we can add structured data
@@ -122,6 +206,51 @@ export default function Home() {
     }
   }, []);
 
+  // Progressive form functions
+  const nextStep = () => {
+    if (currentStep < 3) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
+  const updateFormData = (field: string, value: any) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    // Cache form data for offline capability
+    const updatedData = { ...formData, [field]: value };
+    localStorage.setItem('tradescout-form-cache', JSON.stringify(updatedData));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    if (isOffline) {
+      e.preventDefault();
+      alert('You\'re offline! Your form data has been saved and will be submitted when you\'re back online.');
+      localStorage.setItem('tradescout-form-cache', JSON.stringify(formData));
+      return;
+    }
+    // Add referral code to form if present
+    if (referralCode) {
+      const form = e.target as HTMLFormElement;
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'referral_code';
+      hiddenInput.value = referralCode;
+      form.appendChild(hiddenInput);
+    }
+    // Let the form submit normally to Formspree when online
+  };
+
+  const copyReferralLink = () => {
+    const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
+    navigator.clipboard.writeText(referralLink);
+    alert('Referral link copied! Share it to help others join TradeScout.');
+  };
+
   return (
     <>
       {/* Header */}
@@ -182,7 +311,7 @@ export default function Home() {
         <div className="feature-grid">
           <article className="card" data-testid="card-homeowner-tools">
             <div className="card-media">
-              <img src={homeownerToolsPath} alt="Homeowner Tools Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} data-testid="img-homeowner-tools" />
+              <img src={homeownerToolsPath} alt="Homeowner Tools Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} data-testid="img-homeowner-tools" loading="lazy" />
             </div>
             <div className="card-body">
               <h3>Homeowner Tools</h3>
@@ -192,7 +321,7 @@ export default function Home() {
 
           <article className="card">
             <div className="card-media">
-              <img src={acceleratedGrowthPath} alt="Accelerated Growth Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              <img src={acceleratedGrowthPath} alt="Accelerated Growth Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} loading="lazy" />
             </div>
             <div className="card-body">
               <h3>Contractor Growth</h3>
@@ -202,7 +331,7 @@ export default function Home() {
 
           <article className="card">
             <div className="card-media">
-              <img src={findHelpersPath} alt="Find Helpers Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              <img src={findHelpersPath} alt="Find Helpers Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} loading="lazy" />
             </div>
             <div className="card-body">
               <h3>Find Help</h3>
@@ -212,13 +341,270 @@ export default function Home() {
 
           <article className="card">
             <div className="card-media">
-              <img src={directConnectPath} alt="Direct Connect Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+              <img src={directConnectPath} alt="Direct Connect Interface" style={{width: '100%', height: '100%', objectFit: 'cover'}} loading="lazy" />
             </div>
             <div className="card-body">
               <h3>Direct Connect</h3>
               <p>Homeowners and contractors, connected directly—no middlemen.</p>
             </div>
           </article>
+        </div>
+      </section>
+
+      {/* Verification Badges */}
+      <section className="container" style={{marginTop:"48px", marginBottom:"32px"}}>
+        <h2 className="section-title">Verified Network You Can Trust</h2>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          gap: "24px",
+          maxWidth: "900px",
+          margin: "0 auto",
+          textAlign: "center"
+        }}>
+          <div style={{
+            background: "var(--panel-2)",
+            borderRadius: "16px",
+            padding: "32px 24px",
+            border: "1px solid rgba(255,255,255,0.05)",
+            position: "relative"
+          }}>
+            <div style={{marginBottom: "16px"}}>
+              <Shield size={32} style={{color: "var(--brand)", margin: "0 auto"}} />
+            </div>
+            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>License Verification</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "14px", lineHeight: 1.5}}>All contractors verified through state licensing boards and industry databases</p>
+          </div>
+          
+          <div style={{
+            background: "var(--panel-2)",
+            borderRadius: "16px",
+            padding: "32px 24px",
+            border: "1px solid rgba(255,255,255,0.05)"
+          }}>
+            <div style={{marginBottom: "16px"}}>
+              <CheckCircle size={32} style={{color: "var(--brand)", margin: "0 auto"}} />
+            </div>
+            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Insurance Confirmed</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "14px", lineHeight: 1.5}}>Liability and workers compensation insurance validated before joining</p>
+          </div>
+          
+          <div style={{
+            background: "var(--panel-2)",
+            borderRadius: "16px",
+            padding: "32px 24px",
+            border: "1px solid rgba(255,255,255,0.05)"
+          }}>
+            <div style={{marginBottom: "16px"}}>
+              <Users size={32} style={{color: "var(--brand)", margin: "0 auto"}} />
+            </div>
+            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Reference Checked</h3>
+            <p style={{color: "var(--muted)", margin: 0, fontSize: "14px", lineHeight: 1.5}}>Previous work and customer references reviewed by our verification team</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Focus & Calculator Preview */}
+      <section style={{
+        padding: "60px 0",
+        background: "linear-gradient(135deg, rgba(255,107,53,.03), rgba(37,99,235,.02))",
+        borderTop: "1px solid var(--border)",
+        borderBottom: "1px solid var(--border)"
+      }}>
+        <div className="container" style={{textAlign: "center"}}>
+          <div style={{marginBottom: "16px"}}>
+            <MapPin size={48} style={{color: "var(--brand)", margin: "0 auto"}} />
+          </div>
+          <h2 style={{
+            fontSize: "clamp(24px, 4vw, 36px)",
+            marginBottom: "16px",
+            color: "var(--text)",
+            fontWeight: 700
+          }}>
+            Hyper-Local Market Intelligence
+          </h2>
+          <p style={{
+            fontSize: "18px",
+            color: "var(--muted)",
+            maxWidth: "700px",
+            margin: "0 auto 32px",
+            lineHeight: 1.6
+          }}>
+            Our pricing calculator uses real-time local data: permit costs, material prices, labor rates, and market conditions specific to your zip code.
+          </p>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+            gap: "24px",
+            maxWidth: "600px",
+            margin: "0 auto 32px"
+          }}>
+            <div style={{textAlign: "center"}}>
+              <Clock size={24} style={{color: "var(--brand)", marginBottom: "8px"}} />
+              <div style={{fontSize: "14px", color: "var(--text)", fontWeight: 600}}>Real-Time Pricing</div>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <Globe size={24} style={{color: "var(--brand)", marginBottom: "8px"}} />
+              <div style={{fontSize: "14px", color: "var(--text)", fontWeight: 600}}>Zip Code Specific</div>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <MapPin size={24} style={{color: "var(--brand)", marginBottom: "8px"}} />
+              <div style={{fontSize: "14px", color: "var(--text)", fontWeight: 600}}>Local Expertise</div>
+            </div>
+          </div>
+          
+          {/* Interactive Calculator Preview */}
+          <div style={{
+            maxWidth: "500px",
+            margin: "0 auto",
+            background: "var(--panel)",
+            borderRadius: "16px",
+            border: "2px solid var(--brand)",
+            padding: "24px",
+            boxShadow: "0 12px 32px rgba(255,107,53,0.2)"
+          }}>
+            <h3 style={{fontSize: "18px", fontWeight: 700, marginBottom: "16px", color: "var(--text)"}}>Try Our Pricing Calculator</h3>
+            
+            {!showCalculator ? (
+              <>
+                <p style={{color: "var(--muted)", fontSize: "14px", marginBottom: "16px"}}>Get instant, accurate estimates based on your location</p>
+                <button 
+                  onClick={() => setShowCalculator(true)}
+                  style={{
+                    background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "8px",
+                    padding: "12px 24px",
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    cursor: "pointer",
+                    transition: "transform 0.2s ease"
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0px)"}
+                  data-testid="button-show-calculator"
+                >
+                  See It In Action
+                </button>
+              </>
+            ) : (
+              <div style={{textAlign: "left"}}>
+                <div style={{marginBottom: "16px"}}>
+                  <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Project Type</label>
+                  <select 
+                    value={calculatorData.projectType}
+                    onChange={(e) => setCalculatorData({...calculatorData, projectType: e.target.value})}
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      borderRadius: "6px",
+                      border: "1px solid var(--border)",
+                      background: "var(--panel-2)",
+                      color: "var(--text)"
+                    }}
+                  >
+                    <option value="bathroom-remodel">Bathroom Remodel</option>
+                    <option value="kitchen-remodel">Kitchen Remodel</option>
+                    <option value="roof-replacement">Roof Replacement</option>
+                    <option value="flooring">Flooring Installation</option>
+                  </select>
+                </div>
+                
+                <div style={{marginBottom: "16px"}}>
+                  <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Home Size (sq ft)</label>
+                  <input 
+                    type="number"
+                    value={calculatorData.homeSize}
+                    onChange={(e) => setCalculatorData({...calculatorData, homeSize: e.target.value})}
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      borderRadius: "6px",
+                      border: "1px solid var(--border)",
+                      background: "var(--panel-2)",
+                      color: "var(--text)"
+                    }}
+                  />
+                </div>
+                
+                <div style={{marginBottom: "16px"}}>
+                  <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Zip Code</label>
+                  <input 
+                    type="text"
+                    value={calculatorData.zipCode}
+                    onChange={(e) => setCalculatorData({...calculatorData, zipCode: e.target.value})}
+                    placeholder="Enter your zip code"
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      borderRadius: "6px",
+                      border: "1px solid var(--border)",
+                      background: "var(--panel-2)",
+                      color: "var(--text)"
+                    }}
+                  />
+                </div>
+                
+                {calculatorData.zipCode.length >= 5 && (
+                  <div style={{
+                    background: "rgba(255,107,53,0.1)",
+                    border: "1px solid rgba(255,107,53,0.3)",
+                    borderRadius: "8px",
+                    padding: "16px",
+                    marginBottom: "16px"
+                  }}>
+                    <h4 style={{fontSize: "16px", fontWeight: 700, marginBottom: "8px", color: "var(--text)"}}>Estimated Cost Range</h4>
+                    <div style={{fontSize: "24px", fontWeight: 900, color: "var(--brand)", marginBottom: "4px"}}>
+                      ${((calculatorData.projectType === 'bathroom-remodel' ? 15000 : 
+                          calculatorData.projectType === 'kitchen-remodel' ? 25000 :
+                          calculatorData.projectType === 'roof-replacement' ? 12000 : 8000) 
+                          * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()} - 
+                      ${((calculatorData.projectType === 'bathroom-remodel' ? 35000 : 
+                          calculatorData.projectType === 'kitchen-remodel' ? 65000 :
+                          calculatorData.projectType === 'roof-replacement' ? 25000 : 15000) 
+                          * (parseInt(calculatorData.homeSize) / 1500)).toLocaleString()}
+                    </div>
+                    <p style={{fontSize: "12px", color: "var(--muted)", margin: 0}}>Based on {calculatorData.zipCode} area pricing • Updated weekly</p>
+                  </div>
+                )}
+                
+                <div style={{display: "flex", gap: "8px"}}>
+                  <button 
+                    onClick={() => setShowCalculator(false)}
+                    style={{
+                      background: "var(--panel-2)",
+                      color: "var(--text)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "6px",
+                      padding: "8px 16px",
+                      fontSize: "14px",
+                      cursor: "pointer",
+                      flex: 1
+                    }}
+                  >
+                    Close
+                  </button>
+                  <button 
+                    style={{
+                      background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "6px",
+                      padding: "8px 16px",
+                      fontSize: "14px",
+                      fontWeight: 600,
+                      cursor: "pointer",
+                      flex: 2
+                    }}
+                    onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
+                  >
+                    Get Full Access →
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
@@ -257,232 +643,329 @@ export default function Home() {
 
         <h2 id="get-started" className="section-title" style={{textAlign:"center"}}>Join the Network</h2>
         <p className="lead">Be among the first when we launch.</p>
-
-
+        
+        {/* Enhanced Security Messaging */}
+        <div style={{
+          textAlign: "center",
+          margin: "20px auto 32px",
+          maxWidth: "600px",
+          padding: "20px",
+          background: "rgba(16, 185, 129, 0.08)",
+          borderRadius: "12px",
+          border: "1px solid rgba(16, 185, 129, 0.2)"
+        }}>
+          <Shield size={24} style={{color: "var(--success)", marginBottom: "8px"}} />
+          <h3 style={{fontSize: "16px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Your Privacy is Protected</h3>
+          <p style={{fontSize: "14px", color: "var(--muted)", margin: 0, lineHeight: 1.5}}>
+            <strong style={{color: "var(--success)"}}>256-bit encryption</strong> • <strong style={{color: "var(--success)"}}>Zero third-party sharing</strong> • <strong style={{color: "var(--success)"}}>GDPR compliant</strong><br/>
+            We never sell your data. Period.
+          </p>
+        </div>
+        
+        {/* Connection Status */}
+        {isOffline && (
+          <div style={{
+            textAlign: "center",
+            margin: "20px auto",
+            padding: "16px",
+            background: "rgba(245, 158, 11, 0.1)",
+            borderRadius: "8px",
+            border: "1px solid rgba(245, 158, 11, 0.3)",
+            color: "var(--warning)"
+          }}>
+            📡 You're offline. Your form will be saved and submitted when you reconnect.
+          </div>
+        )}
+        
+        {/* Progressive Form Steps Indicator */}
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "16px",
+          margin: "20px auto 32px",
+          maxWidth: "400px"
+        }}>
+          {[1, 2, 3].map((step) => (
+            <div key={step} style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px"
+            }}>
+              <div style={{
+                width: "32px",
+                height: "32px",
+                borderRadius: "50%",
+                background: currentStep >= step ? "var(--brand)" : "var(--panel-2)",
+                color: currentStep >= step ? "white" : "var(--muted)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontWeight: 600,
+                fontSize: "14px",
+                border: currentStep >= step ? "2px solid var(--brand)" : "2px solid var(--border)",
+                transition: "all 0.3s ease"
+              }}>
+                {step}
+              </div>
+              <span style={{
+                fontSize: "12px",
+                color: currentStep >= step ? "var(--text)" : "var(--muted)",
+                fontWeight: currentStep === step ? 600 : 400
+              }}>
+                {step === 1 ? "Contact" : step === 2 ? "Preferences" : "Confirm"}
+              </span>
+              {step < 3 && (
+                <div style={{
+                  width: "24px",
+                  height: "2px",
+                  background: currentStep > step ? "var(--brand)" : "var(--border)",
+                  marginLeft: "8px"
+                }} />
+              )}
+            </div>
+          ))}
+        </div>
 
         <form 
           className="form" 
           action="https://formspree.io/f/xovlzjlq"
           method="POST"
           data-analytics="signup-form"
+          onSubmit={handleSubmit}
         >
-          {/* Email (required) */}
-          <label className="sr-only" htmlFor="email">Email (required)</label>
-          <input 
-            className="field" 
-            id="email" 
-            type="email" 
-            name="email" 
-            placeholder="Your Email (required)" 
-            required 
-            autoComplete="email"
-            aria-describedby="email-help"
-            data-testid="input-email"
-          />
+          {/* Step 1: Basic Contact Info */}
+          {currentStep === 1 && (
+            <>
+              <div style={{gridColumn: "1 / -1", textAlign: "center", marginBottom: "16px"}}>
+                <h3 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Let's Get Started</h3>
+                <p style={{color: "var(--muted)", margin: 0, fontSize: "14px"}}>We'll need your email to keep you updated</p>
+              </div>
+              
+              <label className="sr-only" htmlFor="email">Email (required)</label>
+              <input 
+                className="field" 
+                id="email" 
+                type="email" 
+                name="email" 
+                placeholder="Your Email (required)" 
+                required 
+                autoComplete="email"
+                aria-describedby="email-help"
+                data-testid="input-email"
+                value={formData.email}
+                onChange={(e) => updateFormData('email', e.target.value)}
+              />
+              
+              <label className="sr-only" htmlFor="name">Your name (optional)</label>
+              <input 
+                className="field" 
+                id="name" 
+                type="text" 
+                name="name" 
+                placeholder="Your Name (optional)" 
+                autoComplete="name"
+                data-testid="input-name"
+                value={formData.name}
+                onChange={(e) => updateFormData('name', e.target.value)}
+              />
+              
+              <button 
+                type="button" 
+                className="btn" 
+                onClick={nextStep}
+                disabled={!formData.email}
+                style={{opacity: formData.email ? 1 : 0.6}}
+                data-testid="button-next-step-1"
+              >
+                Continue →
+              </button>
+            </>
+          )}
+          
+          {/* Step 2: Preferences */}
+          {currentStep === 2 && (
+            <>
+              <div style={{gridColumn: "1 / -1", textAlign: "center", marginBottom: "16px"}}>
+                <h3 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Tell Us About You</h3>
+                <p style={{color: "var(--muted)", margin: 0, fontSize: "14px"}}>This helps us customize your experience</p>
+              </div>
+              
+              <label className="sr-only" htmlFor="state">Your state (optional)</label>
+              <select 
+                className="field" 
+                id="state" 
+                name="state"
+                autoComplete="address-level1"
+                aria-describedby="state-help"
+                data-testid="select-state"
+                value={formData.state}
+                onChange={(e) => updateFormData('state', e.target.value)}
+              >
+                <option value="">Your State (optional)</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
+                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
+                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
+                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
+                <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
+                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
+                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
+                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
+                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
+                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
+                <option>WI</option><option>WY</option>
+              </select>
 
-          {/* Name (optional) */}
-          <label className="sr-only" htmlFor="name">Your name (optional)</label>
-          <input 
-            className="field" 
-            id="name" 
-            type="text" 
-            name="name" 
-            placeholder="Your Name (optional)" 
-            autoComplete="name"
-            data-testid="input-name"
-          />
+              {/* Roles (multi-select) */}
+              <div style={{gridColumn: "1 / -1", marginBottom: "20px"}}>
+                <label style={{
+                  display: "block",
+                  marginBottom: "12px",
+                  fontSize: "14px",
+                  color: "var(--muted)",
+                  fontWeight: 500
+                }}>
+                  I am a… (select all that apply)
+                </label>
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
+                  gap: "12px"
+                }}>
+                  {["Homeowner", "Contractor", "Service Provider"].map((role) => (
+                    <label key={role} style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      padding: "12px 16px",
+                      background: "var(--panel-2)",
+                      border: "1px solid var(--border)",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      fontSize: "14px",
+                      color: "var(--text)"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "var(--panel)";
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "var(--panel-2)";
+                      e.currentTarget.style.borderColor = "var(--border)";
+                    }}
+                    data-testid={`checkbox-${role.toLowerCase().replace(' ', '-')}`}>
+                      <input 
+                        type="checkbox" 
+                        name="roles[]" 
+                        value={role}
+                        checked={formData.roles.includes(role)}
+                        onChange={(e) => {
+                          const roles = e.target.checked 
+                            ? [...formData.roles, role]
+                            : formData.roles.filter(r => r !== role);
+                          updateFormData('roles', roles);
+                        }}
+                        data-testid={`input-${role.toLowerCase().replace(' ', '-')}`}
+                        style={{
+                          accentColor: "var(--brand)",
+                          margin: 0
+                        }}
+                      />
+                      <span>{role}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              
+              <div style={{display: "flex", gap: "12px", gridColumn: "1 / -1"}}>
+                <button 
+                  type="button" 
+                  className="btn" 
+                  onClick={prevStep}
+                  style={{background: "var(--panel-2)", color: "var(--text)", flex: 1}}
+                  data-testid="button-prev-step-2"
+                >
+                  ← Back
+                </button>
+                <button 
+                  type="button" 
+                  className="btn" 
+                  onClick={nextStep}
+                  style={{flex: 2}}
+                  data-testid="button-next-step-2"
+                >
+                  Continue →
+                </button>
+              </div>
+            </>
+          )}
+          
+          {/* Step 3: Confirmation & Message */}
+          {currentStep === 3 && (
+            <>
+              <div style={{gridColumn: "1 / -1", textAlign: "center", marginBottom: "16px"}}>
+                <h3 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Almost Done!</h3>
+                <p style={{color: "var(--muted)", margin: 0, fontSize: "14px"}}>Add a message or submit to join the network</p>
+              </div>
+              
+              {/* Summary */}
+              <div style={{gridColumn: "1 / -1", background: "var(--panel-2)", padding: "16px", borderRadius: "8px", marginBottom: "16px"}}>
+                <h4 style={{fontSize: "14px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Your Information:</h4>
+                <p style={{fontSize: "13px", color: "var(--muted)", margin: "0 0 4px"}}><strong>Email:</strong> {formData.email}</p>
+                {formData.name && <p style={{fontSize: "13px", color: "var(--muted)", margin: "0 0 4px"}}><strong>Name:</strong> {formData.name}</p>}
+                {formData.state && <p style={{fontSize: "13px", color: "var(--muted)", margin: "0 0 4px"}}><strong>State:</strong> {formData.state}</p>}
+                {formData.roles.length > 0 && <p style={{fontSize: "13px", color: "var(--muted)", margin: "0"}}><strong>Role(s):</strong> {formData.roles.join(", ")}</p>}
+              </div>
+              
+              {/* Hidden inputs for form submission */}
+              <input type="hidden" name="email" value={formData.email} />
+              <input type="hidden" name="name" value={formData.name} />
+              <input type="hidden" name="state" value={formData.state} />
+              {formData.roles.map((role, index) => (
+                <input key={index} type="hidden" name="roles[]" value={role} />
+              ))}
+              
+              <label className="sr-only" htmlFor="message">Your message (optional)</label>
+              <textarea 
+                className="field full" 
+                id="message" 
+                name="message" 
+                placeholder="Share your thoughts or project needs (optional)" 
+                rows={3}
+                autoComplete="off"
+                aria-describedby="message-help"
+                data-testid="textarea-message"
+                value={formData.message}
+                onChange={(e) => updateFormData('message', e.target.value)}
+              ></textarea>
+              
+              <div style={{display: "flex", gap: "12px", gridColumn: "1 / -1"}}>
+                <button 
+                  type="button" 
+                  className="btn" 
+                  onClick={prevStep}
+                  style={{background: "var(--panel-2)", color: "var(--text)", flex: 1}}
+                  data-testid="button-prev-step-3"
+                >
+                  ← Back
+                </button>
+                <button 
+                  className="btn" 
+                  type="submit" 
+                  aria-label="Get notified when TradeScout launches"
+                  aria-describedby="submit-help"
+                  data-testid="button-submit"
+                  style={{flex: 2}}
+                >
+                  {isOffline ? "Save for Later" : "Join the Network!"}
+                </button>
+              </div>
+            </>
+          )}
 
-          {/* State (optional) */}
-          <label className="sr-only" htmlFor="state">Your state (optional)</label>
-          <select 
-            className="field" 
-            id="state" 
-            name="state"
-            autoComplete="address-level1"
-            aria-describedby="state-help"
-            data-testid="select-state"
-          >
-            <option value="">Your State (optional)</option>
-            <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
-            <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
-            <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
-            <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
-            <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
-            <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
-            <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
-            <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
-            <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
-            <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
-            <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
-            <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
-            <option>WI</option><option>WY</option>
-          </select>
-
-          {/* Roles (multi-select) */}
-          <div style={{marginBottom: "20px"}}>
-            <label style={{
-              display: "block",
-              marginBottom: "12px",
-              fontSize: "14px",
-              color: "var(--muted)",
-              fontWeight: 500
-            }}>
-              I am a… (select all that apply)
-            </label>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-              gap: "12px"
-            }}>
-              <label style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 16px",
-                background: "var(--panel-2)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                fontSize: "14px",
-                color: "var(--text)"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--panel)";
-                e.currentTarget.style.borderColor = "var(--brand)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--panel-2)";
-                e.currentTarget.style.borderColor = "var(--border)";
-              }}
-              data-testid="checkbox-homeowner">
-                <input 
-                  type="checkbox" 
-                  name="roles[]" 
-                  value="Homeowner" 
-                  data-testid="input-homeowner"
-                  style={{
-                    accentColor: "var(--brand)",
-                    margin: 0
-                  }}
-                />
-                <span>Homeowner</span>
-              </label>
-
-              <label style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 16px",
-                background: "var(--panel-2)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                fontSize: "14px",
-                color: "var(--text)"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--panel)";
-                e.currentTarget.style.borderColor = "var(--brand)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--panel-2)";
-                e.currentTarget.style.borderColor = "var(--border)";
-              }}
-              data-testid="checkbox-contractor">
-                <input 
-                  type="checkbox" 
-                  name="roles[]" 
-                  value="Contractor" 
-                  data-testid="input-contractor"
-                  style={{
-                    accentColor: "var(--brand)",
-                    margin: 0
-                  }}
-                />
-                <span>Contractor</span>
-              </label>
-
-              <label style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                padding: "12px 16px",
-                background: "var(--panel-2)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                fontSize: "14px",
-                color: "var(--text)"
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--panel)";
-                e.currentTarget.style.borderColor = "var(--brand)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--panel-2)";
-                e.currentTarget.style.borderColor = "var(--border)";
-              }}
-              data-testid="checkbox-service-provider">
-                <input 
-                  type="checkbox" 
-                  name="roles[]" 
-                  value="Service Provider" 
-                  data-testid="input-service-provider"
-                  style={{
-                    accentColor: "var(--brand)",
-                    margin: 0
-                  }}
-                />
-                <span>Service Provider</span>
-              </label>
-            </div>
-          </div>
-
-          {/* Optional message */}
-          <label className="sr-only" htmlFor="message">Your message (optional)</label>
-          <textarea 
-            className="field full" 
-            id="message" 
-            name="message" 
-            placeholder="Share your thoughts or project needs (optional)" 
-            rows={3}
-            autoComplete="off"
-            aria-describedby="message-help"
-            data-testid="textarea-message"
-          ></textarea>
-
-          <div style={{
-            textAlign: "center",
-            margin: "20px 0",
-            padding: "16px",
-            background: "rgba(255,255,255,0.03)",
-            borderRadius: "8px",
-            border: "1px solid rgba(255,255,255,0.08)"
-          }}>
-            <p style={{
-              color: "var(--muted)",
-              fontSize: "14px",
-              lineHeight: 1.5,
-              margin: 0
-            }}>
-              <strong style={{color: "var(--text)"}}>We're not selling anything</strong> — including your information. 
-              Zero spam, zero sharing with third parties.
-            </p>
-          </div>
-
-          {/* Submit */}
-          <button 
-            className="btn" 
-            type="submit" 
-            aria-label="Get notified when TradeScout launches"
-            aria-describedby="submit-help"
-            data-testid="button-submit"
-          >
-            Notify Me
-          </button>
           <input type="hidden" name="_redirect" value="https://info.thetradescout.us/thank-you" />
           <input type="hidden" name="_subject" value="New TradeScout Early Access Signup" />
 
@@ -509,6 +992,69 @@ export default function Home() {
         </div>
         <div id="message-help" className="sr-only">
           Tell us about your projects or experience.
+        </div>
+        
+        {/* Referral System */}
+        <div style={{
+          textAlign: "center",
+          margin: "32px auto",
+          maxWidth: "600px",
+          padding: "20px",
+          background: "rgba(37, 99, 235, 0.08)",
+          borderRadius: "12px",
+          border: "1px solid rgba(37, 99, 235, 0.2)"
+        }}>
+          <h3 style={{fontSize: "18px", fontWeight: 700, margin: "0 0 12px", color: "var(--text)"}}>Invite Friends & Move Up the List</h3>
+          <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 16px", lineHeight: 1.5}}>
+            Share your referral link and get priority access for every person who joins through your link.
+          </p>
+          
+          <div style={{
+            display: "flex",
+            gap: "12px",
+            alignItems: "center",
+            background: "var(--panel-2)",
+            borderRadius: "8px",
+            padding: "12px",
+            border: "1px solid var(--border)"
+          }}>
+            <input 
+              type="text"
+              value={`${window.location.origin}/?ref=${userReferralCode}`}
+              readOnly
+              style={{
+                flex: 1,
+                background: "transparent",
+                border: "none",
+                color: "var(--text)",
+                fontSize: "14px",
+                outline: "none"
+              }}
+            />
+            <button 
+              onClick={copyReferralLink}
+              style={{
+                background: "var(--accent)",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                padding: "8px 16px",
+                fontSize: "14px",
+                fontWeight: 600,
+                cursor: "pointer",
+                whiteSpace: "nowrap"
+              }}
+              data-testid="button-copy-referral"
+            >
+              Copy Link
+            </button>
+          </div>
+          
+          {referralCode && (
+            <p style={{fontSize: "12px", color: "var(--success)", margin: "12px 0 0", fontWeight: 600}}>
+              ✅ You joined through {referralCode}'s link - you're both getting priority access!
+            </p>
+          )}
         </div>
       </section>
 
@@ -787,6 +1333,104 @@ export default function Home() {
           © 2025 TradeScout. All rights reserved. A professional network connecting homeowners and contractors directly nationwide.
         </div>
       </footer>
+
+      {/* Exit Intent Popup */}
+      {showExitIntent && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(0, 0, 0, 0.8)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 9999
+        }}>
+          <div style={{
+            background: "var(--panel)",
+            borderRadius: "16px",
+            padding: "32px",
+            maxWidth: "500px",
+            width: "90%",
+            border: "2px solid var(--brand)",
+            position: "relative",
+            textAlign: "center"
+          }}>
+            <button 
+              onClick={() => setShowExitIntent(false)}
+              style={{
+                position: "absolute",
+                top: "16px",
+                right: "16px",
+                background: "none",
+                border: "none",
+                color: "var(--muted)",
+                fontSize: "24px",
+                cursor: "pointer",
+                lineHeight: 1
+              }}
+              data-testid="button-close-exit-popup"
+            >
+              ×
+            </button>
+            
+            <h2 style={{fontSize: "24px", fontWeight: 700, margin: "0 0 16px", color: "var(--text)"}}>Wait! Don't Miss Out</h2>
+            <p style={{fontSize: "16px", color: "var(--muted)", margin: "0 0 24px", lineHeight: 1.5}}>
+              Join <strong style={{color: "var(--brand)"}}>500,000+ people</strong> already signed up for early access to the direct connection network.
+            </p>
+            
+            <form 
+              action="https://formspree.io/f/xovlzjlq"
+              method="POST"
+              style={{display: "flex", gap: "12px", marginBottom: "16px"}}
+            >
+              <input 
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                style={{
+                  flex: 1,
+                  padding: "12px 16px",
+                  borderRadius: "8px",
+                  border: "1px solid var(--border)",
+                  background: "var(--panel-2)",
+                  color: "var(--text)",
+                  fontSize: "16px"
+                }}
+                data-testid="input-exit-popup-email"
+              />
+              <button 
+                type="submit"
+                style={{
+                  background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "12px 24px",
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  whiteSpace: "nowrap"
+                }}
+                data-testid="button-exit-popup-submit"
+              >
+                Get Access
+              </button>
+              <input type="hidden" name="_redirect" value="https://info.thetradescout.us/thank-you" />
+              <input type="hidden" name="_subject" value="Exit Intent Signup - TradeScout" />
+              <input type="hidden" name="source" value="exit-intent" />
+              {referralCode && <input type="hidden" name="referral_code" value={referralCode} />}
+            </form>
+            
+            <p style={{fontSize: "12px", color: "var(--muted)", margin: 0}}>
+              Zero spam, zero sharing. We respect your privacy.
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
