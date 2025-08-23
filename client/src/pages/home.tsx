@@ -428,7 +428,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero container" itemScope itemType="https://schema.org/WebPage">
         <h1 itemProp="headline">Connection Without Compromise</h1>
-        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a professional network where homeowners and contractors connect directly for painting, flooring, roofing, and home improvement projects — no middlemen, no lead fees, no games.</p>
+        <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a network where homeowners and contractors connect directly — no middlemen, no games.</p>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
