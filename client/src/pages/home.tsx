@@ -541,11 +541,37 @@ export default function Home() {
                     onChange={(e) => setCalculatorData({...calculatorData, projectType: e.target.value})}
                     style={{
                       width: "100%",
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid var(--border)",
+                      padding: "12px 40px 12px 12px",
+                      borderRadius: "8px",
+                      border: "2px solid var(--border)",
                       background: "var(--panel-2)",
-                      color: "var(--text)"
+                      color: "var(--text)",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      appearance: "none",
+                      backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 12px center",
+                      backgroundSize: "16px 16px",
+                      cursor: "pointer",
+                      transition: "all 0.2s ease",
+                      outline: "none"
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "var(--border)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (document.activeElement !== e.currentTarget) {
+                        e.currentTarget.style.borderColor = "var(--border)";
+                      }
                     }}
                   >
                     <option value="painting">Interior/Exterior Painting</option>
@@ -562,11 +588,31 @@ export default function Home() {
                     onChange={(e) => setCalculatorData({...calculatorData, homeSize: e.target.value})}
                     style={{
                       width: "100%",
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid var(--border)",
+                      padding: "12px",
+                      borderRadius: "8px",
+                      border: "2px solid var(--border)",
                       background: "var(--panel-2)",
-                      color: "var(--text)"
+                      color: "var(--text)",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      transition: "all 0.2s ease",
+                      outline: "none"
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "var(--border)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (document.activeElement !== e.currentTarget) {
+                        e.currentTarget.style.borderColor = "var(--border)";
+                      }
                     }}
                   />
                 </div>
@@ -578,13 +624,34 @@ export default function Home() {
                     value={calculatorData.zipCode}
                     onChange={(e) => setCalculatorData({...calculatorData, zipCode: e.target.value})}
                     placeholder="Enter your zip code"
+                    maxLength={5}
                     style={{
                       width: "100%",
-                      padding: "10px",
-                      borderRadius: "6px",
-                      border: "1px solid var(--border)",
+                      padding: "12px",
+                      borderRadius: "8px",
+                      border: "2px solid var(--border)",
                       background: "var(--panel-2)",
-                      color: "var(--text)"
+                      color: "var(--text)",
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      transition: "all 0.2s ease",
+                      outline: "none"
+                    }}
+                    onFocus={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                      e.currentTarget.style.boxShadow = "0 0 0 3px rgba(255,107,53,0.1)";
+                    }}
+                    onBlur={(e) => {
+                      e.currentTarget.style.borderColor = "var(--border)";
+                      e.currentTarget.style.boxShadow = "none";
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "var(--brand)";
+                    }}
+                    onMouseLeave={(e) => {
+                      if (document.activeElement !== e.currentTarget) {
+                        e.currentTarget.style.borderColor = "var(--border)";
+                      }
                     }}
                   />
                 </div>
@@ -873,21 +940,67 @@ export default function Home() {
                 data-testid="select-state"
                 value={formData.state}
                 onChange={(e) => updateFormData('state', e.target.value)}
+                style={{
+                  appearance: "none",
+                  backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 16px center",
+                  backgroundSize: "16px 16px",
+                  paddingRight: "48px",
+                  cursor: "pointer"
+                }}
               >
                 <option value="">Your State (optional)</option>
-                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option>
-                <option>CA</option><option>CO</option><option>CT</option><option>DE</option>
-                <option>FL</option><option>GA</option><option>HI</option><option>ID</option>
-                <option>IL</option><option>IN</option><option>IA</option><option>KS</option>
-                <option>KY</option><option>LA</option><option>ME</option><option>MD</option>
-                <option>MA</option><option>MI</option><option>MN</option><option>MS</option>
-                <option>MO</option><option>MT</option><option>NE</option><option>NV</option>
-                <option>NH</option><option>NJ</option><option>NM</option><option>NY</option>
-                <option>NC</option><option>ND</option><option>OH</option><option>OK</option>
-                <option>OR</option><option>PA</option><option>RI</option><option>SC</option>
-                <option>SD</option><option>TN</option><option>TX</option><option>UT</option>
-                <option>VT</option><option>VA</option><option>WA</option><option>WV</option>
-                <option>WI</option><option>WY</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
               </select>
 
               {/* Roles (multi-select) */}

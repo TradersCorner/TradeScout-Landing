@@ -171,11 +171,12 @@ export default function SignupForm() {
         <div className="lg:col-span-1">
           <select 
             name="state"
-            className="w-full bg-panel-2 border border-white/8 rounded-xl px-4 py-3 text-text appearance-none focus:outline-none focus:ring-3 focus:ring-brand/25 focus:border-white/18"
+            className="w-full bg-panel-2 border border-white/8 rounded-xl px-4 py-3 text-text appearance-none focus:outline-none focus:ring-3 focus:ring-brand/25 focus:border-white/18 cursor-pointer hover:border-white/20 transition-all duration-200"
             style={{
-              backgroundImage: `linear-gradient(45deg, transparent 50%, rgba(255,255,255,.5) 50%), linear-gradient(135deg, rgba(255,255,255,.5) 50%, transparent 50%)`,
-              backgroundPosition: `calc(100% - 18px) 50%, calc(100% - 12px) 50%`,
-              backgroundSize: `6px 6px, 6px 6px`,
+              paddingRight: "48px",
+              backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
+              backgroundPosition: `calc(100% - 16px) center`,
+              backgroundSize: `16px 16px`,
               backgroundRepeat: `no-repeat`
             }}
             data-testid="select-state"
