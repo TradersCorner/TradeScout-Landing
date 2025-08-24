@@ -326,11 +326,11 @@ export default function Home() {
     window.open(smsUrl, '_blank');
   };
 
-  const shareViaTwitter = () => {
+  const shareViaX = () => {
     const referralLink = `${window.location.origin}/?ref=${userReferralCode}`;
     const text = encodeURIComponent(`🏠 Excited to join TradeScout - finally, a platform where homeowners and contractors connect directly! No middlemen, no lead fees. Join me: ${referralLink} #TradeScout #HomeImprovement`);
     
-    // Try Twitter app first, then fallback to web
+    // Try X app first, then fallback to web
     const appUrl = `twitter://post?message=${text}`;
     const webUrl = `https://x.com/intent/tweet?text=${text}`;
     
@@ -1664,9 +1664,9 @@ export default function Home() {
                 SMS
               </button>
               
-              {/* Twitter Share */}
+              {/* X Share */}
               <button 
-                onClick={shareViaTwitter}
+                onClick={shareViaX}
                 style={{
                   background: "#1DA1F2",
                   color: "white",
@@ -1690,12 +1690,12 @@ export default function Home() {
                   e.currentTarget.style.transform = "translateY(0)";
                   e.currentTarget.style.boxShadow = "none";
                 }}
-                data-testid="button-share-twitter"
+                data-testid="button-share-x"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
                 </svg>
-                Twitter
+                X
               </button>
               
               {/* LinkedIn Share */}
