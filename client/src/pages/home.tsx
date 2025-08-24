@@ -993,7 +993,7 @@ export default function Home() {
               </>
             ) : (
               <div style={{textAlign: "left"}}>
-                <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
+                <div className="service-types-grid" style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
                   <div>
                     <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Project Type</label>
                     <select 
@@ -1087,7 +1087,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
+                <div className="quality-levels-grid" style={{display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "12px", marginBottom: "16px"}}>
                   <div>
                     <label style={{display: "block", fontSize: "14px", fontWeight: 600, marginBottom: "8px", color: "var(--text)"}}>Home Size (sq ft)</label>
                     <input 
@@ -1687,7 +1687,7 @@ export default function Home() {
                 }}>
                   I am a… (select all that apply)
                 </label>
-                <div style={{
+                <div className="roles-grid" style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
                   gap: "12px"
@@ -1926,7 +1926,7 @@ export default function Home() {
           {/* Social Share Options */}
           <div style={{marginBottom: "16px"}}>
             <p style={{fontSize: "14px", fontWeight: 600, margin: "0 0 12px", color: "var(--text)"}}>Share via:</p>
-            <div style={{
+            <div className="social-sharing-grid" style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
               gap: "8px",

@@ -344,6 +344,66 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
     flex:0 0 300px !important;
     grid-column:unset !important;
   }
+  
+  /* Horizontal scroll for calculator service types */
+  .service-types-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:16px !important;
+    padding:0 0 12px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .service-types-grid::-webkit-scrollbar{height:4px}
+  .service-types-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .service-types-grid::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .service-types-grid > div{
+    flex:0 0 220px !important;
+  }
+  
+  /* Horizontal scroll for calculator quality levels */
+  .quality-levels-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:16px !important;
+    padding:0 0 12px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quality-levels-grid::-webkit-scrollbar{height:4px}
+  .quality-levels-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .quality-levels-grid::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .quality-levels-grid > div{
+    flex:0 0 220px !important;
+  }
+  
+  /* Horizontal scroll for roles grid */
+  .roles-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:12px !important;
+    padding:0 0 12px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .roles-grid::-webkit-scrollbar{height:4px}
+  .roles-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .roles-grid::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .roles-grid > label{
+    flex:0 0 160px !important;
+  }
+  
+  /* Horizontal scroll for social sharing */
+  .social-sharing-grid{
+    display:flex !important;
+    overflow-x:auto !important;
+    gap:8px !important;
+    padding:0 0 12px 0 !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .social-sharing-grid::-webkit-scrollbar{height:4px}
+  .social-sharing-grid::-webkit-scrollbar-track{background:rgba(255,255,255,0.1)}
+  .social-sharing-grid::-webkit-scrollbar-thumb{background:var(--brand);border-radius:2px}
+  .social-sharing-grid > button{
+    flex:0 0 140px !important;
+  }
 }
 
 /* Desktop layout adjustments - disable horizontal scroll on larger screens */
@@ -354,6 +414,14 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
   .feature-cards > div{flex:unset !important}
   .value-stats{display:grid !important;overflow-x:visible !important;padding:0 !important}
   .value-stats > div{flex:unset !important}
+  .service-types-grid{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .service-types-grid > div{flex:unset !important}
+  .quality-levels-grid{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .quality-levels-grid > div{flex:unset !important}
+  .roles-grid{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .roles-grid > label{flex:unset !important}
+  .social-sharing-grid{display:grid !important;overflow-x:visible !important;padding:0 !important}
+  .social-sharing-grid > button{flex:unset !important}
 }
 
 /* Performance and accessibility improvements */
