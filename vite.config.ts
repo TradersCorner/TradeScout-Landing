@@ -3,16 +3,13 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  root: 'client',                       // app lives here
+  root: 'client',
   plugins: [react()],
-  base: '/',                            // correct asset paths for custom domain / Vercel
+  base: '/',
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'client/src'),   // <-- alias fix
+      '@': path.resolve(__dirname, 'client/src'),   // <-- required
     },
   },
-  build: {
-    outDir: 'client/dist',
-    emptyOutDir: true,
-  },
+  build: { outDir: 'client/dist', emptyOutDir: true },
 })
