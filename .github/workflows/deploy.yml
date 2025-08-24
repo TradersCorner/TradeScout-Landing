@@ -27,37 +27,25 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install deps
+      - name: Install deps (root)
         run: npm ci || npm install
 
-      # Build only the frontend (per your updated package.json)
-      - name: Build frontend ONLY
+      - name: Build frontend (client/)
         run: npm run build:web
 
-      # Figure out where Vite put the build (./dist OR ./client/dist)
-      - name: Detect build output dir
-        id: detect
-        shell: bash
+      - name: Verify built index.html
         run: |
-          if [ -d "./dist" ] && [ -f "./dist/index.html" ]; then
-            echo "dir=./dist" >> $GITHUB_OUTPUT
-          elif [ -d "./client/dist" ] && [ -f "./client/dist/index.html" ]; then
-            echo "dir=./client/dist" >> $GITHUB_OUTPUT
-          else
-            echo "No build output found"; ls -R
-            exit 1
-          fi
-          echo "Using output dir: $(cat $GITHUB_OUTPUT)"
+          test -f client/dist/index.html || (echo "client/dist/index.html missing" && exit 1)
 
       - name: Add custom domain + SPA fallback
         run: |
-          echo "info.thetradescout.us" > "${{ steps.detect.outputs.dir }}/CNAME"
-          cp "${{ steps.detect.outputs.dir }}/index.html" "${{ steps.detect.outputs.dir }}/404.html" || true
+          echo "info.thetradescout.us" > client/dist/CNAME
+          cp client/dist/index.html client/dist/404.html || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.detect.outputs.dir }}
+          path: client/dist
 
   deploy:
     needs: build
