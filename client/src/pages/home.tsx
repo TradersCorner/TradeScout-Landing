@@ -667,121 +667,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partner Referral System */}
-      <section style={{padding: '60px 0', background: 'var(--panel)'}}>
-        <div className="container">
-          <div style={{textAlign: 'center', marginBottom: '48px'}}>
-            <h2 style={{fontSize: 'clamp(24px, 5vw, 32px)', fontWeight: 900, margin: '0 0 16px', color: 'var(--text)'}}>
-              Partner Referral Network
-            </h2>
-            <p style={{fontSize: '16px', color: 'var(--muted)', maxWidth: '700px', margin: '0 auto', lineHeight: 1.6}}>
-              Join our partner network and earn competitive commissions for quality referrals. We work with real estate agents, insurance professionals, and business partners who believe in direct, honest connections.
-            </p>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
-            marginBottom: '40px'
-          }}>
-            <div style={{
-              background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(37, 99, 235, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <HomeIcon size={32} style={{color: "var(--accent)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Real Estate Agents</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Refer clients who need contractors for home prep, repairs, or improvements</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Pre-listing home improvements</li>
-                <li>Post-inspection repairs</li>
-                <li>New buyer renovations</li>
-              </ul>
-            </div>
-
-            <div style={{
-              background: "linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(16, 185, 129, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <Shield size={32} style={{color: "var(--success)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Insurance Professionals</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Connect policyholders with trusted contractors for claims and preventive maintenance</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Storm damage repairs</li>
-                <li>Preventive maintenance</li>
-                <li>Claims contractor referrals</li>
-              </ul>
-            </div>
-
-            <div style={{
-              background: "linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(255, 107, 53, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <Briefcase size={32} style={{color: "var(--brand)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Business Partners</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Property managers, home inspectors, and related professionals</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Property management referrals</li>
-                <li>Home inspection follow-ups</li>
-                <li>Professional network connections</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style={{
-            background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
-            borderRadius: "16px",
-            padding: "24px",
-            border: "1px solid rgba(37, 99, 235, 0.2)",
-            textAlign: "center",
-            boxShadow: "0 8px 32px rgba(37, 99, 235, 0.1)"
-          }}>
-            <div style={{marginBottom: "16px"}}>
-              <Share2 size={32} style={{color: "var(--accent)", margin: "0 auto"}} />
-            </div>
-            <h4 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Ready to Become a Partner?</h4>
-            <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 20px", lineHeight: 1.5}}>Join our partner network and start earning rewards for quality referrals. Early partners get exclusive benefits and higher commission rates.</p>
-            
-            <button 
-              onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
-              style={{
-                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                padding: "12px 24px",
-                fontSize: "16px",
-                fontWeight: 600,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                marginRight: "12px"
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0px)"}
-              data-testid="button-partner-signup"
-            >
-              Become a Partner
-            </button>
-            
-            <p style={{fontSize: "12px", color: "var(--muted)", margin: "16px 0 0"}}>Commission rates: Real Estate 3%, Insurance 5%, Business Partners 2%</p>
-          </div>
-        </div>
-      </section>
 
       {/* Trade Partner Benefits */}
       <section style={{padding: '60px 0'}}>
@@ -797,8 +682,8 @@ export default function Home() {
             <h3 style={{fontSize: '24px', fontWeight: 700, margin: '0 0 16px', color: 'var(--text)'}}>
               🎯 Everyone's a Trade Partner
             </h3>
-            <p style={{fontSize: '16px', color: 'var(--muted)', maxWidth: '600px', margin: '0 auto 32px'}}>
-              Every TradeScout member automatically becomes a Trade Partner. Share any link from our site and earn commissions when people hire contractors!
+            <p style={{fontSize: '16px', color: 'var(--muted)', maxWidth: '700px', margin: '0 auto 32px'}}>
+              Every TradeScout member automatically becomes a Trade Partner. Share any link from our site and earn commissions when people hire contractors! We work with real estate agents, insurance professionals, and business partners who believe in direct, honest connections.
             </p>
             <div style={{
               display: 'grid',
@@ -822,6 +707,70 @@ export default function Home() {
                 <div style={{fontSize: '14px', color: 'var(--muted)'}}>Automatic tracking, no special codes</div>
               </div>
             </div>
+
+            {/* Professional Partner Types */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '20px',
+              margin: '40px 0',
+              textAlign: 'left'
+            }}>
+              <div style={{
+                background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
+                borderRadius: "12px",
+                padding: "20px",
+                border: "1px solid rgba(37, 99, 235, 0.2)"
+              }}>
+                <div style={{marginBottom: "12px", textAlign: "center"}}>
+                  <HomeIcon size={28} style={{color: "var(--accent)"}} />
+                </div>
+                <h4 style={{fontSize: "16px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)", textAlign: "center"}}>Real Estate Agents</h4>
+                <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 8px", textAlign: "center"}}>3% Commission Rate</p>
+                <ul style={{fontSize: "12px", color: "var(--muted)", margin: 0, paddingLeft: "16px"}}>
+                  <li>Pre-listing home improvements</li>
+                  <li>Post-inspection repairs</li>
+                  <li>New buyer renovations</li>
+                </ul>
+              </div>
+
+              <div style={{
+                background: "linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))",
+                borderRadius: "12px",
+                padding: "20px",
+                border: "1px solid rgba(16, 185, 129, 0.2)"
+              }}>
+                <div style={{marginBottom: "12px", textAlign: "center"}}>
+                  <Shield size={28} style={{color: "var(--success)"}} />
+                </div>
+                <h4 style={{fontSize: "16px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)", textAlign: "center"}}>Insurance Professionals</h4>
+                <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 8px", textAlign: "center"}}>5% Commission Rate</p>
+                <ul style={{fontSize: "12px", color: "var(--muted)", margin: 0, paddingLeft: "16px"}}>
+                  <li>Storm damage repairs</li>
+                  <li>Preventive maintenance</li>
+                  <li>Claims contractor referrals</li>
+                </ul>
+              </div>
+
+              <div style={{
+                background: "linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05))",
+                borderRadius: "12px",
+                padding: "20px",
+                border: "1px solid rgba(255, 107, 53, 0.2)"
+              }}>
+                <div style={{marginBottom: "12px", textAlign: "center"}}>
+                  <Briefcase size={28} style={{color: "var(--brand)"}} />
+                </div>
+                <h4 style={{fontSize: "16px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)", textAlign: "center"}}>Business Partners</h4>
+                <p style={{fontSize: "12px", color: "var(--muted)", margin: "0 0 8px", textAlign: "center"}}>2% Commission Rate</p>
+                <ul style={{fontSize: "12px", color: "var(--muted)", margin: 0, paddingLeft: "16px"}}>
+                  <li>Property management referrals</li>
+                  <li>Home inspection follow-ups</li>
+                  <li>Professional network connections</li>
+                </ul>
+              </div>
+            </div>
+            
             <p style={{fontSize: '16px', color: 'var(--muted)', margin: '0', fontStyle: 'italic'}}>
               "Share TradeScout naturally. Get rewarded automatically."
             </p>
