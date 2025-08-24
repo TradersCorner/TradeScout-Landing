@@ -176,13 +176,14 @@ export default function SignupForm() {
               backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6,9 12,15 18,9'></polyline></svg>")`,
               backgroundPosition: `calc(100% - 16px) center`,
               backgroundSize: `16px 16px`,
-              backgroundRepeat: `no-repeat`
+              backgroundRepeat: `no-repeat`,
+              colorScheme: "dark"
             }}
             data-testid="select-state"
           >
-            <option value="">Select State</option>
+            <option value="" style={{backgroundColor: "#1a1a1a", color: "#ffffff"}}>Select State</option>
             {states.map(state => (
-              <option key={state.value} value={state.value}>{state.label}</option>
+              <option key={state.value} value={state.value} style={{backgroundColor: "#1a1a1a", color: "#ffffff"}}>{state.label}</option>
             ))}
           </select>
           {errors.state && (
