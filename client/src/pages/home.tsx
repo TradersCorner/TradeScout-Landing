@@ -162,8 +162,8 @@ export default function Home() {
       <header>
         <div className="container">
           <nav className="nav">
-            <div className="brand">
-              <div className="brand-icon">
+            <div className="brand" style={{color: 'var(--brand)'}}>
+              <div className="brand-icon" style={{color: 'var(--brand)'}}>
                 {constructionLogos[currentLogoIndex]}
               </div>
               TradeScout
