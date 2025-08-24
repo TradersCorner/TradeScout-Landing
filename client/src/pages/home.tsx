@@ -25,8 +25,7 @@ export default function Home() {
   });
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [showExitIntent, setShowExitIntent] = useState(false);
-  const [referralCode, setReferralCode] = useState('');
-  const [userReferralCode, setUserReferralCode] = useState('');
+  const [affiliateSource, setAffiliateSource] = useState('');
 
   const constructionLogos = [
     <Hammer key="hammer" size={28} />,
@@ -80,13 +79,12 @@ export default function Home() {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [showExitIntent]);
 
-  // Generate referral code
+  // Track affiliate source from URL
   useEffect(() => {
-    if (formData.email && !referralCode) {
-      const code = formData.email.split('@')[0].toUpperCase() + Math.random().toString(36).substring(2, 6).toUpperCase();
-      setReferralCode(code);
-    }
-  }, [formData.email, referralCode]);
+    const urlParams = new URLSearchParams(window.location.search);
+    const partner = urlParams.get('partner');
+    if (partner) setAffiliateSource(partner);
+  }, []);
 
   const handleRoleToggle = (role: string) => {
     setFormData(prev => ({
@@ -103,8 +101,7 @@ export default function Home() {
     // Cache form data for offline submission
     localStorage.setItem('tradescout-form-cache', JSON.stringify({
       ...formData,
-      referralCode,
-      userReferralCode,
+      affiliateSource: affiliateSource || 'direct',
       timestamp: Date.now()
     }));
 
@@ -121,8 +118,7 @@ export default function Home() {
         },
         body: JSON.stringify({
           ...formData,
-          referralCode,
-          userReferralCode
+          affiliateSource: affiliateSource || 'direct'
         }),
       });
 
@@ -454,7 +450,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Word of Mouth Statistics */}
+      {/* Trade Partner Benefits */}
       <section style={{padding: '60px 0'}}>
         <div className="container">
           <div style={{
@@ -466,8 +462,11 @@ export default function Home() {
             boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1)'
           }}>
             <h3 style={{fontSize: '24px', fontWeight: 700, margin: '0 0 16px', color: 'var(--text)'}}>
-              The Power of Word-of-Mouth
+              🎯 Everyone's a Trade Partner
             </h3>
+            <p style={{fontSize: '16px', color: 'var(--muted)', margin: '0 0 32px', maxWidth: '600px', margin: '0 auto 32px'}}>
+              Every TradeScout member automatically becomes a Trade Partner. Share any link from our site and earn commissions when people hire contractors!
+            </p>
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -475,20 +474,23 @@ export default function Home() {
               margin: '32px 0'
             }}>
               <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--accent)', marginBottom: '8px'}}>92%</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Trust personal recommendations over advertising</div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--accent)', marginBottom: '8px'}}>💰</div>
+                <div style={{fontSize: '16px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px'}}>Automatic Earnings</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Earn commissions on every referral</div>
               </div>
               <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--success)', marginBottom: '8px'}}>5x</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>More likely to hire through referrals</div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--success)', marginBottom: '8px'}}>🔗</div>
+                <div style={{fontSize: '16px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px'}}>Any Link Works</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Every shared link is an affiliate link</div>
               </div>
               <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--brand)', marginBottom: '8px'}}>84%</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Start their search with word-of-mouth</div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--brand)', marginBottom: '8px'}}>⚡</div>
+                <div style={{fontSize: '16px', fontWeight: 600, color: 'var(--text)', marginBottom: '4px'}}>No Setup Required</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Automatic tracking, no special codes</div>
               </div>
             </div>
             <p style={{fontSize: '16px', color: 'var(--muted)', margin: '0', fontStyle: 'italic'}}>
-              "TradeScout builds on what already works—trusted recommendations from people you know."
+              "Share TradeScout naturally. Get rewarded automatically."
             </p>
           </div>
         </div>
@@ -505,49 +507,22 @@ export default function Home() {
               Be among the first to access TradeScout when we launch. Early members get priority access to the best contractors in their area.
             </p>
 
-            {/* Referral Code Input */}
-            {!userReferralCode && (
-              <div style={{marginBottom: '32px'}}>
-                <p style={{fontSize: '16px', color: 'var(--text)', marginBottom: '12px'}}>
-                  Have a referral code? Enter it to move up the early access list:
+            {/* Affiliate Credit */}
+            {affiliateSource && (
+              <div style={{
+                marginBottom: '32px',
+                padding: '16px',
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))',
+                border: '1px solid rgba(16, 185, 129, 0.2)',
+                borderRadius: '12px',
+                textAlign: 'center'
+              }}>
+                <p style={{fontSize: '16px', fontWeight: 600, margin: '0', color: 'var(--text)'}}>
+                  ✅ Shared by Trade Partner: <span style={{color: 'var(--success)', textTransform: 'uppercase'}}>{affiliateSource}</span>
                 </p>
-                <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
-                  <input
-                    type="text"
-                    placeholder="Enter referral code"
-                    value={userReferralCode}
-                    onChange={(e) => setUserReferralCode(e.target.value.toUpperCase())}
-                    style={{
-                      padding: '12px 16px',
-                      borderRadius: '8px',
-                      border: '1px solid var(--border)',
-                      background: 'var(--bg)',
-                      color: 'var(--text)',
-                      fontSize: '16px',
-                      minWidth: '200px'
-                    }}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (userReferralCode) {
-                        alert(`Referral code ${userReferralCode} applied! You've moved up in the early access queue.`);
-                      }
-                    }}
-                    style={{
-                      background: 'var(--accent)',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '8px',
-                      padding: '12px 20px',
-                      fontSize: '16px',
-                      fontWeight: 600,
-                      cursor: 'pointer'
-                    }}
-                  >
-                    Apply Code
-                  </button>
-                </div>
+                <p style={{fontSize: '14px', color: 'var(--muted)', margin: '4px 0 0'}}>
+                  They'll receive credit when you join TradeScout!
+                </p>
               </div>
             )}
 
@@ -693,8 +668,8 @@ export default function Home() {
                 {isOffline ? 'Save for Later (Offline)' : 'Get Early Access'}
               </button>
 
-              {/* Referral Code Display */}
-              {referralCode && (
+              {/* Trade Partner Link */}
+              {formData.email && (
                 <div style={{
                   marginTop: '24px',
                   padding: '20px',
@@ -704,7 +679,7 @@ export default function Home() {
                   textAlign: 'center'
                 }}>
                   <p style={{fontSize: '16px', fontWeight: 600, margin: '0 0 8px', color: 'var(--text)'}}>
-                    Your Referral Code:
+                    🎆 You're now a Trade Partner! Share your affiliate link:
                   </p>
                   <div style={{
                     display: 'flex',
@@ -714,22 +689,23 @@ export default function Home() {
                     flexWrap: 'wrap'
                   }}>
                     <span style={{
-                      fontSize: '20px',
-                      fontWeight: 900,
-                      color: 'var(--accent)',
+                      fontSize: '14px',
+                      color: 'var(--muted)',
                       padding: '8px 16px',
                       background: 'var(--bg)',
                       borderRadius: '6px',
                       border: '1px solid var(--border)',
-                      letterSpacing: '2px'
+                      wordBreak: 'break-all',
+                      maxWidth: '300px'
                     }}>
-                      {referralCode}
+                      {window.location.origin}?partner={formData.email.split('@')[0].toLowerCase()}
                     </span>
                     <button
                       type="button"
                       onClick={() => {
-                        navigator.clipboard.writeText(referralCode);
-                        alert('Referral code copied to clipboard!');
+                        const affiliateLink = `${window.location.origin}?partner=${formData.email.split('@')[0].toLowerCase()}`;
+                        navigator.clipboard.writeText(affiliateLink);
+                        alert('Affiliate link copied! You\'ll earn credit when people sign up through this link.');
                       }}
                       style={{
                         background: 'var(--accent)',
@@ -745,12 +721,12 @@ export default function Home() {
                         gap: '4px'
                       }}
                     >
-                      <Copy size={14} />
-                      Copy
+                      <Share2 size={14} />
+                      Share Link
                     </button>
                   </div>
                   <p style={{fontSize: '14px', color: 'var(--muted)', margin: '12px 0 0', lineHeight: 1.5}}>
-                    💡 <strong>Pro tip:</strong> The more people you refer, the higher you move up the early access list!
+                    💰 <strong>Automatic earnings:</strong> You'll receive commissions when people you refer hire contractors through TradeScout!
                   </p>
                 </div>
               )}
@@ -759,121 +735,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partner Referral System */}
-      <section style={{padding: '60px 0', background: 'var(--panel)'}}>
-        <div className="container">
-          <div style={{textAlign: 'center', marginBottom: '48px'}}>
-            <h2 style={{fontSize: 'clamp(24px, 5vw, 32px)', fontWeight: 900, margin: '0 0 16px', color: 'var(--text)'}}>
-              Partner Referral Network
-            </h2>
-            <p style={{fontSize: '16px', color: 'var(--muted)', maxWidth: '700px', margin: '0 auto', lineHeight: 1.6}}>
-              Join our partner network and earn competitive commissions for quality referrals. We work with real estate agents, insurance professionals, and business partners who believe in direct, honest connections.
-            </p>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
-            marginBottom: '40px'
-          }}>
-            <div style={{
-              background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(37, 99, 235, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <HomeIcon size={32} style={{color: "var(--accent)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Real Estate Agents</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Refer clients who need contractors for home prep, repairs, or improvements</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Pre-listing home improvements</li>
-                <li>Post-inspection repairs</li>
-                <li>New buyer renovations</li>
-              </ul>
-            </div>
-
-            <div style={{
-              background: "linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(16, 185, 129, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <Shield size={32} style={{color: "var(--success)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Insurance Professionals</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Connect policyholders with trusted contractors for claims and preventive maintenance</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Storm damage repairs</li>
-                <li>Preventive maintenance</li>
-                <li>Claims contractor referrals</li>
-              </ul>
-            </div>
-
-            <div style={{
-              background: "linear-gradient(135deg, rgba(255, 107, 53, 0.1), rgba(255, 107, 53, 0.05))",
-              borderRadius: "12px",
-              padding: "24px",
-              border: "1px solid rgba(255, 107, 53, 0.2)",
-              textAlign: "center"
-            }}>
-              <div style={{marginBottom: "16px"}}>
-                <Briefcase size={32} style={{color: "var(--brand)", margin: "0 auto"}} />
-              </div>
-              <h4 style={{fontSize: "18px", fontWeight: 600, margin: "0 0 8px", color: "var(--text)"}}>Business Partners</h4>
-              <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 12px"}}>Property managers, home inspectors, and related professionals</p>
-              <ul style={{fontSize: "12px", color: "var(--muted)", textAlign: "left", margin: 0, paddingLeft: "16px"}}>
-                <li>Property management referrals</li>
-                <li>Home inspection follow-ups</li>
-                <li>Professional network connections</li>
-              </ul>
-            </div>
-          </div>
-
-          <div style={{
-            background: "linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))",
-            borderRadius: "16px",
-            padding: "24px",
-            border: "1px solid rgba(37, 99, 235, 0.2)",
-            textAlign: "center",
-            boxShadow: "0 8px 32px rgba(37, 99, 235, 0.1)"
-          }}>
-            <div style={{marginBottom: "16px"}}>
-              <Share2 size={32} style={{color: "var(--accent)", margin: "0 auto"}} />
-            </div>
-            <h4 style={{fontSize: "20px", fontWeight: 700, margin: "0 0 8px", color: "var(--text)"}}>Ready to Become a Partner?</h4>
-            <p style={{fontSize: "14px", color: "var(--muted)", margin: "0 0 20px", lineHeight: 1.5}}>Join our partner network and start earning rewards for quality referrals. Early partners get exclusive benefits and higher commission rates.</p>
-            
-            <button 
-              onClick={() => document.getElementById('signup')?.scrollIntoView({behavior: 'smooth'})}
-              style={{
-                background: "linear-gradient(135deg, var(--brand), var(--brand-2))",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                padding: "12px 24px",
-                fontSize: "16px",
-                fontWeight: 600,
-                cursor: "pointer",
-                transition: "all 0.2s ease",
-                marginRight: "12px"
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0px)"}
-              data-testid="button-partner-signup"
-            >
-              Become a Partner
-            </button>
-            
-            <p style={{fontSize: "12px", color: "var(--muted)", margin: "16px 0 0"}}>Commission rates: Real Estate 3%, Insurance 5%, Business Partners 2%</p>
-          </div>
-        </div>
-      </section>
 
       {/* Exit Intent Modal */}
       {showExitIntent && (
