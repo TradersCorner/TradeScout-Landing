@@ -429,6 +429,11 @@ export default function Home() {
       <section className="hero container" itemScope itemType="https://schema.org/WebPage">
         <h1 itemProp="headline">Connection Without Compromise</h1>
         <p itemProp="description">Predatory predecessors sold your information as "leads." TradeScout is a network where homeowners and contractors connect directly — no middlemen, no games.</p>
+        <div style={{marginTop: "16px", fontSize: "14px", color: "var(--muted)", textAlign: "center"}}>
+          <span>Find local contractors near you: Painters • Roofers • Flooring Specialists • Plumbers • Electricians</span>
+          <br/>
+          <span style={{fontSize: "12px", opacity: 0.8}}>Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} • Fresh contractor listings daily</span>
+        </div>
         <div className="cta-wrap">
           <a className="cta" href="#signup" aria-label="Get early access">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -440,6 +445,71 @@ export default function Home() {
       </section>
 
       {/* Why TradeScout */}
+      {/* Location Services Section */}
+      <section style={{
+        padding: "60px 0",
+        background: "var(--panel)",
+        borderTop: "1px solid var(--border)"
+      }}>
+        <div className="container" style={{textAlign: "center"}}>
+          <h2 style={{
+            fontSize: "clamp(24px, 4vw, 36px)",
+            marginBottom: "16px",
+            color: "var(--text)",
+            fontWeight: 700
+          }}>
+            Local Contractors in Your Area
+          </h2>
+          <div style={{
+            fontSize: "14px",
+            color: "var(--brand)",
+            marginBottom: "24px",
+            fontWeight: 600
+          }}>
+            🔄 Updated {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • New contractors verified daily
+          </div>
+          <p style={{
+            fontSize: "16px",
+            color: "var(--muted)",
+            maxWidth: "800px",
+            margin: "0 auto 40px",
+            lineHeight: 1.6
+          }}>
+            Connect with verified contractors near you for all your home improvement needs. Our network covers every major city and town across America.
+          </p>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "16px",
+            maxWidth: "1000px",
+            margin: "0 auto",
+            fontSize: "14px",
+            color: "var(--text)"
+          }}>
+            <div style={{padding: "16px", background: "var(--panel-2)", borderRadius: "8px"}}>
+              <strong>Painting Contractors</strong><br/>
+              Interior • Exterior • Commercial • Residential
+            </div>
+            <div style={{padding: "16px", background: "var(--panel-2)", borderRadius: "8px"}}>
+              <strong>Roofing Specialists</strong><br/>
+              Repair • Replacement • Storm Damage • Gutters
+            </div>
+            <div style={{padding: "16px", background: "var(--panel-2)", borderRadius: "8px"}}>
+              <strong>Flooring Experts</strong><br/>
+              Hardwood • Tile • Carpet • Laminate • Vinyl
+            </div>
+            <div style={{padding: "16px", background: "var(--panel-2)", borderRadius: "8px"}}>
+              <strong>General Contractors</strong><br/>
+              Remodeling • Additions • Kitchens • Bathrooms
+            </div>
+            <div style={{padding: "16px", background: "var(--panel-2)", borderRadius: "8px"}}>
+              <strong>Specialty Trades</strong><br/>
+              Plumbing • Electrical • HVAC • Handyman
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="container" id="why" aria-labelledby="whytitle" style={{marginTop:"32px"}}>
         <h2 id="whytitle" className="section-title">How It Works</h2>
         <div className="feature-grid">
@@ -1073,7 +1143,7 @@ export default function Home() {
 
       {/* Network banner */}
       <div className="ribbon">
-        Join 500,000+ people already connected through the TradeScout network.
+        Join 500,000+ homeowners and contractors already connected through the TradeScout network. <strong>Updated daily</strong> with new local contractors in your area. <a href="#signup" style={{color: "white", textDecoration: "underline"}}>Join today</a>
       </div>
 
       {/* Email signup */}
@@ -1883,7 +1953,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Calculator</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Real costs in your neighborhood. No guessing, no surprises.
+                Real costs in your neighborhood. No guessing, no surprises. <a href="#signup" style={{color: "var(--brand)", textDecoration: "underline"}}>Try the calculator</a>
               </p>
             </div>
 
@@ -1904,7 +1974,7 @@ export default function Home() {
               </div>
               <h3 style={{fontSize: "20px", marginBottom: "12px", color: "var(--text)"}}>Helpers</h3>
               <p style={{color: "var(--muted)", lineHeight: 1.5, margin: 0, fontSize: "15px"}}>
-                Need an extra pair of hands? Find people eager to learn and work.
+                Need an extra pair of hands? Find people eager to learn and work. <a href="#faq" style={{color: "var(--brand)", textDecoration: "underline"}}>Learn more</a>
               </p>
             </div>
 
@@ -2108,7 +2178,7 @@ export default function Home() {
               </h3>
               <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
                 <p style={{color: "var(--muted)", lineHeight: 1.6}} itemProp="text">
-                  Our verified US contractors specialize in painting (interior/exterior, $2.50-8.00/sq ft), flooring installation (hardwood, tile, carpet, $4.00-16.00/sq ft), roofing replacement ($6.00-18.00/sq ft), plumbing, electrical work, HVAC, handyman services, bathroom and kitchen remodeling, and general home improvement projects across America.
+                  Find contractors near you for painting services (interior/exterior, $2.50-8.00/sq ft), flooring installation (hardwood, tile, carpet, $4.00-16.00/sq ft), roofing replacement and repair ($6.00-18.00/sq ft), plumbing services, electrical work, HVAC installation, handyman services, bathroom remodeling, kitchen renovation, and general home improvement projects across America. All contractors are licensed and insured in your local area.
                 </p>
               </div>
             </div>
