@@ -459,3 +459,189 @@ footer{padding:34px 0;border-top:1px solid rgba(255,255,255,.06);color:#9da3aa;t
 
 /* Mirrored CTA wrapper above form */
 .cta-top{ text-align:center; margin: 18px 0 8px; }
+
+/* Enhanced Mobile and Landscape Optimizations */
+
+/* Mobile Portrait Optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .hero h1 {
+    font-size: clamp(28px, 8vw, 48px);
+    line-height: 1.2;
+  }
+  
+  .cta {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .feature-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  /* Form optimizations */
+  .form {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .field {
+    padding: 16px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .btn {
+    padding: 16px 24px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  /* Calculator mobile optimization */
+  [data-testid="button-show-calculator"] {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  /* Footer responsive */
+  [data-testid="footer-signup-button"] {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+  }
+}
+
+/* Mobile Landscape Optimizations */
+@media (max-width: 926px) and (orientation: landscape) {
+  .hero {
+    padding: 40px 0;
+  }
+  
+  .hero h1 {
+    font-size: clamp(24px, 6vw, 36px);
+  }
+  
+  .hero p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Reduce vertical spacing in landscape */
+  .container {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .section-title {
+    margin-bottom: 20px;
+    font-size: clamp(20px, 4vw, 28px);
+  }
+  
+  /* Calculator in landscape */
+  .calculator-preview {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  /* Grid adjustments for landscape */
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .form {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .form .btn {
+    grid-column: span 2;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+  
+  .hero {
+    padding: 100px 0;
+  }
+  
+  .feature-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  button, .btn, .cta, a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 20px;
+  }
+  
+  .field, select, textarea {
+    min-height: 44px;
+    padding: 12px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  button:hover, .btn:hover, .cta:hover {
+    transform: none;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .cta, .btn, button {
+    display: none;
+  }
+  
+  .hero {
+    color: black;
+    background: white;
+  }
+  
+  * {
+    color: black !important;
+    background: white !important;
+  }
+}
