@@ -1,8 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
+
 export default defineConfig({
-  root: 'client',
+  root: 'client',                       // app lives here
   plugins: [react()],
-  base: '/',                           // critical for correct asset paths
-  build: { outDir: 'client/dist', emptyOutDir: true }
+  base: '/',                            // correct asset paths for custom domain / Vercel
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'client/src'),   // <-- alias fix
+    },
+  },
+  build: {
+    outDir: 'client/dist',
+    emptyOutDir: true,
+  },
 })
