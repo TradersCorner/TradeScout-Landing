@@ -853,7 +853,7 @@ export default function Home() {
       {/* Verification Badges */}
       <section className="container" style={{marginTop:"48px", marginBottom:"32px"}}>
         <h2 className="section-title">Verified Network You Can Trust</h2>
-        <div style={{
+        <div className="verification-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
           gap: "24px",
