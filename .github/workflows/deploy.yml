@@ -27,21 +27,33 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install deps (root)
+      # Install root deps (where package.json lives)
+      - name: Install dependencies (root)
         run: npm ci || npm install
 
+      # Build the client app from its folder using Vite directly
       - name: Build frontend (client/)
-        run: npm run build:web
+        working-directory: client
+        run: npx vite build --debug
 
+      # Show what got built for easy debugging
+      - name: List build output
+        run: |
+          ls -la client || true
+          ls -la client/dist || true
+
+      # Hard fail if index.html isn't there
       - name: Verify built index.html
         run: |
           test -f client/dist/index.html || (echo "client/dist/index.html missing" && exit 1)
 
-      - name: Add custom domain + SPA fallback
+      # Add custom domain + SPA fallback
+      - name: Add CNAME and SPA fallback
         run: |
           echo "info.thetradescout.us" > client/dist/CNAME
           cp client/dist/index.html client/dist/404.html || true
 
+      # Upload the site artifact for Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
