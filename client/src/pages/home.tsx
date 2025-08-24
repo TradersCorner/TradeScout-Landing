@@ -450,46 +450,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Word of Mouth Statistics */}
-      <section style={{padding: '60px 0'}}>
-        <div className="container">
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))',
-            borderRadius: '16px',
-            padding: '40px',
-            border: '1px solid rgba(37, 99, 235, 0.2)',
-            textAlign: 'center',
-            boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1)'
-          }}>
-            <h3 style={{fontSize: '24px', fontWeight: 700, margin: '0 0 16px', color: 'var(--text)'}}>
-              The Power of Word-of-Mouth
-            </h3>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '32px',
-              margin: '32px 0'
-            }}>
-              <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--accent)', marginBottom: '8px'}}>92%</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Trust personal recommendations over advertising</div>
-              </div>
-              <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--success)', marginBottom: '8px'}}>5x</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>More likely to hire through referrals</div>
-              </div>
-              <div>
-                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--brand)', marginBottom: '8px'}}>84%</div>
-                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Start their search with word-of-mouth</div>
-              </div>
-            </div>
-            <p style={{fontSize: '16px', color: 'var(--muted)', margin: '0', fontStyle: 'italic'}}>
-              "TradeScout builds on what already works—trusted recommendations from people you know."
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Early Access Signup */}
       <section id="signup" style={{padding: '80px 0 60px', background: 'linear-gradient(135deg, rgba(255,107,53,0.02), rgba(37,99,235,0.01))'}}>
         <div className="container">
@@ -500,25 +460,6 @@ export default function Home() {
             <p style={{fontSize: '18px', color: 'var(--muted)', margin: '0 0 40px', lineHeight: 1.6}}>
               Be among the first to access TradeScout when we launch. Early members get priority access to the best contractors in their area.
             </p>
-
-            {/* Affiliate Credit */}
-            {affiliateSource && (
-              <div style={{
-                marginBottom: '32px',
-                padding: '16px',
-                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '12px',
-                textAlign: 'center'
-              }}>
-                <p style={{fontSize: '16px', fontWeight: 600, margin: '0', color: 'var(--text)'}}>
-                  ✅ Shared by Trade Partner: <span style={{color: 'var(--success)', textTransform: 'uppercase'}}>{affiliateSource}</span>
-                </p>
-                <p style={{fontSize: '14px', color: 'var(--muted)', margin: '4px 0 0'}}>
-                  They'll receive credit when you join TradeScout!
-                </p>
-              </div>
-            )}
 
             <form onSubmit={handleSubmit} className="form" style={{textAlign: 'left'}}>
               <div>
@@ -666,6 +607,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Word of Mouth Statistics */}
+      <section style={{padding: '60px 0'}}>
+        <div className="container">
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05))',
+            borderRadius: '16px',
+            padding: '40px',
+            border: '1px solid rgba(37, 99, 235, 0.2)',
+            textAlign: 'center',
+            boxShadow: '0 8px 32px rgba(37, 99, 235, 0.1)'
+          }}>
+            <h3 style={{fontSize: '24px', fontWeight: 700, margin: '0 0 16px', color: 'var(--text)'}}>
+              The Power of Word-of-Mouth
+            </h3>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '32px',
+              margin: '32px 0'
+            }}>
+              <div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--accent)', marginBottom: '8px'}}>92%</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Trust personal recommendations over advertising</div>
+              </div>
+              <div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--success)', marginBottom: '8px'}}>5x</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>More likely to hire through referrals</div>
+              </div>
+              <div>
+                <div style={{fontSize: '36px', fontWeight: 900, color: 'var(--brand)', marginBottom: '8px'}}>84%</div>
+                <div style={{fontSize: '14px', color: 'var(--muted)'}}>Start their search with word-of-mouth</div>
+              </div>
+            </div>
+            <p style={{fontSize: '16px', color: 'var(--muted)', margin: '0', fontStyle: 'italic'}}>
+              "TradeScout builds on what already works—trusted recommendations from people you know."
+            </p>
+          </div>
+        </div>
+      </section>
+
 
 
       {/* Trade Partner Benefits */}
