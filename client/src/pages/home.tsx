@@ -1933,71 +1933,7 @@ export default function Home() {
               maxWidth: "500px",
               margin: "0 auto"
             }}>
-              {/* Email Share */}
-              <button 
-                onClick={shareViaEmail}
-                style={{
-                  background: "#EA4335",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  padding: "10px 12px",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "6px",
-                  transition: "all 0.2s ease"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(234, 67, 53, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-                data-testid="button-share-email"
-              >
-                <Mail size={14} />
-                Email
-              </button>
-              
-              {/* WhatsApp Share */}
-              <button 
-                onClick={shareViaWhatsApp}
-                style={{
-                  background: "#25D366",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  padding: "10px 12px",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "6px",
-                  transition: "all 0.2s ease"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 211, 102, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-                data-testid="button-share-whatsapp"
-              >
-                <MessageCircle size={14} />
-                WhatsApp
-              </button>
-              
-              {/* SMS Share */}
+              {/* SMS Share - Most Universal */}
               <button 
                 onClick={shareViaSMS}
                 style={{
@@ -2029,7 +1965,105 @@ export default function Home() {
                 SMS
               </button>
               
-              {/* X Share */}
+              {/* WhatsApp Share - Very Popular Messaging */}
+              <button 
+                onClick={shareViaWhatsApp}
+                style={{
+                  background: "#25D366",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(37, 211, 102, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-whatsapp"
+              >
+                <MessageCircle size={14} />
+                WhatsApp
+              </button>
+              
+              {/* Email Share - Very Common */}
+              <button 
+                onClick={shareViaEmail}
+                style={{
+                  background: "#EA4335",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(234, 67, 53, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-email"
+              >
+                <Mail size={14} />
+                Email
+              </button>
+              
+              {/* Facebook Share - Popular Social Media */}
+              <button 
+                onClick={shareViaFacebook}
+                style={{
+                  background: "#1877F2",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "10px 12px",
+                  fontSize: "13px",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "6px",
+                  transition: "all 0.2s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(24, 119, 242, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+                data-testid="button-share-facebook"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Facebook
+              </button>
+              
+              {/* X Share - Social Media */}
               <button 
                 onClick={shareViaX}
                 style={{
@@ -2063,7 +2097,7 @@ export default function Home() {
                 X
               </button>
               
-              {/* LinkedIn Share */}
+              {/* LinkedIn Share - Professional */}
               <button 
                 onClick={shareViaLinkedIn}
                 style={{
@@ -2097,40 +2131,6 @@ export default function Home() {
                   <circle cx="4" cy="4" r="2"/>
                 </svg>
                 LinkedIn
-              </button>
-              
-              {/* Facebook Share */}
-              <button 
-                onClick={shareViaFacebook}
-                style={{
-                  background: "#1877F2",
-                  color: "white",
-                  border: "none",
-                  borderRadius: "8px",
-                  padding: "10px 12px",
-                  fontSize: "13px",
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "6px",
-                  transition: "all 0.2s ease"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow = "0 4px 12px rgba(24, 119, 242, 0.3)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-                data-testid="button-share-facebook"
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-                Facebook
               </button>
             </div>
           </div>
