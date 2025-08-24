@@ -1,33 +1,30 @@
-import { useToast } from "@/hooks/use-toast"
-import {
-  Toast,
-  ToastClose,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-} from "@/components/ui/toast"
+// client/src/components/ui/toaster.tsx
+import React from "react";
+import { Toaster as SonnerToaster, toast as sonnerToast } from "sonner";
 
+/**
+ * App-wide toast container. Place once near the root (you already do this in App.tsx).
+ */
 export function Toaster() {
-  const { toasts } = useToast()
-
   return (
-    <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
-        return (
-          <Toast key={id} {...props}>
-            <div className="grid gap-1">
-              {title && <ToastTitle>{title}</ToastTitle>}
-              {description && (
-                <ToastDescription>{description}</ToastDescription>
-              )}
-            </div>
-            {action}
-            <ToastClose />
-          </Toast>
-        )
-      })}
-      <ToastViewport />
-    </ToastProvider>
-  )
+    <SonnerToaster
+      position="top-center"
+      theme="system"
+      richColors
+      closeButton
+      toastOptions={{
+        duration: 3000,
+      }}
+    />
+  );
 }
+
+/**
+ * Re-export the toast API so you can:  import { toast } from "@/components/ui/toaster"
+ * Examples:
+ *   toast.success("Saved");
+ *   toast.error("Something went wrong", { description: "Try again in a moment." });
+ */
+export const toast = sonnerToast;
+
+export default Toaster;
