@@ -27,17 +27,45 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      # Install root deps (vite lives here)
       - name: Install dependencies (root)
         run: npm ci || npm install
 
-      - name: Build frontend (root uses vite.config.ts -> client/)
-        run: npx vite build --debug
+      # If the client has its own package.json, install there too (harmless if absent)
+      - name: Install dependencies (client if present)
+        working-directory: client
+        run: |
+          if [ -f package.json ]; then
+            npm ci || npm install
+          else
+            echo "No client/package.json; continuing"
+          fi
+
+      # Build using root config (vite.config.ts with root:'client'); if that fails, try inside client/
+      - name: Build frontend
+        shell: bash
+        run: |
+          set -e
+          echo "Trying: npx vite build (root)"
+          if npx vite build --debug; then
+            echo "Built via root config."
+          else
+            echo "Root build failed. Trying inside client/…"
+            cd client
+            npx vite build --debug
+            cd ..
+          fi
+
+      - name: Show build output
+        run: |
+          echo "== ls client =="
+          ls -la client || true
+          echo "== ls client/dist =="
+          ls -la client/dist || true
 
       - name: Verify built index.html
         run: |
-          ls -la client || true
-          ls -la client/dist || true
-          test -f client/dist/index.html || (echo "client/dist/index.html missing" && exit 1)
+          test -f client/dist/index.html || (echo "ERROR: client/dist/index.html missing. Check the Build frontend step logs." && exit 1)
 
       - name: Add CNAME and SPA fallback
         run: |
