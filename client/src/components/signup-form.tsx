@@ -67,8 +67,7 @@ const states = [
 
 const roles = [
   { value: "homeowner", label: "Homeowner" },
-  { value: "contractor", label: "Contractor" },
-  { value: "helper", label: "Helper" }
+  { value: "contractor", label: "Contractor" }
 ] as const;
 
 export default function SignupForm() {
