@@ -25,7 +25,8 @@ export default function Home() {
   });
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const [showExitIntent, setShowExitIntent] = useState(false);
-  const [referralSource, setReferralSource] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+  const [userReferralCode, setUserReferralCode] = useState('');
 
   const constructionLogos = [
     <Hammer key="hammer" size={28} />,
@@ -79,17 +80,13 @@ export default function Home() {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [showExitIntent]);
 
-  // Track referral source from URL
+  // Generate referral code
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ref = urlParams.get('ref');
-    const source = urlParams.get('source');
-    const utm_source = urlParams.get('utm_source');
-    
-    if (ref) setReferralSource(ref);
-    else if (source) setReferralSource(source);
-    else if (utm_source) setReferralSource(utm_source);
-  }, []);
+    if (formData.email && !referralCode) {
+      const code = formData.email.split('@')[0].toUpperCase() + Math.random().toString(36).substring(2, 6).toUpperCase();
+      setReferralCode(code);
+    }
+  }, [formData.email, referralCode]);
 
   const handleRoleToggle = (role: string) => {
     setFormData(prev => ({
@@ -106,7 +103,8 @@ export default function Home() {
     // Cache form data for offline submission
     localStorage.setItem('tradescout-form-cache', JSON.stringify({
       ...formData,
-      referralSource: referralSource || 'direct',
+      referralCode,
+      userReferralCode,
       timestamp: Date.now()
     }));
 
@@ -123,7 +121,8 @@ export default function Home() {
         },
         body: JSON.stringify({
           ...formData,
-          referralSource: referralSource || 'direct'
+          referralCode,
+          userReferralCode
         }),
       });
 
@@ -506,22 +505,49 @@ export default function Home() {
               Be among the first to access TradeScout when we launch. Early members get priority access to the best contractors in their area.
             </p>
 
-            {/* Referral Tracking Info */}
-            {referralSource && (
-              <div style={{
-                marginBottom: '32px',
-                padding: '16px',
-                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05))',
-                border: '1px solid rgba(16, 185, 129, 0.2)',
-                borderRadius: '12px',
-                textAlign: 'center'
-              }}>
-                <p style={{fontSize: '16px', fontWeight: 600, margin: '0', color: 'var(--text)'}}>
-                  ✅ Referred by: <span style={{color: 'var(--success)', textTransform: 'uppercase'}}>{referralSource}</span>
+            {/* Referral Code Input */}
+            {!userReferralCode && (
+              <div style={{marginBottom: '32px'}}>
+                <p style={{fontSize: '16px', color: 'var(--text)', marginBottom: '12px'}}>
+                  Have a referral code? Enter it to move up the early access list:
                 </p>
-                <p style={{fontSize: '14px', color: 'var(--muted)', margin: '4px 0 0'}}>
-                  You've been moved up in the early access queue!
-                </p>
+                <div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
+                  <input
+                    type="text"
+                    placeholder="Enter referral code"
+                    value={userReferralCode}
+                    onChange={(e) => setUserReferralCode(e.target.value.toUpperCase())}
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '8px',
+                      border: '1px solid var(--border)',
+                      background: 'var(--bg)',
+                      color: 'var(--text)',
+                      fontSize: '16px',
+                      minWidth: '200px'
+                    }}
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (userReferralCode) {
+                        alert(`Referral code ${userReferralCode} applied! You've moved up in the early access queue.`);
+                      }
+                    }}
+                    style={{
+                      background: 'var(--accent)',
+                      color: 'white',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '12px 20px',
+                      fontSize: '16px',
+                      fontWeight: 600,
+                      cursor: 'pointer'
+                    }}
+                  >
+                    Apply Code
+                  </button>
+                </div>
               </div>
             )}
 
@@ -667,8 +693,8 @@ export default function Home() {
                 {isOffline ? 'Save for Later (Offline)' : 'Get Early Access'}
               </button>
 
-              {/* Referral Link Generation */}
-              {formData.email && (
+              {/* Referral Code Display */}
+              {referralCode && (
                 <div style={{
                   marginTop: '24px',
                   padding: '20px',
@@ -678,7 +704,7 @@ export default function Home() {
                   textAlign: 'center'
                 }}>
                   <p style={{fontSize: '16px', fontWeight: 600, margin: '0 0 8px', color: 'var(--text)'}}>
-                    Your Referral Link:
+                    Your Referral Code:
                   </p>
                   <div style={{
                     display: 'flex',
@@ -688,23 +714,22 @@ export default function Home() {
                     flexWrap: 'wrap'
                   }}>
                     <span style={{
-                      fontSize: '14px',
-                      color: 'var(--muted)',
+                      fontSize: '20px',
+                      fontWeight: 900,
+                      color: 'var(--accent)',
                       padding: '8px 16px',
                       background: 'var(--bg)',
                       borderRadius: '6px',
                       border: '1px solid var(--border)',
-                      wordBreak: 'break-all',
-                      maxWidth: '300px'
+                      letterSpacing: '2px'
                     }}>
-                      {window.location.origin}?ref={formData.email.split('@')[0].toLowerCase()}
+                      {referralCode}
                     </span>
                     <button
                       type="button"
                       onClick={() => {
-                        const referralLink = `${window.location.origin}?ref=${formData.email.split('@')[0].toLowerCase()}`;
-                        navigator.clipboard.writeText(referralLink);
-                        alert('Referral link copied to clipboard!');
+                        navigator.clipboard.writeText(referralCode);
+                        alert('Referral code copied to clipboard!');
                       }}
                       style={{
                         background: 'var(--accent)',
@@ -721,11 +746,11 @@ export default function Home() {
                       }}
                     >
                       <Copy size={14} />
-                      Copy Link
+                      Copy
                     </button>
                   </div>
                   <p style={{fontSize: '14px', color: 'var(--muted)', margin: '12px 0 0', lineHeight: 1.5}}>
-                    💡 <strong>Share this link:</strong> When others sign up through your link, they get priority access and you move up the list!
+                    💡 <strong>Pro tip:</strong> The more people you refer, the higher you move up the early access list!
                   </p>
                 </div>
               )}
