@@ -622,7 +622,7 @@ export default function Home() {
             <h3 style={{fontSize: '24px', fontWeight: 700, margin: '0 0 16px', color: 'var(--text)'}}>
               The Power of Word-of-Mouth
             </h3>
-            <div style={{
+            <div className="value-stats" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '32px',
@@ -667,7 +667,7 @@ export default function Home() {
             <p style={{fontSize: '16px', color: 'var(--muted)', maxWidth: '700px', margin: '0 auto 32px'}}>
               Every TradeScout member automatically becomes a Trade Partner. Share any link from our site and earn commissions when people hire contractors! We work with real estate agents, insurance professionals, and business partners who believe in direct, honest connections.
             </p>
-            <div style={{
+            <div className="value-stats" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
               gap: '32px',
@@ -691,7 +691,7 @@ export default function Home() {
             </div>
 
             {/* Professional Partner Types */}
-            <div style={{
+            <div className="feature-cards" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
               gap: '20px',
